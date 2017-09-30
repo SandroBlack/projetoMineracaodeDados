@@ -149,6 +149,31 @@
 								
 								arrayConteudo[cont] = fecharDiv;
 							}
+							if (tipoPergunta == 5)
+							{
+								arrayConteudo[cont] =	"<div>" +
+														"<label>" + perguntaUpperCase +": </label><br>" +
+														"<select>";
+								
+								var quantidade = prompt("Digite a quantidade de opções:");
+
+								for(var x = 0; x < quantidade; x++)
+								{
+									var valorMaisUm = x + 1;
+									
+									var nomeselecao = prompt("Escreva o valor da opção de Número: " + valorMaisUm);
+									
+									var nomeselecaoUpperCase = nomeselecao.toUpperCase();
+									
+									var valorselecao = arrayConteudo[cont] + "<option name='option"+cont+"' value='"+nomeselecaoUpperCase+"'>"+nomeselecaoUpperCase+"<br>";
+									
+									arrayConteudo[cont] = valorselecao;
+								}
+								
+								var fecharDiv = arrayConteudo[cont] + "</select></div>";
+								
+								arrayConteudo[cont] = fecharDiv;
+							}
 							
 					arrayPergunta[cont] = perguntaUpperCase;
 					
@@ -268,6 +293,8 @@
 				<option id="3" name="3" value="3">Multipla escolha</option>
 				
 				<option id="4" name="4" value="4">Caixas de Seleção</option>
+
+				<option id="5" name="5" value="5">Seleção unica</option>
 				
 				</select>
 				
