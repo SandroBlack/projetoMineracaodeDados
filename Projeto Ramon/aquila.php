@@ -22,7 +22,13 @@
 <body>
     <!-- ======== Cabeçalho ========== -->
     <header id="cabecalho">
-        <button class="botao" id="enviar" name="enviar">Enviar</button>
+        
+        
+        <a href="menu-usuario.php"><img src="img/6980_256x256.png" style="width: 50px; height: 50px; margin:10px 0px 0px 30px; float: left;"></a>
+        <h2 style="float: left;"> Facima Formulários</h2>
+        <button style="float: right; margin:21px 30px 0px 0px; width: 70px;height: 30px; font-size: 16px; border-radius:4px; background:#0066ff;color:#ffffff; border: none;">Logout</button>
+        <button class="botao" id="enviar" name="enviar" style="float: right;">Enviar</button>
+
     </header><!-- ======== Fim do cabeçalho ==========-->
 
     <!-- ====== container ====== -->
