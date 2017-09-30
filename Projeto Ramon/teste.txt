@@ -1,1 +1,0 @@
-<div class='questoes' id='divPergunta0'><input type='text' name='pergunta0' id='pergunta0' placeholder='Pergunta'><input type='text' name='campo-de-texto0' placeholder='Resposta' id='campo-de-texto0' class='hide' value=''></div>

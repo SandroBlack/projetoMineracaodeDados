@@ -1,6 +1,12 @@
 <?php
 // MONTAR A PÁGINA COM O CONTEÚDO DO ARQUIVO TXT
-	$arq = fopen("teste.txt", "r");
-	$cont = fread($arq, 10000);
-	echo $cont;
+	
+	$FormularioCompleto = $_POST["FormularioCompleto"];
+	$FormularioCompletoTratado = str_replace("|", " ", $FormularioCompleto);
+	
+	$arq = fopen("teste.txt", "r+");
+	fwrite($arq, $FormularioCompletoTratado);
+	fclose($arq);
+	
+	echo $FormularioCompletoTratado ;
 ?>
