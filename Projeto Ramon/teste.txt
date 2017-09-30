@@ -1,0 +1,4 @@
+<<<<<<< HEAD
+=======
+<div class='questoes' id='divPergunta0'><input type='text' name='pergunta0' id='pergunta0' placeholder='Pergunta'><input type='text' name='campo-de-texto0' placeholder='Resposta' id='campo-de-texto0' class='hide' value=''></div><div class='questoes' id='divPergunta0'><input type='text' name='pergunta0' id='pergunta0' placeholder='Pergunta'><select name='selecionar0' id='selecionar0'><option value='tipoResposta' selected='selected' onClick=undefined>Tipo de resposta</option><option value='campoTexto' id='campoTexto0' name='campoTexto0'>Campo de Texto</option><option value='campoRadio' id='campoRadio0' name='campoRadio0'>Multipla Escolha</option><option value='campoSelecao' id='campoSelecao0' name='campoSelecao0'>Caixas de Seleção</option><option value='caixaSelecao' id='caixaSelecao0' name='caixaSelecao0'>Escolha variada</option></select></div>
+>>>>>>> 7714ba9955671430bbd74ec589f21fecb63ec432
