@@ -1,4 +1,4 @@
-<?php //include_once("conf/restricao.php");?>
+<?php include_once("conf/restricao.php");?>
 
 <!DOCTYPE html lang="pt-br">
 <html>
@@ -13,20 +13,64 @@
 <body>
 	<!-- ======== Cabeçalho ========== -->
 	<div id="cabecalho">
-		<div class="area-busca">
-			<h2>Facima Formulários</h2>
-			<input type="search" name="busca" placeholder="Pesquisa">
+		<div class="area-logo"><img src="img/Facima.png" class="logo"></div>
+		<div id="bemVindo">
+			<p>Bem Vindo(a): "Usuário"</p>
 		</div>
-		<button style="float: right; margin:-40px 40px 0px 0px; width: auto;height: auto; font-size: 20px; background:none;color:#0066ff; border: none;">Logout</button>
-
+		<form name="formSair" method="POST" action="">
+			<input type="hidden"name="acao" value="">	
+			<button class="botao btnSair" title="" onclick="document.formSair.acao.value='sair'">Sair</button>
+		</form>
 	</div><!-- ======== Fim do cabeçalho ==========-->
-
+	<?php
+	@$opcao = $_POST["acao"]; 
+		if($opcao == "sair"){
+			session_start();
+			unset($_SESSION["logado"]);
+			header("location:cadastro.php");
+		}
+	?>
 	<div class="area-principal">
 		<div class="area-formulario">
-		
+			<table id="tbUsuario" cellspacing="30">
+				<tr>
+					<td class="transparente">
+						<p>Total de Pesquisas</p><br>
+						<span>0</span>
+					</td>
+					<td class="transparente">
+						<p>Pesquisas Respondidas</p><br>
+						<span>0</span>
+					</td>
+					<td class="transparente">
+						<a href="">Consultar Pesquisas</a><br>								
+					</td>
+				</tr>
+				<tr>
+					<td class="transparente">
+						<a href="">Editar Pesquisas</a>						
+					</td>
+					<td class="transparente">
+						<a href="">Excluir Pesquisas</a>
+					</td>
+					<td class="transparente">
+					<a href="">Estatísticas</a>
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					
+				</tr>				
+			</table>
+			<a href="aquila.php"><button class=" botao btTabela" title="Crie uma nova pesquisa">Criar Nova Pesquisa</button></a>
 		</div>
-		<a href="formularios.php"><button class="botao" title="Crie um novo formulário">+</button></a>
+		
 	</div>
+	
 </body>
 
 </html>

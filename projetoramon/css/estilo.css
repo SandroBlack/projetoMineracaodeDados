@@ -1,12 +1,22 @@
 *{
 	margin: 0px;
 	padding: 0px;
+	text-decoration: none;
+	list-style: none;
 }
 
 body {
 	background: url(../img/forms_processing.jpg) center no-repeat;
 	background-attachment: fixed;
+	font-family: Arial, Helvetica, sans-serif;
+}
 
+.botao{
+	background: #0066ff;
+	color:#ffffff;
+	border: none;
+	border-radius: 3px;
+	cursor: pointer;	
 }
 
 #cabecalho {
@@ -16,7 +26,24 @@ body {
 	background: rgba(255,255,255,0.5);
 }
 
+.logo {
+	width: 120px;
+	height: 67px;
+	padding: 2px 0px 2px 10px;
+}
 
+.area-logo {
+	width: 120px;
+	height: 67px;
+	float: left;
+}
+
+.btnHome{
+	width: 150px;
+	height: 50px;	
+	font-size: 16px;	
+	margin: 10px 0 0 10px;	
+}
 
 .area {
 	display: table;
@@ -26,56 +53,83 @@ body {
 
 }
 
-.cadastrar {
-	float:right;
-	width: 45%;
-	background: #ffffff;
-	padding: 10px;
-	border-radius:6px;
+.forms{
+	margin: 0 0 0 100px;
+}
 
+.forms a{
+	color: #0047b3
+	font-size: 12pt;
+	float: left;
+	margin-top: 30px;	
+}
+
+.forms a:hover{
+	font-style: italic;
+	color: #000;
+}
+
+.cadastrar {
+	float:left;
+	width: 45%;
+	background: rgba(255,255,255,0.2);
+	padding: 10px;
+	border-radius:3px;
 }
 
 .login {
-	float: left;
+	float: right;
 	width: 45%;
-	background: #ffffff;
+	background: rgba(255,255,255,0.2);
 	padding: 10px;
-	border-radius:6px;
+	border-radius:3px;
+}
+
+label{
+	font-size: 15pt;
+	font-weight: bold;
+	color: #333;
 }
 
 input[type=text]{
-	height: 30px;
-	border-radius:6px;
+	width: 400px;
+	height: 35px;
+	border-radius:3px;
+	border: none;
+	font-size: 12pt;
+	padding-left: 5px;
+	background: rgba(255,255,255,0.5);
+}
+
+input[type="email"]{
+	width: 400px;
+	height: 35px;
+	border-radius:3px;
+	border: none;
+	font-size: 12pt;
+	padding-left: 5px;
+	background: rgba(255,255,255,0.5);
 }
 
 input[type=password]{
-	height: 30px;
-	border-radius:6px;
+	width: 400px;
+	height: 35px;
+	border-radius:3px;
+	border: none;
+	font-size: 12pt;
+	padding-left: 5px;
+	background: rgba(255,255,255,0.5);
 }
 
 input[type=submit]{
-	background: #0066ff;
-	color:#ffffff;
-	width: 150px;
-	height: 40px;
-	border: none;
-	border-radius: 6px;
-	cursor: pointer;
+	width: 120px;
+	height: 40px;	
+	float: right;
+	margin-right: 100px;
 }
 
 input[type=submit]:hover{
 	background:#0047b3;
-}
-
-input[type="email"]{
-	height: 30px;
-	border-radius:6px;
-}
-
-.area-botao{
-	margin:0px auto;
-	width: 150px;
-	height: 40px;
 }
 
 .frase {
@@ -94,10 +148,6 @@ input[type="email"]{
 	padding:15px 0px 0px 20px;
 }
 
-a {
-	text-decoration: none;
-}
-
 #cabecalho h2 a:visited{
 	color:#000000;
 }
@@ -110,6 +160,6 @@ a {
 	color:black;
 }
 
-.cadastrar a:hover{
-	color:#0047b3;
+.cadastrar, .login h1{
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans';	
 }

@@ -1,7 +1,6 @@
 <?php //include_once("conf/restricao.php");?>
 
 <!DOCTYPE html>
-
 <html lang="pt-br">
 	
 	<head>
@@ -14,11 +13,13 @@
 		
 		<link rel="icon" href="img/icon.png">
 
+
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-				
+		
 		<script src="js/js-aquilla.js"></script>
 		
 	</head>
+
 
 	<body>
 	

@@ -1,340 +1,112 @@
-﻿<?php //include_once("conf/restricao.php");?>
+﻿<?php include_once("conf/restricao.php");?>
 
 <!DOCTYPE html>
-<html lang="pt-br">
-    
-    <head>
-    
-        <title>Formulários</title>
+<html  lang="pt-br">
 
-        <meta charset="utf-8">
+<head>
+    <!-- ========== Título ============ -->
+    <title>Formulários</title>
 
-        <link rel="stylesheet" href="css/formularios.css">
-        
-        <link rel="icon" href="img/icon.png">
+    <!-- ========== Metas ============ -->
+    <meta charset="utf-8">
 
+    <!-- ========== Links ============ -->
+    <link rel="stylesheet" href="css/formularios.css">
+    <link rel="icon" href="img/icon.png">
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        
-        <script>
+    <!-- ========== Scripts ============ -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="js/sistema.js"></script>
 
-            $(document).ready(function(){
-                
-                // ESCONDER DIV PARA ENVIO DO FORMULARIO COMPLETO
-                $("#escondido").css("display","none");
-                
-                // INICANDO ARRAY E CONTADOR ASSIM QUE ABRIR A PAGINA
-                arrayConteudo = [];
-                cont = 3;
+</head>
 
-                // INICANDO ARRAY COM VALORES PADRÕES E PRESERVANDO POSIÇÕES
-                arrayConteudo[0] = "";
-                arrayConteudo[1] = "";
-                arrayConteudo[2] = "<div><form>";
+<body>
+    <!-- ======== Cabeçalho ========== -->
+    <header id="cabecalho">        
+        <h2>Formulários Facima</h2>
+        <button class="botao">Enviar</button>
+    </header><!-- ======== Fim do cabeçalho ==========-->
 
-                // INICANDO ARRAY COM AS PERGUNTAS PARA NÃO PODER REPETIR E TAMBEM EXCLUIR E NÃO EXCLUIR INDICES PRESERVADOS
-                arrayPergunta = [];
-                arrayPergunta[0] = "";
-                arrayPergunta[1] = "";
-                arrayPergunta[2] = "";
-                
-                $("#titulo").keyup(function(){
-                    
-                    var titulo = $("#titulo").val().toUpperCase();
-                    
-                    arrayConteudo[0] = "<h1 style='text-align:center;'>" + titulo + "</h1><br>";
-                
-                    $('#base').text("");
-                        
-                    for(var i = 0; i < arrayConteudo.length; i++)
-                        {
-                            $("#base").append(arrayConteudo[i]);
-                        }
-                    
-                });
-                
-                $("#descricao").keyup(function(){
-                    
-                    var descricao = $("#descricao").val().toUpperCase();
-                    
-                    arrayConteudo[1] = "<h4 style='text-align:center;'>" + descricao + "</h4><br>";
-                
-                    $('#base').text("");
-                        
-                    for(var i = 0; i < arrayConteudo.length; i++)
-                        {
-                            $("#base").append(arrayConteudo[i]);
-                        }
-                    
-                });
-                
-                $("#duplicar").click(function(){
+    <!-- ====== container ====== -->
+    <div class="container">
 
-                    var perguntaLowerCase = $('#pergunta').val();
-                    
-                    var perguntaUpperCase = perguntaLowerCase.toUpperCase();
-                    
-                    var tipoPergunta = $('#selecionar').val();
+        <div class="area" align="center">
+            <br>
+            <h1>Seu formulário</h1>
+            <br>
+        </div>
+        <!-- ============== Campo de Título ===============-->
+        <form class="titulo">            
+            <input type="text" name="titulo" id="titulo" placeholder="Título do formulário" maxlength="30"><br><br>
+            <input type="text" name="descricao" id="descricao" placeholder="Descrição do formulário" maxlength="30" size="90%"><br><br>
+        </form><br><br>
 
-                    if(perguntaUpperCase == "" || tipoPergunta == 1)
-                    {
-                        alert("Por favor preencha todas as informações");
-                    }
-                    
-                    else
-                    {
-                        
-                        for(var i = 3; i <= arrayPergunta.length; i++)
-                        {
-                            if(perguntaUpperCase == arrayPergunta[i])
-                            {
-                                alert("Pergunta já adicionada");
-                                return 0;
-                                break;
-                            }
-                        }
-                        
-                        if (tipoPergunta == 2)
-                            {
-                                arrayConteudo[cont] =   "<div style='margin-left:30px;'>" +
-                                                        "<label>" + perguntaUpperCase +": </label><br><br>" +
-                                                        "<input style='width:350px; height:30px;' maxlength='60' type='text' id='resposta"+perguntaUpperCase+"' name='resposta"+perguntaUpperCase+"'>" +
-                                                        "</div><br>";
-                            }
-                        if (tipoPergunta == 3)
-                            {
-                                arrayConteudo[cont] =   "<div style='margin-left:30px;'>" +
-                                                        "<label>" + perguntaUpperCase +": </label><br><br>";
-                                
-                                var quantidade = prompt("Digite a quantidade de opções:");
+        <!-- ============== Campo de resposta ===============-->
+        <div id="base">
 
-                                for(var x = 0; x < quantidade; x++)
-                                {
-                                    var valorMaisUm = x + 1;
-                                    
-                                    var nomeRadio = prompt("Escreva o valor da opção de Número: " + valorMaisUm);
-                                    
-                                    var nomeRadioUpperCase = nomeRadio.toUpperCase();
-                                    
-                                    var valorRadio = arrayConteudo[cont] + "<input type='radio' name='radio"+cont+"' value='"+nomeRadioUpperCase+"'>"+nomeRadioUpperCase+"<br>";
-                                    
-                                    arrayConteudo[cont] = valorRadio;
-                                }
-                                
-                                var fecharDiv = arrayConteudo[cont] + "</div><br>";
-                                
-                                arrayConteudo[cont] = fecharDiv;                    
-                            }
-                        if (tipoPergunta == 4)
-                            {
-                                arrayConteudo[cont] =   "<div style='margin-left:30px;'>" +
-                                                        "<label>" + perguntaUpperCase +": </label><br><br>";
-                                
-                                var quantidade = prompt("Digite a quantidade de opções:");
-
-                                for(var x = 0; x < quantidade; x++)
-                                {
-                                    var valorMaisUm = x + 1;
-                                    
-                                    var nomecheckbox = prompt("Escreva o valor da opção de Número: " + valorMaisUm);
-                                    
-                                    var nomecheckboxUpperCase = nomecheckbox.toUpperCase();
-                                    
-                                    var valorcheckbox = arrayConteudo[cont] + "<input type='checkbox' name='checkbox"+cont+"' value='"+nomecheckboxUpperCase+"'>"+nomecheckboxUpperCase+"<br>";
-                                    
-                                    arrayConteudo[cont] = valorcheckbox;
-                                }
-                                
-                                var fecharDiv = arrayConteudo[cont] + "</div><br>";
-                                
-                                arrayConteudo[cont] = fecharDiv;
-                            }
-                            if (tipoPergunta == 5)
-                            {
-                                arrayConteudo[cont] =   "<div style='margin-left:30px;'>" +
-                                                        "<label>" + perguntaUpperCase +": </label><br><br>" +
-                                                        "<select style='width:auto; margin-left:-3px;'>";
-                                
-                                var quantidade = prompt("Digite a quantidade de opções:");
-
-                                for(var x = 0; x < quantidade; x++)
-                                {
-                                    var valorMaisUm = x + 1;
-                                    
-                                    var nomeselecao = prompt("Escreva o valor da opção de Número: " + valorMaisUm);
-                                    
-                                    var nomeselecaoUpperCase = nomeselecao.toUpperCase();
-                                    
-                                    var valorselecao = arrayConteudo[cont] + "<option name='option"+cont+"' value='"+nomeselecaoUpperCase+"'>"+nomeselecaoUpperCase+"<br>";
-                                    
-                                    arrayConteudo[cont] = valorselecao;
-                                }
-                                
-                                var fecharDiv = arrayConteudo[cont] + "</select></div><br>";
-                                
-                                arrayConteudo[cont] = fecharDiv;
-                            }
-                            
-                    arrayPergunta[cont] = perguntaUpperCase;
-                    
-                    $("#base").append(arrayConteudo[cont]);
-                    
-                    cont++;
-                    }
-                
-                    $('#pergunta').val(""); 
-
-                    $('#selecionar').val(1);
-                
-                });
-
-                $("#menu").on('click', '.excluir', function(){
-                    
-                    if(arrayConteudo.length == 2)
-                    {
-                        alert("Não existe pergunta para remover");
-                    }
-                    
-                    else
-                    {   
-                    
-                        var mensagemInicial = "Deseja excluir qual das perguntas?\n";
-                        
-                        var modificandoArray = arrayPergunta.join("\n");
-                        
-                        var mensagemFinal = mensagemInicial + modificandoArray;
-                        
-                        var inicioExclusao = prompt(mensagemFinal);
-                        
-                        var inicioExclusaoUpperCase = inicioExclusao.toUpperCase();
-                        
-                        for(var i = 3; i <= arrayPergunta.length; i++)
-                        {
-                            if(inicioExclusaoUpperCase == arrayPergunta[i])
-                            {
-                                arrayConteudo.splice(i,1);
-                                
-                                arrayPergunta.splice(i,1);
-                                
-                                break;
-                            }
-                        }
-                        
-                        $('#base').text("");
-                        
-                        for(var i = 0; i < arrayConteudo.length; i++)
-                        {
-                            $("#base").append(arrayConteudo[i]);
-                        }
-                        
-                        cont --;
-                    }   
-
-                });
-
-                $("#enviar").click(function(){
-                    
-                    var arrayToString = arrayConteudo.join("|");
-                    
-                    var stringCompleto = arrayToString + "</form></div>";
-                    
-                    $('#FormularioCompleto').val(stringCompleto);
-                    
-                    $('#EnviarFormulario').submit();
-                    
-                    alert("Formulário Cadastrado com Sucesso");
-
-                });
-            
-            });
-            
-        </script>
-    </head>
-
-
-    <body>
-    
-        <header id="cabecalho">
-        
-            <a href="menu-usuario.php"><img src="img/6980_256x256.png" style="width: 50px; height: 50px; margin:10px 0px 0px 30px; float: left;"></a>
-
-            <h2 style="float: left;"> Facima Formulários</h2>
-
-            <button style="float: right; margin:23px 40px 0px 0px; width: auto;height: auto; font-size: 20px; background:none;color:#0066ff; border: none;" class="botao-logout">Logout</button>
-
-            <button class="botao" id="enviar" name="enviar" style="float: right;">Enviar</button>
-        
-        </header>
-        
-        <div class="container">
-        
-            <div class="area" align="center"><br>
-            
-                <h1>Seu formulário</h1><br>
-            
+        </div><!-- Fim da Base -->
+        <div class="barra-inferior" id="menu">            
+            <div class="area-botoes">                                
+                <img src="img/Defult Text.png" class="dublicar" id="duplicar" title="adicionar uma pergunta">       
+                <img src="img/delete_remove_bin_icon-icons.com_72400.png" class="excluir" id="exclusao" title="excluir a ultima pergunta adicionada">
             </div>
             
-            <form class="titulo" >
-            
-                <input type="text" name="titulo" id="titulo" placeholder="Título do formulário" maxlength="30"><br><br>
-                
-                <input type="text" name="descricao" id="descricao" placeholder="Descrição do formulário" maxlength="30" size="90%"><br><br>
-            
-            </form>
-            
-            <br>
-            
-            <br>
+        </div><!-- Fim da barra inferior -->        
+    </div><!-- Fim do container -->
 
-            <div class="questoes" id="divPergunta">
-            
-                <input type="text" name="pergunta" id="pergunta" placeholder="Pergunta">
-                
-                <select name="selecionar" id="selecionar">
-                
-                <option id="1" name="1" value="1">Tipo de resposta</option>
-                
-                <option id="2" name="2" value="2">Campo de texto</option>
-                
-                <option id="3" name="3" value="3">Multipla escolha</option>
-                
-                <option id="4" name="4" value="4">Caixas de Seleção</option>
+    <div id="divParaCopia">
+        <form class="questoes">
+            <!-- ====== Campo de pergunta ====== -->
+            <input type="text" name="pergunta" id="pergunta" placeholder="Pergunta">
+            <select name="selecionar" id="selecionar"><!-- Campo de opções -->
+                <option value="100">Tipo de resposta</option>
+                <option value="200">Campo de texto</option>
+                <option value="300">Múltipla Escolha</option>
+                <option value="400">Caixas de Seleção</option>
+            </select>
+        </form>
 
-                <option id="5" name="5" value="5">Seleção unica</option>
-                
-                </select>
-                
-                <br>
-            
-            </div>
-            
-            <div class="barra-inferior" id="menu">
-            
-                <div class="area-botoes">
-                
-                    <img src="img/Defult Text.png" class="dublicar" id="duplicar" title="adicionar uma pergunta">
-                    
-                    <img src="img/delete_remove_bin_icon-icons.com_72400.png" class="excluir" id="exclusao" title="excluir uma pergunta adicionada">
-                
+        <!-- =============== Campo dos Inputs =================-->
+        <form class="opcoes" id="formulario-inputs">
+            <div class="area-inputs" id="area-inputs">
+
+                <!-- ============= Campo de Texto =============-->
+                <input type="text" name="campo-de-texto" placeholder=" Resposta" id="resposta-usuario" class="hide"><br>
+
+                <!-- ============= Campo do Radio =============-->
+                <div id="baseRadio" class="hide">
+                    <div id="divParaCopiaRadio">
+                        <input type="radio" name="campo de multipla escolha">
+                        <input type="text" name="opcao-radio">
+                    </div><br>
+
+                    <div class="area-adicionar-remover">
+                        <button class="adicionar-azul" title="Adiciona mais uma opção">Adicionar Opção</button>
+                        <button class="remover-vermelho" title="Remove a última opção">Remover Opção</button>
+                    </div>
                 </div>
-            
+
+                <!-- ============= Campo do Checkbox =============-->
+                <div id="baseCheckbox" class="hide">
+                    <div id="divParaCopiaCheckbox">
+                        <input type="checkbox" name="escolha alternada">
+                        <input type="text" name="opcao-checkbox">
+                    </div>
+
+                    <div class="area-adicionar-remover">
+                        <button class="adicionar-azul" title="Adiciona mais uma opção">Adicionar Opção</button>
+                        <button class="remover-vermelho" title="Remove a última opção">Remover Opção</button>
+                    </div>
+                </div>
             </div>
+        </form><!-- Fim do campo dos inputs -->
         
-        </div>
-        
-        <div id="base" class="container area">
-        
-        </div>
-        
-        <div id="escondido">
-            
-            <form name="EnviarFormulario" id="EnviarFormulario" method="post" action="teste.php">
-                
-                <input name="FormularioCompleto" id="FormularioCompleto" type="hidden" value="">
-                
-            </form>
-        </div>
-        
-    </body>
-    
+    </div><!-- Fim da Copia -->
+
+    <div id="campoEscondido">
+        <input name="contador" id="contador" type="hidden" value="">
+    </div>
+
+</body>
+
 </html>

@@ -1,34 +1,15 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-	<head>
-		<title></title>
-		<link rel="stylesheet" type="text/css" href="css/resposta-usuario.css">
-	</head>
+<?php
+	$recebe = $_POST["FormularioCompleto"];
+	$recebeX = str_replace('|', ' ', $recebe);
 
+	$arq = fopen("teste.txt", "a+");
+	fwrite($arq, $recebeX);
+	fclose($arq);
+	//header("location:menu-usuario.php");
 
-	<body>
+// MONTAR A PÁGINA COM O CONTEÚDO DO ARQUIVO TXT
+	$arq = fopen("teste.txt", "r");
+	$cont = fread($arq, 10000);
+	echo $cont;	
 
-		<header id="cabecalho">
-				
-			<button class="botao" id="responder" name="enviar">Responder</button>
-				
-		</header>
-
-		<div class="container">
-		
-		<?php
-		// MONTAR A PÁGINA COM O CONTEÚDO DO ARQUIVO TXT
-
-			$FormularioCompleto = $_POST["FormularioCompleto"];
-			$FormularioCompletoTratado = str_replace("|", " ", $FormularioCompleto);
-			
-			$arq = fopen("teste.txt", "r+");
-			fwrite($arq, $FormularioCompletoTratado);
-			fclose($arq);
-			
-			echo $FormularioCompletoTratado ;
-		?>
-
-		</div>
-	</body>
-</html>
+?>

@@ -1,118 +1,205 @@
-function verificaArray(posicao){
-	document.getElementById("posicaoArray").value = posicao;
-}
 
 $(document).ready(function(){
-	 arrayConteudo = [];
-	 cont = 0;
-	$('#campoEscondido').css("display","none");
-	$('#campoEscondidoDois').css("display","none");
-	$('#campoEscondidoTres').css("display","none");
-	
-	$("#duplicar").click(function(){
-		$('#base').css("display","block");
-		$('#menu').css("display","block");
+				
+				// ESCONDER DIV PARA ENVIO DO FORMULARIO COMPLETO
+				$("#escondido").css("display","none");
+				
+				// INICANDO ARRAY E CONTADOR ASSIM QUE ABRIR A PAGINA
+				arrayConteudo = [];
+				cont = 3;
 
-		arrayConteudo[cont] = "<div class='questoes' id='divPergunta"+cont+"'><input type='text' name='pergunta"+cont+"' id='pergunta"+cont+"' placeholder='Pergunta'>" +
-		"<select name='selecionar"+cont+"' id='selecionar"+cont+"'>" +
-		"<option value='tipoResposta' selected='selected' onClick="+verificaArray(cont)+">Tipo de resposta</option>" +
-		"<option value='campoTexto' id='campoTexto"+cont+"' name='campoTexto"+cont+"'>Campo de Texto</option>" +
-		"<option value='campoRadio' id='campoRadio"+cont+"' name='campoRadio"+cont+"'>Multipla Escolha</option>" +
-		"<option value='campoSelecao' id='campoSelecao"+cont+"' name='campoSelecao"+cont+"'>Caixas de Seleção</option>" +
-		"<option value='caixaSelecao' id='caixaSelecao"+cont+"' name='caixaSelecao"+cont+"'>Escolha variada</option>" +
-		"</select></div>";
-		$("#base").append(arrayConteudo[cont]);
-		$('#contador').val(cont);
-		cont++;        
-	});
+				// INICANDO ARRAY COM VALORES PADRÕES E PRESERVANDO POSIÇÕES
+				arrayConteudo[0] = "";
+				arrayConteudo[1] = "";
+				arrayConteudo[2] = "<div><form>";
 
-	$("#menu").on('click', '.excluir', function(){
-		if(cont >= 0){
-			var contInt = parseInt($('#contador').val());
-			$("#divPergunta" + contInt + "").remove();
-			arrayConteudo.splice(contInt);
-			if(cont != 0)
-			cont -= 1;
-			$('#contador').val(cont);
-		}
-	});
+				// INICANDO ARRAY COM AS PERGUNTAS PARA NÃO PODER REPETIR E TAMBEM EXCLUIR E NÃO EXCLUIR INDICES PRESERVADOS
+				arrayPergunta = [];
+				arrayPergunta[0] = "";
+				arrayPergunta[1] = "";
+				arrayPergunta[2] = "";
+				
+				$("#titulo").keyup(function(){
+					
+					var titulo = $("#titulo").val().toUpperCase();
+					
+					arrayConteudo[0] = "<h1>" + titulo + "</h1><br>";
+				
+					$('#base').text("");
+						
+					for(var i = 0; i < arrayConteudo.length; i++)
+						{
+							$("#base").append(arrayConteudo[i]);
+						}
+					
+				});
+				
+				$("#descricao").keyup(function(){
+					
+					var descricao = $("#descricao").val().toUpperCase();
+					
+					arrayConteudo[1] = "<h4>" + descricao + "</h4><br>";
+				
+					$('#base').text("");
+						
+					for(var i = 0; i < arrayConteudo.length; i++)
+						{
+							$("#base").append(arrayConteudo[i]);
+						}
+					
+				});
+				
+				$("#duplicar").click(function(){
 
-	$(document).on('change','.questoes', function(){
-		var i = parseInt($('#posicaoArray').val());
-		var contInt = parseInt($('#contador').val());
-		var recebeDiv = "selecionar" + i;
-		var recebeInput = $("#"+recebeDiv+"").val();
+					var perguntaLowerCase = $('#pergunta').val();
+					
+					var perguntaUpperCase = perguntaLowerCase.toUpperCase();
+					
+					var tipoPergunta = $('#selecionar').val();
 
-		if(recebeInput == "campoTexto"){
-			arrayConteudo[i] = "<div class='questoes' id='divPergunta"+i+"'><input type='text' name='pergunta"+i+"' id='pergunta"+i+"' placeholder='Pergunta'>" +
-			"<input type='text' name='campo-de-texto"+i+"' placeholder='Resposta' id='campo-de-texto"+i+"' class='hide' value=''></div>";
-		}			
+					if(perguntaUpperCase == "" || tipoPergunta == 1)
+					{
+						alert("Por favor preencha todas as informações");
+					}
+					
+					else
+					{
+						
+						for(var i = 3; i <= arrayPergunta.length; i++)
+						{
+							if(perguntaUpperCase == arrayPergunta[i])
+							{
+								alert("Pergunta já adicionada");
+								return 0;
+								break;
+							}
+						}
+						
+						if (tipoPergunta == 2)
+							{
+								arrayConteudo[cont] =	"<div>" +
+														"<label>" + perguntaUpperCase +": </label>" +
+														"<input type='text' id='resposta"+perguntaUpperCase+"' name='resposta"+perguntaUpperCase+"'>" +
+														"</div>";
+							}
+						if (tipoPergunta == 3)
+							{
+								arrayConteudo[cont] =	"<div>" +
+														"<label>" + perguntaUpperCase +": </label><br>";
+								
+								var quantidade = prompt("Digite a quantidade de opções:");
 
-		else if(recebeInput == "campoRadio"){
-			arrayConteudo[i] = "<div class='questoes' id='divPergunta"+i+"'><input type='text' name='pergunta"+i+"' id='pergunta"+i+"' placeholder='Pergunta'>" +
-			"<br>";
+								for(var x = 0; x < quantidade; x++)
+								{
+									var valorMaisUm = x + 1;
+									
+									var nomeRadio = prompt("Escreva o valor da opção de Número: " + valorMaisUm);
+									
+									var nomeRadioUpperCase = nomeRadio.toUpperCase();
+									
+									var valorRadio = arrayConteudo[cont] + "<input type='radio' name='radio"+cont+"' value='"+nomeRadioUpperCase+"'>"+nomeRadioUpperCase+"<br>";
+									
+									arrayConteudo[cont] = valorRadio;
+								}
+								
+								var fecharDiv = arrayConteudo[cont] + "</div>";
+								
+								arrayConteudo[cont] = fecharDiv;					
+							}
+						if (tipoPergunta == 4)
+							{
+								arrayConteudo[cont] =	"<div>" +
+														"<label>" + perguntaUpperCase +": </label><br>";
+								
+								var quantidade = prompt("Digite a quantidade de opções:");
 
-			var quantidade = prompt("Digite a quantidade de opções:");
+								for(var x = 0; x < quantidade; x++)
+								{
+									var valorMaisUm = x + 1;
+									
+									var nomecheckbox = prompt("Escreva o valor da opção de Número: " + valorMaisUm);
+									
+									var nomecheckboxUpperCase = nomecheckbox.toUpperCase();
+									
+									var valorcheckbox = arrayConteudo[cont] + "<input type='checkbox' name='checkbox"+cont+"' value='"+nomecheckboxUpperCase+"'>"+nomecheckboxUpperCase+"<br>";
+									
+									arrayConteudo[cont] = valorcheckbox;
+								}
+								
+								var fecharDiv = arrayConteudo[cont] + "</div>";
+								
+								arrayConteudo[cont] = fecharDiv;
+							}
+							
+					arrayPergunta[cont] = perguntaUpperCase;
+					
+					$("#base").append(arrayConteudo[cont]);
+					
+					cont++;
+					}
+				
+					$('#pergunta').val("");	
 
-			for(var x = 0; x < quantidade; x++){
-				var valorMaisUm = x + 1;
-				var nomeRadio = prompt("Escreva o valor da opção de Número: " + valorMaisUm);
-				var valorRadio = arrayConteudo[i] + "<input type='radio' name='radio"+i+"' value='"+nomeRadio+"'>"+nomeRadio+"<br>";
-				arrayConteudo[i] = valorRadio;
-			}
+					$('#selecionar').val(1);
+				
+				});
 
-			var fecharDiv = arrayConteudo[i] + "</div>";
-			arrayConteudo[i] = fecharDiv;
-		}
+				$("#menu").on('click', '.excluir', function(){
+					
+					if(arrayConteudo.length == 2)
+					{
+						alert("Não existe pergunta para remover");
+					}
+					
+					else
+					{	
+					
+						var mensagemInicial = "Deseja excluir qual das perguntas?\n";
+						
+						var modificandoArray = arrayPergunta.join("\n");
+						
+						var mensagemFinal = mensagemInicial + modificandoArray;
+						
+						var inicioExclusao = prompt(mensagemFinal);
+						
+						var inicioExclusaoUpperCase = inicioExclusao.toUpperCase();
+						
+						for(var i = 3; i <= arrayPergunta.length; i++)
+						{
+							if(inicioExclusaoUpperCase == arrayPergunta[i])
+							{
+								arrayConteudo.splice(i,1);
+								
+								arrayPergunta.splice(i,1);
+								
+								break;
+							}
+						}
+						
+						$('#base').text("");
+						
+						for(var i = 0; i < arrayConteudo.length; i++)
+						{
+							$("#base").append(arrayConteudo[i]);
+						}
+						
+						cont --;
+					}	
 
-		else if(recebeInput == "campoSelecao"){
-			arrayConteudo[i] = "<div class='questoes' id='divPergunta"+i+"'><input type='text' name='pergunta"+i+"' id='pergunta"+i+"' placeholder='Pergunta'>" +
-			"<br>";
+				});
 
-			var quantidade = prompt("Digite a quantidade de opções:");
+				$("#enviar").click(function(){
+					
+					var arrayToString = arrayConteudo.join("|");
+					
+					var stringCompleto = arrayToString + "</form></div>";
+					
+					$('#FormularioCompleto').val(stringCompleto);
+					
+					$('#EnviarFormulario').submit();
+					
+					alert("Formulário Cadastrado com Sucesso");
+
+				});
 			
-			for(var y = 0; y < quantidade; y++){
-				var valorMaisMais = y + 1;
-				var nomeCheckbox = prompt("Escreva o valor da opção de Número: " + valorMaisMais);
-				var valorCheckbox = arrayConteudo[i] + "<input type='checkbox' name='checkbox"+i+"' value='"+nomeCheckbox+"'>"+nomeCheckbox+"<br>";
-				arrayConteudo[i] = valorCheckbox;
-			}
-			var fecharDiv2 = arrayConteudo[i] + "</div>";
-			arrayConteudo[i] = fecharDiv2;
-		}
-
-		else if(recebeInput == "caixaSelecao")
-             {
-             arrayConteudo[i] = "<div class='questoes' id='divPergunta"+i+"'><input type='text' name='pergunta"+i+"' id='pergunta"+i+"' placeholder='Pergunta'>" +
-                 "<select>";
-
-                var quantidade = prompt("Digite a quantidade de opções para o campo de selecao:");
-             for(var z = 0; z < quantidade; z++)
-             {
-             var valorMaisPlus = z + 1;
-             var nomeSelect = prompt("Escreva o valor de cada: " + valorMaisPlus);
-             var valorSelect = arrayConteudo[i] + "<option name='option"+i+"' value='"+nomeSelect+"'>"+nomeSelect+"<br>";
-             arrayConteudo[i] = valorSelect;
-             }
-             var fecharDiv3 = arrayConteudo[i] + "</select></div>";
-             arrayConteudo[i] = fecharDiv3;
-
-            }
-
-		else if(recebeInput == "tipoResposta"){
-			arrayConteudo[i] = "<div></div>";
-		}
-
-		
-		
-	});
-
-	$("#enviar").click(function(){
-		arrayJs = arrayConteudo.join("|");
-		$('#Valores').val(arrayJs);
-		$('#testando').submit();
-		alert("Formulário Cadastrador com Sucesso");
-
-
-	});
-});	
+			});
