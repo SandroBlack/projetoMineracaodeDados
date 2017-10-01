@@ -1,1 +1,1 @@
-  <h1>PESQUISA 1</h1><br> <h4>TESTANDO AS PESQUISAS</h4><br> <div><form> <div><label>QUEM É VOCÊ?: </label><input type='text' id='respostaQUEM É VOCÊ?' name='respostaQUEM É VOCÊ?'></div> <div><label>QUANTOS ANOS TEM?: </label><input type='text' id='respostaQUANTOS ANOS TEM?' name='respostaQUANTOS ANOS TEM?'></div> <div><label>GOSTA DE GAMES?: </label><input type='text' id='respostaGOSTA DE GAMES?' name='respostaGOSTA DE GAMES?'></div> <div><label>TEM FILHOS?: </label><input type='text' id='respostaTEM FILHOS?' name='respostaTEM FILHOS?'></div></form></div>
+﻿

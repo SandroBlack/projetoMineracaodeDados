@@ -1,5 +1,5 @@
 <?php 
-include_once("db/conexao.php");
+	include_once("db/conexao.php");
 
 	/*$recebe = $_POST["FormularioCompleto"];
 	$recebeX = str_replace('|', ' ', $recebe);
@@ -13,21 +13,24 @@ include_once("db/conexao.php");
 	$FormularioCompletoX = str_replace('|', ' ', $FormularioCompleto);
 	$cod = rand();
 	$codP = base64_encode($cod); 
+	$id = 0;
+	
+	try 
+	{
+		$pdo = conectar();       
+	  	$sql = "INSERT INTO questions VALUES(:questions_id, :question_text, :question_form)";
+	  	$query = $pdo->prepare($sql);
+		$query->execute(array(
+			':questions_id' => $id,
+			':question_text' => $FormularioCompletoX,
+			':question_form' => "5"
+		));	
+	} 
+	catch(PDOException $e) {
 
-	if($FormularioCompletoX == ""){
-		return false;
-		header("location:menu-usuario.php");	
-	} else{
-		try{
-			$pdo = conectar();
-			$sql = "INSERT INTO questions(question_text, question_cod) VALUES(:perguntas, :codPerguntas)";
-			$insert = $pdo->prepare($sql);					
-			$insert->bindValue(":perguntas", $FormularioCompletoX);
-			$insert->bindValue(":codPerguntas", $codP);
-			$insert->execute();
-		} catch(PDOException $e){
-				echo "Erro: " . $e->getMessage();
-		  }
-	  }
-	  header("location:menu-usuario.php");	
+	    echo 'ERROR: ' . $e->getMessage();
+
+	}
+
+	header("location:menu-usuario.php");	
 ?>
