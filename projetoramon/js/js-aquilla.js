@@ -161,7 +161,7 @@ $(document).ready(function(){
 		{
 			alert("Não existe pergunta para remover");
 		}
-		
+
 		else
 		{					
 			var mensagemInicial = "Deseja excluir qual das perguntas?\n";
@@ -215,7 +215,11 @@ $(document).ready(function(){
 
 	$("#enviar").click(function(){
 		
-		if(arrayConteudo.length == 3)
+		var verificaTitulo = $("#titulo").val();
+		
+		var verificaDescricao = $("#descricao").val();
+		
+		if(arrayConteudo.length == 3 || verificaTitulo == "" || verificaDescricao == "")
 		{
 			alert("Formulário incompleto");
 		}
