@@ -106,8 +106,14 @@
 								arrayConteudo[cont] =	"<div>" +
 														"<label>" + perguntaUpperCase +": </label><br>";
 								
-								var quantidade = prompt("Digite a quantidade de opções:");
-
+								var quantidade = prompt("Digite a quantidade de opções:");							
+								
+								if(isNaN(quantidade) || quantidade == 0)
+								{
+									alert("Por favor, preencha os campos corretamente");
+									return 0;
+								}								
+																	
 								for(var x = 0; x < quantidade; x++)
 								{
 									var valorMaisUm = x + 1;
@@ -131,6 +137,12 @@
 														"<label>" + perguntaUpperCase +": </label><br>";
 								
 								var quantidade = prompt("Digite a quantidade de opções:");
+								
+								if(isNaN(quantidade) || quantidade == 0)
+								{
+									alert("Por favor, preencha os campos corretamente");
+									return 0;
+								}
 
 								for(var x = 0; x < quantidade; x++)
 								{
@@ -165,14 +177,13 @@
 
 				$("#menu").on('click', '.excluir', function(){
 					
-					if(arrayConteudo.length == 2)
+					if(arrayConteudo.length == 3)
 					{
 						alert("Não existe pergunta para remover");
 					}
 					
 					else
-					{	
-					
+					{					
 						var mensagemInicial = "Deseja excluir qual das perguntas?\n";
 						
 						var modificandoArray = arrayPergunta.join("\n");
@@ -183,41 +194,66 @@
 						
 						var inicioExclusaoUpperCase = inicioExclusao.toUpperCase();
 						
-						for(var i = 3; i <= arrayPergunta.length; i++)
+						if(inicioExclusaoUpperCase == "")
 						{
-							if(inicioExclusaoUpperCase == arrayPergunta[i])
+							alert("Necessário digitar a pergunta");
+							return 0;
+						}
+						
+						else
+						{	
+							for(var i = 3; i <= arrayPergunta.length; i++)
 							{
-								arrayConteudo.splice(i,1);
+								if(inicioExclusaoUpperCase == arrayPergunta[i])
+								{
+									arrayConteudo.splice(i,1);
+									
+									arrayPergunta.splice(i,1);
+									
+									break;
+								}
 								
-								arrayPergunta.splice(i,1);
-								
-								break;
+								if(i == arrayPergunta.length)
+								{
+									alert("Pergunta não encontrada");
+									return 0;
+								}
 							}
+							
+							$('#base').text("");
+							
+							for(var i = 0; i < arrayConteudo.length; i++)
+							{
+								$("#base").append(arrayConteudo[i]);
+								alert("Conteudo: " + arrayConteudo[i] + " Posição do Array: " + i);
+							}
+							
+							cont --;
+							alert(cont);
 						}
-						
-						$('#base').text("");
-						
-						for(var i = 0; i < arrayConteudo.length; i++)
-						{
-							$("#base").append(arrayConteudo[i]);
-						}
-						
-						cont --;
 					}	
 
 				});
 
 				$("#enviar").click(function(){
 					
-					var arrayToString = arrayConteudo.join("|");
+					if(arrayConteudo.length == 3)
+					{
+						alert("Formulário incompleto");
+					}
 					
-					var stringCompleto = arrayToString + "</form></div>";
-					
-					$('#FormularioCompleto').val(stringCompleto);
-					
-					$('#EnviarFormulario').submit();
-					
-					alert("Formulário Cadastrado com Sucesso");
+					else
+					{				
+						var arrayToString = arrayConteudo.join("|");
+						
+						var stringCompleto = arrayToString + "</form></div>";
+						
+						$('#FormularioCompleto').val(stringCompleto);
+						
+						$('#EnviarFormulario').submit();
+						
+						alert("Formulário Cadastrado com Sucesso");
+					}
 
 				});
 			
