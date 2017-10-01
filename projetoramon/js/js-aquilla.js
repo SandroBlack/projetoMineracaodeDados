@@ -82,14 +82,14 @@ $(document).ready(function(){
 			if (tipoPergunta == 2)
 			{
 				arrayConteudo[cont] =	"<div>" +
-										"<label>" + perguntaUpperCase +": </label>" +
+										"<label>" + perguntaUpperCase +" </label>" +
 										"<input type='text' id='resposta"+perguntaUpperCase+"' name='resposta"+perguntaUpperCase+"' required>" +
 										"</div>";
 			}
 			if (tipoPergunta == 3)
 			{
 				arrayConteudo[cont] =	"<div>" +
-										"<label>" + perguntaUpperCase +": </label><br>";
+										"<label>" + perguntaUpperCase +" </label><br>";
 				
 				var quantidade = prompt("Digite a quantidade de opções:");	
 				
@@ -131,7 +131,7 @@ $(document).ready(function(){
 			if (tipoPergunta == 4)
 			{
 				arrayConteudo[cont] =	"<div>" +
-										"<label>" + perguntaUpperCase +": </label><br>";
+										"<label>" + perguntaUpperCase +" </label><br>";
 					
 				var quantidade = prompt("Digite a quantidade de opções:");
 					
@@ -173,7 +173,7 @@ $(document).ready(function(){
 			if (tipoPergunta == 5)
 			{
 				arrayConteudo[cont] =	"<div class='cpf'>" +
-										"<label>" + perguntaUpperCase +": </label>" +
+										"<label>" + perguntaUpperCase +" </label>" +
 										"<input type='text' id='resposta"+perguntaUpperCase+"' name='resposta"+perguntaUpperCase+"' required>" +
 										"</div>";
 				
@@ -181,7 +181,7 @@ $(document).ready(function(){
 			if (tipoPergunta == 6)
 			{
 				arrayConteudo[cont] =	"<div>" +
-										"<label>" + perguntaUpperCase +": </label><br>" +
+										"<label>" + perguntaUpperCase +" </label><br>" +
 										"<textarea rows='4' cols='50' name='respota"+perguntaUpperCase+"' form='formUusario' required></textarea>" +
 										"</div>";
 			}
