@@ -1,4 +1,4 @@
-<?php include_once("conf/restricao.php");?>
+<?php //include_once("conf/restricao.php");?>
 
 <!DOCTYPE html lang="pt-br">
 <html>
@@ -25,7 +25,7 @@
 		<div class="area-formulario">
 		
 		</div>
-		<a href="aquila.php"><button class="botao" title="Crie um novo formulário">+</button></a>
+		<a href="aquilla.php"><button class="botao" title="Crie um novo formulário">+</button></a>
 	</div>
 </body>
 

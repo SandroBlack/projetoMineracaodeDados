@@ -35,6 +35,10 @@ body{
 	background:#0047b3;
 }
 
+form{
+	margin-left: 20px;
+}
+
 
 .container {
 	background: #ffffff;

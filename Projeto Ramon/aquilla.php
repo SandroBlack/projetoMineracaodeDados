@@ -97,14 +97,14 @@
 						if (tipoPergunta == 2)
 							{
 								arrayConteudo[cont] =	"<div>" +
-														"<label>" + perguntaUpperCase +": </label>" +
+														"<label>" + perguntaUpperCase +": </label><br><br>" +
 														"<input type='text' id='resposta"+perguntaUpperCase+"' name='resposta"+perguntaUpperCase+"'>" +
-														"</div>";
+														"</div><br>";
 							}
 						if (tipoPergunta == 3)
 							{
 								arrayConteudo[cont] =	"<div>" +
-														"<label>" + perguntaUpperCase +": </label><br>";
+														"<label>" + perguntaUpperCase +": </label><br><br>";
 								
 								var quantidade = prompt("Digite a quantidade de opções:");
 
@@ -121,14 +121,14 @@
 									arrayConteudo[cont] = valorRadio;
 								}
 								
-								var fecharDiv = arrayConteudo[cont] + "</div>";
+								var fecharDiv = arrayConteudo[cont] + "</div><br>";
 								
 								arrayConteudo[cont] = fecharDiv;					
 							}
 						if (tipoPergunta == 4)
 							{
 								arrayConteudo[cont] =	"<div>" +
-														"<label>" + perguntaUpperCase +": </label><br>";
+														"<label>" + perguntaUpperCase +": </label><br><br>";
 								
 								var quantidade = prompt("Digite a quantidade de opções:");
 
@@ -145,14 +145,14 @@
 									arrayConteudo[cont] = valorcheckbox;
 								}
 								
-								var fecharDiv = arrayConteudo[cont] + "</div>";
+								var fecharDiv = arrayConteudo[cont] + "</div><br>";
 								
 								arrayConteudo[cont] = fecharDiv;
 							}
 							if (tipoPergunta == 5)
 							{
 								arrayConteudo[cont] =	"<div>" +
-														"<label>" + perguntaUpperCase +": </label><br>" +
+														"<label>" + perguntaUpperCase +": </label><br><br>" +
 														"<select>";
 								
 								var quantidade = prompt("Digite a quantidade de opções:");
@@ -170,7 +170,7 @@
 									arrayConteudo[cont] = valorselecao;
 								}
 								
-								var fecharDiv = arrayConteudo[cont] + "</select></div>";
+								var fecharDiv = arrayConteudo[cont] + "</select></div><br>";
 								
 								arrayConteudo[cont] = fecharDiv;
 							}
