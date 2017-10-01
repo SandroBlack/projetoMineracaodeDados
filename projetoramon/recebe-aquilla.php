@@ -23,7 +23,7 @@
 		$query->execute(array(
 			':questions_id' => $id,
 			':question_text' => $FormularioCompletoX,
-			':question_form' => "5"
+			':question_form' => $cod
 		));	
 	} 
 	catch(PDOException $e) {
