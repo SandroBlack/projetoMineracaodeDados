@@ -1,4 +1,7 @@
+<?php include_once("conf/restricao.php");?>
+
 <!DOCTYPE html>
+
 <html lang="pt-br">
 	
 	<head>
@@ -93,7 +96,7 @@
 		
 		<div id="escondido">
 			
-			<form name="EnviarFormulario" id="EnviarFormulario" method="post" action="teste.php">
+			<form name="EnviarFormulario" id="EnviarFormulario" method="post" action="recebe-aquilla.php">
 				
 				<input name="FormularioCompleto" id="FormularioCompleto" type="hidden" value="">
 				
