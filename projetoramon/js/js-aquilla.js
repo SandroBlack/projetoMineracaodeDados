@@ -5,17 +5,23 @@ $(document).ready(function(){
 	
 	// INICANDO ARRAY E CONTADOR ASSIM QUE ABRIR A PAGINA
 	arrayConteudo = [];
+	
+	arrayPergunta = [];
+	
 	cont = 3;
-
+	
 	// INICANDO ARRAY COM VALORES PADRÕES E PRESERVANDO POSIÇÕES
 	arrayConteudo[0] = "";
+	
 	arrayConteudo[1] = "";
-	arrayConteudo[2] = "<div><form>";
+	
+	arrayConteudo[2] = "<div><form name='formUusario'>";
 
 	// INICANDO ARRAY COM AS PERGUNTAS PARA NÃO PODER REPETIR E TAMBEM EXCLUIR E NÃO EXCLUIR INDICES PRESERVADOS
-	arrayPergunta = [];
 	arrayPergunta[0] = "";
+	
 	arrayPergunta[1] = "";
+	
 	arrayPergunta[2] = "";
 	
 	$("#titulo").keyup(function(){
@@ -70,83 +76,122 @@ $(document).ready(function(){
 				{
 					alert("Pergunta já adicionada");
 					return 0;
-					break;
 				}
 			}
 			
 			if (tipoPergunta == 2)
-				{
-					arrayConteudo[cont] =	"<div>" +
-											"<label>" + perguntaUpperCase +": </label>" +
-											"<input type='text' id='resposta"+perguntaUpperCase+"' name='resposta"+perguntaUpperCase+"'>" +
-											"</div>";
-				}
+			{
+				arrayConteudo[cont] =	"<div>" +
+										"<label>" + perguntaUpperCase +": </label>" +
+										"<input type='text' id='resposta"+perguntaUpperCase+"' name='resposta"+perguntaUpperCase+"' required>" +
+										"</div>";
+			}
 			if (tipoPergunta == 3)
-				{
-					arrayConteudo[cont] =	"<div>" +
-											"<label>" + perguntaUpperCase +": </label><br>";
-					
-					var quantidade = prompt("Digite a quantidade de opções:");							
-					
-					if(isNaN(quantidade) || quantidade == 0)
-					{
-						alert("Por favor, preencha os campos corretamente");
-						return 0;
-					}								
-														
-					for(var x = 0; x < quantidade; x++)
-					{
-						var valorMaisUm = x + 1;
-						
-						var nomeRadio = prompt("Escreva o valor da opção de Número: " + valorMaisUm);
-						
-						var nomeRadioUpperCase = nomeRadio.toUpperCase();
-						
-						var valorRadio = arrayConteudo[cont] + "<input type='radio' name='radio"+cont+"' value='"+nomeRadioUpperCase+"'>"+nomeRadioUpperCase+"<br>";
-						
-						arrayConteudo[cont] = valorRadio;
-					}
-					
-					var fecharDiv = arrayConteudo[cont] + "</div>";
-					
-					arrayConteudo[cont] = fecharDiv;					
-				}
-			if (tipoPergunta == 4)
-				{
-					arrayConteudo[cont] =	"<div>" +
-											"<label>" + perguntaUpperCase +": </label><br>";
-					
-					var quantidade = prompt("Digite a quantidade de opções:");
-					
-					if(isNaN(quantidade) || quantidade == 0)
-					{
-						alert("Por favor, preencha os campos corretamente");
-						return 0;
-					}
-
-					for(var x = 0; x < quantidade; x++)
-					{
-						var valorMaisUm = x + 1;
-						
-						var nomecheckbox = prompt("Escreva o valor da opção de Número: " + valorMaisUm);
-						
-						var nomecheckboxUpperCase = nomecheckbox.toUpperCase();
-						
-						var valorcheckbox = arrayConteudo[cont] + "<input type='checkbox' name='checkbox"+cont+"' value='"+nomecheckboxUpperCase+"'>"+nomecheckboxUpperCase+"<br>";
-						
-						arrayConteudo[cont] = valorcheckbox;
-					}
-					
-					var fecharDiv = arrayConteudo[cont] + "</div>";
-					
-					arrayConteudo[cont] = fecharDiv;
-				}
+			{
+				arrayConteudo[cont] =	"<div>" +
+										"<label>" + perguntaUpperCase +": </label><br>";
 				
-		arrayPergunta[cont] = perguntaUpperCase;
+				var quantidade = prompt("Digite a quantidade de opções:");	
+				
+				if(isNaN(quantidade) || quantidade == 0 || quantidade == null)
+				{
+					arrayConteudo.splice(i,cont);
+					
+					alert("Por favor, preencha os campos corretamente");
+					
+					return 0;
+				}								
+														
+				for(var x = 0; x < quantidade; x++)
+				{
+					var valorMaisUm = x + 1;
+					
+					var nomeRadio = prompt("Escreva o valor da opção de Número: " + valorMaisUm);
+					
+					if(nomeRadio == null)
+					{
+						arrayConteudo.splice(i,cont);
+						
+						alert("Por favor, preencha os campos corretamente");
+						
+						return 0;
+					}
+					
+					var nomeRadioUpperCase = nomeRadio.toUpperCase();
+						
+					var valorRadio = arrayConteudo[cont] + "<input type='radio' name='radio"+cont+"' value='"+nomeRadioUpperCase+"' >"+nomeRadioUpperCase+"<br>";
+						
+					arrayConteudo[cont] = valorRadio;
+				}
+					
+				var fecharDiv = arrayConteudo[cont] + "</div>";
+				
+				arrayConteudo[cont] = fecharDiv;					
+			}
+			if (tipoPergunta == 4)
+			{
+				arrayConteudo[cont] =	"<div>" +
+										"<label>" + perguntaUpperCase +": </label><br>";
+					
+				var quantidade = prompt("Digite a quantidade de opções:");
+					
+				if(isNaN(quantidade) || quantidade == 0 || quantidade == null)
+				{
+					arrayConteudo.splice(i,cont);
+					
+					alert("Por favor, preencha os campos corretamente");
+					
+					return 0;
+				}
+
+				for(var x = 0; x < quantidade; x++)
+				{
+					var valorMaisUm = x + 1;
+						
+					var nomecheckbox = prompt("Escreva o valor da opção de Número: " + valorMaisUm);
+					
+					if(nomecheckbox == null)
+					{
+						arrayConteudo.splice(i,cont);
+						
+						alert("Por favor, preencha os campos corretamente");
+						
+						return 0;
+					}
+						
+					var nomecheckboxUpperCase = nomecheckbox.toUpperCase();
+						
+					var valorcheckbox = arrayConteudo[cont] + "<input type='checkbox' name='checkbox"+cont+"' value='"+nomecheckboxUpperCase+"'>"+nomecheckboxUpperCase+"<br>";
+						
+					arrayConteudo[cont] = valorcheckbox;
+				}
+					
+				var fecharDiv = arrayConteudo[cont] + "</div>";
+					
+				arrayConteudo[cont] = fecharDiv;
+			}
+			if (tipoPergunta == 5)
+			{
+				arrayConteudo[cont] =	"<div class='cpf'>" +
+										"<label>" + perguntaUpperCase +": </label>" +
+										"<input type='text' id='resposta"+perguntaUpperCase+"' name='resposta"+perguntaUpperCase+"' required>" +
+										"</div>";
+				
+			}
+			if (tipoPergunta == 6)
+			{
+				arrayConteudo[cont] =	"<div>" +
+										"<label>" + perguntaUpperCase +": </label><br>" +
+										"<textarea rows='4' cols='50' name='respota"+perguntaUpperCase+"' form='formUusario' required></textarea>" +
+										"</div>";
+			}
+			
+				
+			arrayPergunta[cont] = perguntaUpperCase;
 		
-		$("#base").append(arrayConteudo[cont]);
-		
-		cont++;
+			$("#base").append(arrayConteudo[cont]);
+			
+			cont++;
 		}
 	
 		$('#pergunta').val("");	
@@ -166,7 +211,12 @@ $(document).ready(function(){
 		{					
 			var mensagemInicial = "Deseja excluir qual das perguntas?\n";
 			
-			var modificandoArray = arrayPergunta.join("\n");
+			var modificandoArray = "";
+			
+			for(var i = 3; i < arrayPergunta.length; i++)
+			{
+				modificandoArray += arrayPergunta[i] + "\n";	
+			}
 			
 			var mensagemFinal = mensagemInicial + modificandoArray;
 			
