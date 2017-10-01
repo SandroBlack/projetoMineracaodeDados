@@ -1,5 +1,5 @@
 <?php 
-	include_once("db/conexao.php");
+	include_once("db/conexao.php");	
 	@$acao = $_POST["acao"];
 ?>
 
@@ -17,50 +17,48 @@
 <body>
 	<!-- ======== Cabeçalho ========== -->
 	<header id="cabecalho">
-		<h2><a href="index.php">Página inicial</a></h2>
+		<div class="area-logo"><img src="img/Facima.png" class="logo"></div>
 	</header>
 	<!-- ======== Fim do cabeçalho ==========-->
 
 	<div class="area">
 
 		<!-- ================= Fim do Bloco do login =================== -->
-		<div class="cadastrar">
+		<div class="login">
 			<h1 align="center">Login</h1><br>
 
-			<form name="formLogin" method="POST" action="">
+			<form name="formLogin" class="forms" method="POST" action="">
 				<input type="hidden" name="acao" value="">
-				<label for="email">E-mail:</label>
-					<input type="text" name="email" id="email_login" size="48" maxlength="50" placeholder="Digite seu nome"><br><br>
+				<label for="email">E-mail:</label><br>
+					<input type="text" name="email" id="email_login" maxlength="50" placeholder="Digite seu nome"><br><br>
 
-				<label for="senha">Senha:</label>
-					<input type="password" name="senha" id="senha_login" size="48" minlength="6" placeholder="Digite sua senha"><br><br>
-
-					<a href="recuperar.php" ><h4 align="center">Esqueceu a Senha?</h4></a><br><br>
-
-				<div class="area-botao"><input type="submit" name="login" id="botao" value="ENTRAR" onclick="document.formLogin.acao.value='login'"></div>
+				<label for="senha">Senha:</label><br>
+					<input type="password" name="senha" id="senha_login" minlength="6" placeholder="Digite sua senha"><br><br>
+					<a href="recuperar.php" align="center">Esqueceu a Senha?</a><br><br>
+					<input type="submit" name="login" class="botao" value="ENTRAR" onclick="document.formLogin.acao.value='login'">
 			</form>
 		</div><!-- ================= Fim do Bloco do login =================== -->
 
 		<!-- ================= Bloco do cadastro =================== -->
-		<div class="login">
+		<div class="cadastrar">
 
 			<h1 align="center"> Cadastre-se </h1><br>
 			
-			<form name="formCadastro" method="POST" action="">
+			<form name="formCadastro" class="forms" method="POST" action="">
 				<input type="hidden" name="acao" value="">
-				<label for="nome-cadastro">Nome:</label>
-				<input type="text" name="nome" id="nome_cadastro" size="48" placeholder=" Ex.: José Gomes da Silva" maxlength="50"><br><br>
+				<label for="nome-cadastro">Nome:</label><br>
+				<input type="text" name="nome" id="nome_cadastro" placeholder=" Ex.: José Gomes da Silva" maxlength="50"><br><br>
 
-				<label for="email">E-mail:</label>
-				<input type="email" name="email" id="email" size="48" placeholder=" Ex.: jose_gomes@hotmail.com" maxlength="30"><br><br>
+				<label for="email">E-mail:</label><br>
+				<input type="email" name="email" id="email" placeholder=" Ex.: jose_gomes@hotmail.com" maxlength="30"><br><br>
 
-				<label for="senha-cadastro">Senha:</label>
-				<input type="password" name="senha" id="senha_cadastro" size="48" placeholder=" No mínimo 6 caracteres" minlength="6"><br><br>
+				<label for="senha-cadastro">Senha:</label><br>
+				<input type="password" name="senha" id="senha_cadastro" placeholder=" No mínimo 6 caracteres" minlength="6"><br><br>
 
-				<label for="confirma-senha">Confirme a senha:</label>
-				<input type="password" name="confSenha" id="conf_senha" size="38" placeholder=" Digite novamente a senha" minlength="6"><br><br><br>
+				<label for="confirma-senha">Confirme a senha:</label><br>
+				<input type="password" name="confSenha" id="conf_senha" placeholder=" Digite novamente a senha" minlength="6"><br><br><br>
 
-				<div class="area-botao"><input type="submit" name="cadastrar" id="botao" value="CADASTRAR" onclick="document.formCadastro.acao.value = 'cadastro'";></div>
+				<div class="area-botao"><input type="submit" name="cadastrar" class="botao" value="CADASTRAR" onclick="document.formCadastro.acao.value = 'cadastro'";></div>
 			</form>
 		
 			<?php 		

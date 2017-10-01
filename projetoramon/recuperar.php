@@ -13,7 +13,7 @@
 	<body>
 		<!-- ======== Cabeçalho ========== -->
 		<header id="cabecalho">
-			<div class="area-logo"><img src="img/Facima.png" class="logo"></div>
+			<a href="cadastro.php"><button class="botao btnLogin" title="">Login/Cadastro</button></a>			
 		</header><!-- ======== Fim do cabeçalho ==========-->
 
 		<div class="frase fraseRec">
@@ -21,7 +21,7 @@
 			<p>Nos Informe o seu E-mail de Cadastro para que Seja Enviado os Dados para Recuperação</p><br>
 			<form name="formRec" method="" action="">
 				<input type="text" name="" class="texto" placeholder="Informe o E-mail Cadastrado." maxlength="30" size="40"/><br><br>
-				<a href=""><button class="botao">Enviar</button></a>
+				<a href=""><button class="botao btnEnviarEmail">Enviar</button></a>
 			</form>
 		</div>
 

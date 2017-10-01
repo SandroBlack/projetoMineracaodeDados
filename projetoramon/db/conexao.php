@@ -1,8 +1,8 @@
 <?php 
 function conectar(){
 	$host = "mysql:host=localhost; dbname=mineracao";
-	$usuario = "root";
-	$senha = "";
+	$usuario = "sandro";
+	$senha = "kof95";
 
 	try{
 		$pdo = new PDO($host, $usuario, $senha);		
