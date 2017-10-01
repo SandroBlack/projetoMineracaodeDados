@@ -38,9 +38,6 @@
 				arrayPergunta[1] = "";
 				arrayPergunta[2] = "";
 				
-				// ARRAY PARA VERIFICAR SE FOI DIGITADO CORRETAMENTE
-				arrayLetras = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
-				
 				$("#titulo").keyup(function(){
 					
 					var titulo = $("#titulo").val().toUpperCase();
@@ -111,9 +108,9 @@
 								
 								var quantidade = prompt("Digite a quantidade de opções:");							
 								
-								if(isNaN(quantidade))
+								if(isNaN(quantidade) || quantidade == 0)
 								{
-									alert("Só é permitido Números");
+									alert("Por favor, preencha os campos corretamente");
 									return 0;
 								}								
 																	
@@ -141,9 +138,9 @@
 								
 								var quantidade = prompt("Digite a quantidade de opções:");
 								
-								if(isNaN(quantidade))
+								if(isNaN(quantidade) || quantidade == 0)
 								{
-									alert("Só é permitido Números");
+									alert("Por favor, preencha os campos corretamente");
 									return 0;
 								}
 
