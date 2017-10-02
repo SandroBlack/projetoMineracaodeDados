@@ -5,23 +5,17 @@ $(document).ready(function(){
 	
 	// INICANDO ARRAY E CONTADOR ASSIM QUE ABRIR A PAGINA
 	arrayConteudo = [];
-	
-	arrayPergunta = [];
-	
 	cont = 3;
-	
+
 	// INICANDO ARRAY COM VALORES PADRÕES E PRESERVANDO POSIÇÕES
 	arrayConteudo[0] = "";
-	
 	arrayConteudo[1] = "";
-	
-	arrayConteudo[2] = "<div><form name='formUusario'>";
+	arrayConteudo[2] = "<div><form>";
 
 	// INICANDO ARRAY COM AS PERGUNTAS PARA NÃO PODER REPETIR E TAMBEM EXCLUIR E NÃO EXCLUIR INDICES PRESERVADOS
+	arrayPergunta = [];
 	arrayPergunta[0] = "";
-	
 	arrayPergunta[1] = "";
-	
 	arrayPergunta[2] = "";
 	
 	$("#titulo").keyup(function(){
@@ -76,122 +70,83 @@ $(document).ready(function(){
 				{
 					alert("Pergunta já adicionada");
 					return 0;
+					break;
 				}
 			}
 			
 			if (tipoPergunta == 2)
-			{
-				arrayConteudo[cont] =	"<div>" +
-										"<label>" + perguntaUpperCase +" </label>" +
-										"<input type='text' id='resposta"+perguntaUpperCase+"' name='resposta"+perguntaUpperCase+"' required>" +
-										"</div>";
-			}
+				{
+					arrayConteudo[cont] =	"<div>" +
+											"<label>" + perguntaUpperCase +": </label>" +
+											"<input type='text' id='resposta"+perguntaUpperCase+"' name='resposta"+perguntaUpperCase+"'>" +
+											"</div>";
+				}
 			if (tipoPergunta == 3)
-			{
-				arrayConteudo[cont] =	"<div>" +
-										"<label>" + perguntaUpperCase +" </label><br>";
-				
-				var quantidade = prompt("Digite a quantidade de opções:");	
-				
-				if(isNaN(quantidade) || quantidade == 0 || quantidade == null)
 				{
-					arrayConteudo.splice(i,cont);
+					arrayConteudo[cont] =	"<div>" +
+											"<label>" + perguntaUpperCase +": </label><br>";
 					
-					alert("Por favor, preencha os campos corretamente");
+					var quantidade = prompt("Digite a quantidade de opções:");							
 					
-					return 0;
-				}								
+					if(isNaN(quantidade) || quantidade == 0)
+					{
+						alert("Por favor, preencha os campos corretamente");
+						return 0;
+					}								
 														
-				for(var x = 0; x < quantidade; x++)
-				{
-					var valorMaisUm = x + 1;
-					
-					var nomeRadio = prompt("Escreva o valor da opção de Número: " + valorMaisUm);
-					
-					if(nomeRadio == null)
+					for(var x = 0; x < quantidade; x++)
 					{
-						arrayConteudo.splice(i,cont);
+						var valorMaisUm = x + 1;
 						
-						alert("Por favor, preencha os campos corretamente");
+						var nomeRadio = prompt("Escreva o valor da opção de Número: " + valorMaisUm);
 						
-						return 0;
+						var nomeRadioUpperCase = nomeRadio.toUpperCase();
+						
+						var valorRadio = arrayConteudo[cont] + "<input type='radio' name='radio"+cont+"' value='"+nomeRadioUpperCase+"'>"+nomeRadioUpperCase+"<br>";
+						
+						arrayConteudo[cont] = valorRadio;
 					}
 					
-					var nomeRadioUpperCase = nomeRadio.toUpperCase();
-						
-					var valorRadio = arrayConteudo[cont] + "<input type='radio' name='radio"+cont+"' value='"+nomeRadioUpperCase+"' >"+nomeRadioUpperCase+"<br>";
-						
-					arrayConteudo[cont] = valorRadio;
-				}
+					var fecharDiv = arrayConteudo[cont] + "</div>";
 					
-				var fecharDiv = arrayConteudo[cont] + "</div>";
-				
-				arrayConteudo[cont] = fecharDiv;					
-			}
+					arrayConteudo[cont] = fecharDiv;					
+				}
 			if (tipoPergunta == 4)
-			{
-				arrayConteudo[cont] =	"<div>" +
-										"<label>" + perguntaUpperCase +" </label><br>";
-					
-				var quantidade = prompt("Digite a quantidade de opções:");
-					
-				if(isNaN(quantidade) || quantidade == 0 || quantidade == null)
 				{
-					arrayConteudo.splice(i,cont);
+					arrayConteudo[cont] =	"<div>" +
+											"<label>" + perguntaUpperCase +": </label><br>";
 					
-					alert("Por favor, preencha os campos corretamente");
+					var quantidade = prompt("Digite a quantidade de opções:");
 					
-					return 0;
-				}
-
-				for(var x = 0; x < quantidade; x++)
-				{
-					var valorMaisUm = x + 1;
-						
-					var nomecheckbox = prompt("Escreva o valor da opção de Número: " + valorMaisUm);
-					
-					if(nomecheckbox == null)
+					if(isNaN(quantidade) || quantidade == 0)
 					{
-						arrayConteudo.splice(i,cont);
-						
 						alert("Por favor, preencha os campos corretamente");
-						
 						return 0;
 					}
+
+					for(var x = 0; x < quantidade; x++)
+					{
+						var valorMaisUm = x + 1;
 						
-					var nomecheckboxUpperCase = nomecheckbox.toUpperCase();
+						var nomecheckbox = prompt("Escreva o valor da opção de Número: " + valorMaisUm);
 						
-					var valorcheckbox = arrayConteudo[cont] + "<input type='checkbox' name='checkbox"+cont+"' value='"+nomecheckboxUpperCase+"'>"+nomecheckboxUpperCase+"<br>";
+						var nomecheckboxUpperCase = nomecheckbox.toUpperCase();
 						
-					arrayConteudo[cont] = valorcheckbox;
+						var valorcheckbox = arrayConteudo[cont] + "<input type='checkbox' name='checkbox"+cont+"' value='"+nomecheckboxUpperCase+"'>"+nomecheckboxUpperCase+"<br>";
+						
+						arrayConteudo[cont] = valorcheckbox;
+					}
+					
+					var fecharDiv = arrayConteudo[cont] + "</div>";
+					
+					arrayConteudo[cont] = fecharDiv;
 				}
-					
-				var fecharDiv = arrayConteudo[cont] + "</div>";
-					
-				arrayConteudo[cont] = fecharDiv;
-			}
-			if (tipoPergunta == 5)
-			{
-				arrayConteudo[cont] =	"<div class='cpf'>" +
-										"<label>" + perguntaUpperCase +" </label>" +
-										"<input type='text' id='resposta"+perguntaUpperCase+"' name='resposta"+perguntaUpperCase+"' required>" +
-										"</div>";
 				
-			}
-			if (tipoPergunta == 6)
-			{
-				arrayConteudo[cont] =	"<div>" +
-										"<label>" + perguntaUpperCase +" </label><br>" +
-										"<textarea rows='4' cols='50' name='respota"+perguntaUpperCase+"' form='formUusario' required></textarea>" +
-										"</div>";
-			}
-			
-				
-			arrayPergunta[cont] = perguntaUpperCase;
+		arrayPergunta[cont] = perguntaUpperCase;
 		
-			$("#base").append(arrayConteudo[cont]);
-			
-			cont++;
+		$("#base").append(arrayConteudo[cont]);
+		
+		cont++;
 		}
 	
 		$('#pergunta').val("");	
@@ -211,12 +166,7 @@ $(document).ready(function(){
 		{					
 			var mensagemInicial = "Deseja excluir qual das perguntas?\n";
 			
-			var modificandoArray = "";
-			
-			for(var i = 3; i < arrayPergunta.length; i++)
-			{
-				modificandoArray += arrayPergunta[i] + "\n";	
-			}
+			var modificandoArray = arrayPergunta.join("\n");
 			
 			var mensagemFinal = mensagemInicial + modificandoArray;
 			
@@ -283,7 +233,7 @@ $(document).ready(function(){
 			$('#FormularioCompleto').val(stringCompleto);
 			
 			$('#EnviarFormulario').submit();
-		
+			
 			alert("Formulário Cadastrado com Sucesso");
 		}
 

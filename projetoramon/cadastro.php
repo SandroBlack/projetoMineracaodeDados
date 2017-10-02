@@ -23,7 +23,7 @@
 
 	<div class="area">
 
-		<!-- ================= Fim do Bloco do login =================== -->
+		<!-- ================= Bloco do login =================== -->
 		<div class="login">
 			<h1 align="center">Login</h1><br>
 

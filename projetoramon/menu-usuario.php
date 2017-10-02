@@ -66,7 +66,7 @@
 					
 				</tr>				
 			</table>
-			<a href="aquila.php"><button class=" botao btTabela" title="Crie uma nova pesquisa">Criar Nova Pesquisa</button></a>
+			<a href="formulario.php"><button class=" botao btTabela" title="Crie uma nova pesquisa">Criar Nova Pesquisa</button></a>
 		</div>
 		
 	</div>

@@ -54,14 +54,14 @@ body {
 }
 
 .forms{
-	margin: 0 0 0 100px;
+	margin: 0 auto;
 }
 
 .forms a{
-	color: #0047b3
+	color: #0047b3;
 	font-size: 12pt;
 	float: left;
-	margin-top: 30px;	
+	margin: 50px 0 0 10px;	
 }
 
 .forms a:hover{
@@ -71,24 +71,38 @@ body {
 
 .cadastrar {
 	float:left;
-	width: 45%;
+	width: 620px;
 	background: rgba(255,255,255,0.2);
 	padding: 10px;
 	border-radius:3px;
+}
+
+.cadastrar h1{
+	background: rgba(255,255,255,0.2);
+	border-radius: 3px;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #333;
 }
 
 .login {
 	float: right;
-	width: 45%;
+	width: 620px;
 	background: rgba(255,255,255,0.2);
 	padding: 10px;
 	border-radius:3px;
 }
 
-label{
-	font-size: 15pt;
-	font-weight: bold;
+.login h1{
+	background: rgba(255,255,255,0.2);
+	border-radius: 3px;
+	font-family: Arial, Helvetica, sans-serif;
 	color: #333;
+}
+
+label{
+	font-size: 15pt;	
+	color: #333;
+	margin: 0 0 0 105px;
 }
 
 input[type=text]{
@@ -99,6 +113,7 @@ input[type=text]{
 	font-size: 12pt;
 	padding-left: 5px;
 	background: rgba(255,255,255,0.5);
+	margin: 0 0 0 105px;
 }
 
 input[type="email"]{
@@ -109,6 +124,7 @@ input[type="email"]{
 	font-size: 12pt;
 	padding-left: 5px;
 	background: rgba(255,255,255,0.5);
+	margin: 0 0 0 105px;
 }
 
 input[type=password]{
@@ -119,13 +135,14 @@ input[type=password]{
 	font-size: 12pt;
 	padding-left: 5px;
 	background: rgba(255,255,255,0.5);
+	margin: 0 0 0 105px;
 }
 
 input[type=submit]{
 	width: 120px;
 	height: 40px;	
 	float: right;
-	margin-right: 100px;
+	margin-right: 110px;
 }
 
 input[type=submit]:hover{

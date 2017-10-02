@@ -48,7 +48,7 @@ body{
 }
 
 .container {
-	background: rgba(255,255,255,0.4);
+	background: rgba(255,255,255,0.2);
 	width: 800px;
 	margin: 90px auto 0px auto;
 }
@@ -72,6 +72,14 @@ body{
 
 .area {	
 	border-bottom: 1px solid #bfbfbf;
+}
+
+.area h1{
+	background: rgba(255,255,255,0.2);
+	border-radius: 3px;
+	margin: 0 15px;
+	font-family: Arial, Helvetica, sans-serif;
+	
 }
 
 .titulo {
