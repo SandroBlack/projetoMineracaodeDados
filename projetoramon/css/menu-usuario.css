@@ -120,6 +120,10 @@ body{
 	color: #000;		
 }
 
+#tbUsuario td a:hover{
+	color: #0047b3;		
+}
+
 .transparente{
 	background: rgba(204,204,204,0.4)
 }

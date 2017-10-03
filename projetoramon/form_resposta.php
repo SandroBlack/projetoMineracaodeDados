@@ -8,23 +8,18 @@
 	$listar = $pdo->prepare($sql);
 	$listar->execute(array($idP));
 	$res = $listar->fetch(PDO::FETCH_ASSOC);
-
-	// ESCREVE NA TELA AS PERGUNTAS
 	
 ?>
 
 <!DOCTYPE html lang="pt-br">
 
 <html>
-
-
 	<head>
 		<title>Formulários Facima</title>
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="css/inicial.css">
 		<link rel="icon" href="img/icon.png">
 	</head>
-
 
 	<body>
 		<!-- ======== Cabeçalho ========== -->
@@ -34,7 +29,7 @@
 
 		<div class="respostas">
 			<h1>Resposta da Pesquisa</h1><br>
-			
+			<!-- ESCREVE NA TELA AS PERGUNTAS -->
 			<?php echo $res["question_text"];?>
 
 			<a href=""><button class="botao btnAcessar">Responder</button></a>
@@ -42,6 +37,4 @@
 		</div>
 
 	</body>
-
-
 </html>
