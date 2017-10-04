@@ -1,4 +1,4 @@
-<?php //include_once("conf/restricao.php");?>
+<?php include_once("conf/restricao.php");?>
 
 <!DOCTYPE html lang="pt-br">
 <html>

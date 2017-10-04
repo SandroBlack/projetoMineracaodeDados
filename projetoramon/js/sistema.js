@@ -79,7 +79,7 @@ $(document).ready(function(){
 							{
 								arrayConteudo[cont] =	"<div style='margin-left:15px;'>" +
 														"<label>" + perguntaUpperCase +": </label><br><br>" +
-														"<input type='text' style='height:30px;width:350px;font-size:16px;' id='resposta"+perguntaUpperCase+"' name='resposta"+perguntaUpperCase+"'>" +
+														"<input type='text' style='height:30px;width:260px;font-size:16px;' id='resposta"+perguntaUpperCase+"' name='resposta"+perguntaUpperCase+"'>" +
 														"</div><br><br>";
 							}
 						if (tipoPergunta == 3)
