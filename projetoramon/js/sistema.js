@@ -23,7 +23,7 @@ $(document).ready(function(){
 					
 					var titulo = $("#titulo").val().toUpperCase();
 					
-					arrayConteudo[0] = "<h1>" + titulo + "</h1><br>";
+					arrayConteudo[0] = "<h1 style='text-align:center;'>" + titulo + "</h1><br>";
 				
 					$('#base').text("");
 						
@@ -38,7 +38,7 @@ $(document).ready(function(){
 					
 					var descricao = $("#descricao").val().toUpperCase();
 					
-					arrayConteudo[1] = "<h4>" + descricao + "</h4><br>";
+					arrayConteudo[1] = "<h4 style='text-align:center;'>" + descricao + "</h4><br><br>";
 				
 					$('#base').text("");
 						
@@ -77,15 +77,15 @@ $(document).ready(function(){
 						
 						if (tipoPergunta == 2)
 							{
-								arrayConteudo[cont] =	"<div>" +
-														"<label>" + perguntaUpperCase +": </label>" +
-														"<input type='text' id='resposta"+perguntaUpperCase+"' name='resposta"+perguntaUpperCase+"'>" +
-														"</div>";
+								arrayConteudo[cont] =	"<div style='margin-left:15px;'>" +
+														"<label>" + perguntaUpperCase +": </label><br><br>" +
+														"<input type='text' style='height:30px;width:350px;font-size:16px;' id='resposta"+perguntaUpperCase+"' name='resposta"+perguntaUpperCase+"'>" +
+														"</div><br><br>";
 							}
 						if (tipoPergunta == 3)
 							{
-								arrayConteudo[cont] =	"<div>" +
-														"<label>" + perguntaUpperCase +": </label><br>";
+								arrayConteudo[cont] =	"<div style='margin-left:15px;'>" +
+														"<label>" + perguntaUpperCase +": </label><br><br>";
 								
 								var quantidade = prompt("Digite a quantidade de opções:");
 
@@ -102,14 +102,14 @@ $(document).ready(function(){
 									arrayConteudo[cont] = valorRadio;
 								}
 								
-								var fecharDiv = arrayConteudo[cont] + "</div>";
+								var fecharDiv = arrayConteudo[cont] + "</div><br><br";
 								
 								arrayConteudo[cont] = fecharDiv;					
 							}
 						if (tipoPergunta == 4)
 							{
-								arrayConteudo[cont] =	"<div>" +
-														"<label>" + perguntaUpperCase +": </label><br>";
+								arrayConteudo[cont] =	"<div style='margin-left:15px;'>" +
+														"<label>" + perguntaUpperCase +": </label><br><br>";
 								
 								var quantidade = prompt("Digite a quantidade de opções:");
 
@@ -126,7 +126,7 @@ $(document).ready(function(){
 									arrayConteudo[cont] = valorcheckbox;
 								}
 								
-								var fecharDiv = arrayConteudo[cont] + "</div>";
+								var fecharDiv = arrayConteudo[cont] + "</div><br><br";
 								
 								arrayConteudo[cont] = fecharDiv;
 							}

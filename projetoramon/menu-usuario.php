@@ -1,26 +1,35 @@
-<?php include_once("conf/restricao.php");?>
+<?php //include_once("conf/restricao.php");?>
 
 <!DOCTYPE html lang="pt-br">
 <html>
 
 <head>
-	<title>Formulários Facima</title>
+	<title>Menu do Usuário</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="css/menu-usuario.css">
 	<link rel="icon" href="img/icon.png">
 </head>
 
 <body>
+
+
 	<!-- ======== Cabeçalho ========== -->
 	<div id="cabecalho">
-		<div class="area-logo"><img src="img/Facima.png" class="logo"></div>
+
+
 		<div id="bemVindo">
 			<p>Bem Vindo(a): "Usuário"</p>
 		</div>
+
+
 		<form name="formSair" method="POST" action="">
 			<input type="hidden"name="acao" value="">	
-			<button class="botao btnSair" title="" onclick="document.formSair.acao.value='sair'">Sair</button>
+			<button class="botao" title="" onclick="document.formSair.acao.value='sair'">Sair</button>
 		</form>
+
+
+
+
 	</div><!-- ======== Fim do cabeçalho ==========-->
 	<?php
 	@$opcao = $_POST["acao"]; 
@@ -30,6 +39,8 @@
 			header("location:cadastro.php");
 		}
 	?>
+
+
 	<div class="area-principal">
 		<div class="area-formulario">
 			<table id="tbUsuario" cellspacing="30">
@@ -56,17 +67,9 @@
 					<td class="transparente">
 					<a href="">Estatísticas</a>
 					</td>
-				</tr>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					
-				</tr>				
+				</tr>			
 			</table>
-			<a href="formulario.php"><button class=" botao btTabela" title="Crie uma nova pesquisa">Criar Nova Pesquisa</button></a>
+			<div class="area-btTabela"><a href="formulario.php"><button class="btTabela" title="Crie uma nova pesquisa">Criar Nova Pesquisa</button></a></div>
 		</div>
 		
 	</div>

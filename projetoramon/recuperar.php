@@ -6,14 +6,14 @@
 	<head>
 		<title>Recuperar Senha</title>
 		<meta charset="utf-8">
-		<link rel="stylesheet" href="css/inicial.css">
+		<link rel="stylesheet" href="css/recuperar.css">
 		<link rel="icon" href="img/icon.png">
 	</head>
 
 	<body>
 		<!-- ======== Cabeçalho ========== -->
 		<header id="cabecalho">
-			<a href="cadastro.php"><button class="botao btnLogin" title="">Login/Cadastro</button></a>			
+			<a href="cadastro.php"><img src="img/fddsdsadsa.png" style="width: 40px;height: 40px;margin: 14px 0px 0px 20px;" title="Volte a página de cadastro"></a>			
 		</header><!-- ======== Fim do cabeçalho ==========-->
 
 		<div class="frase fraseRec">
@@ -21,7 +21,7 @@
 			<p>Nos Informe o seu E-mail de Cadastro para que Seja Enviado os Dados para Recuperação</p><br>
 			<form name="formRec" method="POST" action="">
 				<input type="hidden" name="acao" value="">
-				<input type="text" name="email" id="email" class="texto" placeholder="Informe o E-mail Cadastrado." maxlength="30" size="40"/><br><br>
+				<input type="text" name="email" id="email" class="texto" placeholder="                Informe o E-mail Cadastrado" maxlength="30" size="40"/><br><br>
 				<a href=""><button class="botao btnEnviarEmail" onclick="document.formRec.acao.value='enviarEmail'">Enviar</button></a>
 			</form>
 		</div>

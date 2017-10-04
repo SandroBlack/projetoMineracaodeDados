@@ -17,7 +17,7 @@
 <body>
 	<!-- ======== Cabeçalho ========== -->
 	<header id="cabecalho">
-		<div class="area-logo"><img src="img/Facima.png" class="logo"></div>
+		<a href="index.php"><img src="img/fddsdsadsa.png" style="width: 40px;height: 40px;margin: 14px 0px 0px 20px;" title="Volte a página inicial"></a>
 	</header>
 	<!-- ======== Fim do cabeçalho ==========-->
 
@@ -34,8 +34,8 @@
 
 				<label for="senha">Senha:</label><br>
 					<input type="password" name="senha" id="senha_login" minlength="6" placeholder="Digite sua senha"><br><br>
-					<a href="recuperar.php" align="center">Esqueceu a Senha?</a><br><br>
-					<input type="submit" name="login" class="botao" value="ENTRAR" onclick="document.formLogin.acao.value='login'">
+					<h4 style="text-align:center;" class=""><a href="recuperar.php" >Esqueceu a Senha?</a></h4><br><br>
+					<div class="area-botao"><input type="submit" name="login" class="botao" value="ENTRAR" onclick="document.formLogin.acao.value='login'"></div>
 			</form>
 		</div><!-- ================= Fim do Bloco do login =================== -->
 
@@ -47,16 +47,16 @@
 			<form name="formCadastro" class="forms" method="POST" action="">
 				<input type="hidden" name="acao" value="">
 				<label for="nome-cadastro">Nome:</label><br>
-				<input type="text" name="nome" id="nome_cadastro" placeholder=" Ex.: José Gomes da Silva" maxlength="50"><br><br>
+				<input type="text" name="nome" id="nome_cadastro" placeholder="Ex.: José Gomes da Silva" maxlength="50"><br><br>
 
 				<label for="email">E-mail:</label><br>
-				<input type="email" name="email" id="email" placeholder=" Ex.: jose_gomes@hotmail.com" maxlength="30"><br><br>
+				<input type="email" name="email" id="email" placeholder="Ex.: jose_gomes@hotmail.com" maxlength="50"><br><br>
 
 				<label for="senha-cadastro">Senha:</label><br>
-				<input type="password" name="senha" id="senha_cadastro" placeholder=" No mínimo 6 caracteres" minlength="6"><br><br>
+				<input type="password" name="senha" id="senha_cadastro" placeholder="No mínimo 6 caracteres" minlength="6"><br><br>
 
 				<label for="confirma-senha">Confirme a senha:</label><br>
-				<input type="password" name="confSenha" id="conf_senha" placeholder=" Digite novamente a senha" minlength="6"><br><br><br>
+				<input type="password" name="confSenha" id="conf_senha" placeholder="Digite novamente a senha" minlength="6"><br><br><br>
 
 				<div class="area-botao"><input type="submit" name="cadastrar" class="botao" value="CADASTRAR" onclick="document.formCadastro.acao.value = 'cadastro'";></div>
 			</form>

@@ -7,23 +7,43 @@
 
 
 body{
-	background: url(../img/forms_processing.jpg) center no-repeat;
-	background-attachment: fixed;
-
-
+	background: #e6e6e6;
 }
 
 /* MODELO DOS BOTÕES */
 .botao{
-	background: #0066ff;
-	color:#ffffff;
+	background: #ffffff;
+	color:#ff8000;
 	border: none;
 	border-radius: 3px;
 	cursor: pointer;	
+	width: 80px;
+	height: 50px;	
+	font-size: 16px;	
+	margin: 10px 20px 0 0;
+	float: right;
 }
 
 .botao:hover{
-	background: #0047b3;
+	background: #e6e6e6;
+}
+
+.btTabela{		
+	width: 200px;
+	height: 80px;
+	text-align: center;	
+	font-size: 12pt;	
+	background: #ff8000;
+	color:#ffffff;
+	border: none;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+.area-btTabela{
+	width: 200px;
+	height: 80px;
+	margin: 0px auto;
 }
 
 /* TOPO */
@@ -32,35 +52,7 @@ body{
 	height: 70px;
 	position: absolute;
 	top:0;
-	background: rgba(255,255,255,0.5);
-}
-
-.area-logo {
-	width: 120px;
-	height: 67px;
-	float: left;
-}
-
-.logo {
-	width: 120px;
-	height: 67px;
-	padding: 2px 0px 2px 10px;
-}
-
-#areaUsuario{
-	width: 200px;
-	height:50px;
-	float: left;
-	background: rgba(255,255,255,0.2);
-	margin: 10px 0 0 20px;
-}
-
-#areaUsuario p{
-	color: #000;
-	text-align: center;
-	margin-top: 12pt;
-	font-family: Arial, Helvetica, sans-serif;
-	font-weight: bold;	
+	background: #ff8000;
 }
 
 #bemVindo{
@@ -75,18 +67,11 @@ body{
 	font-size: 16pt;
 }
 
-.btnSair{
-	width: 80px;
-	height: 50px;	
-	font-size: 16px;	
-	margin: 10px 20px 0 0;
-	float: right;
-}
 
 .area-formulario{
-	background: rgba(255,255,255,0.2);
+	background: rgb(255,255,255);
 	width: 1000px;
-	height: 600px;
+	height: 545px;
 	overflow-y: auto;
 	margin: 0 auto;	
 }
@@ -99,11 +84,8 @@ body{
 
 /* TABELA USUÁRIO */
 #tbUsuario{
-	margin: 10px auto;		
-}
-
-#tbUsuarios tr{
-	
+	margin: 10px auto 120px auto;	
+	height: 200px;
 }
 
 #tbUsuario td{	
@@ -125,17 +107,10 @@ body{
 }
 
 .transparente{
-	background: rgba(204,204,204,0.4)
+	background: rgb(204,204,204)
 }
 
 span{
 	color: #0047b3;
 }
 
-.btTabela{		
-	width: 200px;
-	height: 80px;
-	text-align: center;	
-	margin: 0 0 0 400px;
-	font-size: 12pt;	
-}

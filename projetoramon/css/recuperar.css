@@ -5,14 +5,14 @@
 
 
 body{
-	background: #f0f0f0;
-
+	background: #e6e6e6;
 }
+
 #cabecalho {
 	width:100%;
 	height: 70px;
 	top:0;
-	background: #f0f0f0;
+	background: #ff8000;
 }
 
 .logo {
@@ -28,21 +28,6 @@ body{
 }
 
 /* PÁGINA INDEX */
-.fraseHome{
-	background:url(../img/12.jpg);
-	background-size: cover;
-	width: 100%;
-	height: 520px;
-	text-align: center;
-	border-top: 1px #333 solid;
-	border-bottom: 1px #333 solid;
-	
-}
-
-.fraseHome h1{
-	padding-top: 120px;
-	font-size: 70px;
-}
 
 input[type=text]{
 	border:none;	
@@ -77,43 +62,18 @@ input[type=text]{
 	width: 630px;
 	height: 330px;
 	text-align: center;
-	margin: 150px auto;
-	background: rgba(255,255,255,0.2);
+	margin: 120px auto;
+	background: rgb(255,255,255);
 }
 
-.fraseHome h3 p{
-	color: #000000;
+.fraseRec h2 {	
+	font-size: 40px;
+	padding-top: 30px;
 }
-
-.fraseHome h3 {
-	color: #000000;
-}
-
 
 .btnEnviarEmail{
 	width: 160px;
 	height: 50px;
 	font-size: 16px;
 	margin-top: 50px;
-}
-
-.btnLogin{
-	Width: 130px;
-	height: 50px;
-	margin: 10px 0 0 10px;
-}
-
-/* PÁGINA DE RESPOSTAS */
-.respostas{
-	width: 630px;		
-	text-align: center;
-	margin: 100px 0 0 500px;
-	background: rgba(255,255,255,0.2);
-}
-
-.opcoes{
-	font-size: 30px;
-	margin:0px auto;
-	height: 69px;
-	color: #666666;
 }
