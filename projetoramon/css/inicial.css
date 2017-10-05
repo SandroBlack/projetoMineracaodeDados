@@ -32,15 +32,14 @@ body{
 	background:url(../img/12.jpg);
 	background-size: cover;
 	width: 100%;
-	height: 520px;
+	height: 590px;
 	text-align: center;
 	border-top: 1px #333 solid;
-	border-bottom: 1px #333 solid;
 	
 }
 
 .fraseHome h1{
-	padding-top: 120px;
+	padding-top: 160px;
 	font-size: 70px;
 }
 
