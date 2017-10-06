@@ -1,0 +1,29 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+
+
+body{
+	background: #e6e6e6;
+}
+
+#cabecalho {
+	width:100%;
+	height: 70px;
+	top:0;
+	background: #ff8000;
+}
+
+.botao{
+	width: 150px;
+	height: 50px;
+	border: none;
+	border-radius: 3px;
+	background: #ff8000;
+	color:#ffffff;
+}
+
+.botao:hover{
+	background: #e68a00;
+}
