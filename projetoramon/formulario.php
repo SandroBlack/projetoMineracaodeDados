@@ -88,9 +88,7 @@
 			
 			<div class="questoes" id="divAdicionarOpc">
 				
-				<input type="button" name="adicionarOpc" id="adicionarOpc" title="Adicionar mais uma pergunta" value="   +   ">
-				
-				<input type="button" name="removerOpc" id="removerOpc" title="Exclui uma pergunta adicionada" value="   -   ">
+				<input type="button" name="adicionarOpc" id="adicionarOpc" title="Adicionar mais uma resposta" value="   +   ">
 				
 				<br>
 				

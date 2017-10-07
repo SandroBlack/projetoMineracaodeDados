@@ -359,7 +359,8 @@ $(document).ready(function(){
 		
 		// ADICIONA A NOVA RESPOSTA NO ARRAYOPC E UTILIZAMOS O CONTOPC PARA NAO SOBRESCREVER OS VALORES, ACHO QUE AQUI PODEMOS UTILIZAR O LENGTH + 1, MAS TO COM PREGUIÇA DE MEXER
 		arrayOpc[contOpc] = "<input type='"+ tipoInput +"' name='"+ tipoInput + cont + "' value='' disabled='true'>" +
-							"<input type='text' id='respostaOpc" + contOpc + "' name='respostaOpc" + contOpc + "' placeholder='Digite o valor'>";
+							"<input type='text' id='respostaOpc" + contOpc + "' name='respostaOpc" + contOpc + "' placeholder='Digite o valor'>  " +
+							"<input type='button' name='removerOpc' id='removerOpc' title='Exclui uma resposta adicionada' value='EXCLUIR' onclick='pegaValor("+contOpc+")'>";
 		
 		// VARIAVEL PARA PULAR LINHA NO HTML	
 		var pularLinha = "<br><br>";
@@ -374,17 +375,8 @@ $(document).ready(function(){
 	
 	// AQUI TEMOS A FUNÇÃO QUE FUNCIONA COM OS INPUTS DO TIPO RADIO E CHECKBOX. SEMPRE QUE O USUARIO CLICAR NO BUTTON DE - ELE REMOVE A ULTIMA RESPOSTA ADICIONADA, ELA É BEM FRACA COMPARADA A OUTRA. MAS TO COM PREGUIÇA.
 	$(document).on('click', '#removerOpc', function(){
-		
-		// VERIFICA SE O ARRAYOPC TEM SOMENTE 1 INDICE, SE SIM ELE ENTRA NO IFF QUE NÃO DEIXA REMOVER, SE QUISER É NECESSÁRIO IR NO BUTTON DESCARTAR
-		if (arrayOpc.length == 1)
-		{
-			// AVISA AO USUARIO OQ ELE PRECISA FAZER
-			alert("Se deseja cancelar a pergunta, clique em 'Descartar'");
-		}
-		
-		// CASO O ARRAY TENHA MAIS DE 1 OPÇÃO COMEÇAMOS O ELSE
-		else
-		{
+		alert(valorObj);	
+			
 			// FAÇO UM FOR PARA PEGARMOS OS VALORES CASO O USUARIO TENHA DIGITADO, DE TODAS AS PERGUNTAS
 			for (var i = 0; i < contOpc; i++)
 			{
@@ -392,19 +384,19 @@ $(document).ready(function(){
 				var recebeOpc = $("#respostaOpc" + i + "").val();
 				
 				// TRANSFORMA EM UPPERCASE O VALOR RECEBIDO PARA PADRONIZAR
-				var recebeOpcUpperCase = recebeOpc.toUpperCase();
-				
+				var recebeOpcUpperCase = recebeOpc.toUpperCase();	
+			
 				// ADICIONAMOS NO ARRAYOPC O VALOR QUE FOI DIGITADO PARA NÃO SER PERDIDO SEMPRE QUE APAGAR UMA PERGUNTA
-				arrayOpc[i] = "<input type='"+ tipoInput +"' name='"+ tipoInput + cont + "' value='' disabled='true'>" +
-							  "<input type='text' id='respostaOpc" + i + "' name='respostaOpc" + i + "' value='"+ recebeOpcUpperCase +"'>";
+				arrayOpc[i] =	"<input type='"+ tipoInput +"' name='"+ tipoInput + cont + "' value='' disabled='true'>" +
+								"<input type='text' id='respostaOpc" + i + "' name='respostaOpc" + i + "' value='"+ recebeOpcUpperCase +"'>" +
+								"<input type='button' name='removerOpc' id='removerOpc' title='Exclui uma resposta adicionada' value='EXCLUIR' onclick='pegaValor("+ i +")'>";
 			}
-			
-			// PEGAMOS O TAMANHO DO ARRAY E REMOVEMOS 1, O ARRAY COMEÇA EM 0 E NÃO 1 POR ISSO TEMOS UM PROBLEMA UTILIZANDO O LENGTH, SE ELE COMEÇA EM 0 TEMOS 0,1,2 NO LENGTH DIZ 3, 
-			// POREM NAO QUEREMOS EXCLUIR A POSIÇÃO 3 E SIM A 2 POR ISSO REMOVERMOS 1.
-			var removeOpc = arrayOpc.length - 1;
-			
-			// PEGAMOS A POSIÇÃO CORRETA DO ARRAY E REMOVEMOS ELA	
-			arrayOpc.splice(removeOpc, 1);
+
+		// PEGAMOS A POSIÇÃO CORRETA DO ARRAY E REMOVEMOS ELA	
+			arrayOpc.splice(valorObj, 1);
+
+		// DIMINUIMOS O CONTADOR JAQ REMOVERMOS ALGO DO ARRAY	
+			contOpc--;			
 			
 			// VARIAVEL PARA PULAR LINHA NO HTML	
 			var pularLinha = "<br><br>";
@@ -418,10 +410,6 @@ $(document).ready(function(){
 				// ADICIONAMOS O CONTEUDO DE CADA INDICE
 				$("#divOpc").append(arrayOpc[i] + pularLinha);
 			}			
-			
-			// DIMINUIMOS O CONTADOR JAQ REMOVERMOS ALGO DO ARRAY	
-			contOpc--;
-		}
 		
 	});
 	
@@ -585,3 +573,7 @@ $(document).ready(function(){
 	});
 
 });
+
+function pegaValor(valor) {
+    valorObj = valor + 1;
+}

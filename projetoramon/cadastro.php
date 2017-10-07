@@ -107,11 +107,12 @@
 					} else{
 						try{
 							$pdo = conectar();								
-							$sql = "INSERT INTO users(user_name, user_email, user_password) VALUES(:nome, :email, :senha)";
+							$sql = "INSERT INTO users(user_name, user_email, user_password, user_password_temp) VALUES(:nome, :email, :senha, :temp)";
 							$inserir = $pdo->prepare($sql);
 							$inserir->bindValue(":nome", $nome);
 							$inserir->bindValue(":email", $email);
 							$inserir->bindValue(":senha", $senha);
+							$inserir->bindValue(":temp", "");
 							$inserir->execute();
 							echo "<script>alert('Cadastro Realizado com Sucesso!')</script>";
 							echo "<script>location.href'index.php'</script>";
