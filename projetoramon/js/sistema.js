@@ -236,6 +236,7 @@ $(document).ready(function(){
 				// SE TIPO DE PERGUNTA FOR DE NÚMERO 6(TIPO EMAIL) ELE ENTRA NESSE IF
 				if (tipoPergunta == 6)
 				{
+					// ADICIONA A DIV + LABEL + INPUT NO ARRAY CONTEUDO NA POSIÇÃO DO VALOR DO CONTADOR
 					arrayConteudo[cont] =	"<div style='margin-left:15px;'>" +
 											"<label>" + perguntaUpperCase +": </label>" +
 											"<input type='email' id='resposta"+perguntaUpperCase+"' name='resposta"+perguntaUpperCase+"'>" +
