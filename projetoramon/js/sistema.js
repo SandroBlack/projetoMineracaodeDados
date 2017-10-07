@@ -375,41 +375,56 @@ $(document).ready(function(){
 	
 	// AQUI TEMOS A FUNÇÃO QUE FUNCIONA COM OS INPUTS DO TIPO RADIO E CHECKBOX. SEMPRE QUE O USUARIO CLICAR NO BUTTON DE - ELE REMOVE A ULTIMA RESPOSTA ADICIONADA, ELA É BEM FRACA COMPARADA A OUTRA. MAS TO COM PREGUIÇA.
 	$(document).on('click', '#removerOpc', function(){
-		alert(valorObj);	
-			
+		if(contOpc == 1)
+		{
+			alert("Não é possivel excluir todas as respostas");
+		}
+		else
+		{		
 			// FAÇO UM FOR PARA PEGARMOS OS VALORES CASO O USUARIO TENHA DIGITADO, DE TODAS AS PERGUNTAS
 			for (var i = 0; i < contOpc; i++)
 			{
 				// RECEBE O VALOR DO CAMPO PERGUNTA OPC + I (I SENDO QUALQUER VALOR ATÉ O LIMITE DELE)
 				var recebeOpc = $("#respostaOpc" + i + "").val();
-				
+					
 				// TRANSFORMA EM UPPERCASE O VALOR RECEBIDO PARA PADRONIZAR
 				var recebeOpcUpperCase = recebeOpc.toUpperCase();	
-			
-				// ADICIONAMOS NO ARRAYOPC O VALOR QUE FOI DIGITADO PARA NÃO SER PERDIDO SEMPRE QUE APAGAR UMA PERGUNTA
-				arrayOpc[i] =	"<input type='"+ tipoInput +"' name='"+ tipoInput + cont + "' value='' disabled='true'>" +
-								"<input type='text' id='respostaOpc" + i + "' name='respostaOpc" + i + "' value='"+ recebeOpcUpperCase +"'>" +
-								"<input type='button' name='removerOpc' id='removerOpc' title='Exclui uma resposta adicionada' value='EXCLUIR' onclick='pegaValor("+ i +")'>";
+					
+				if(i > valorObj)
+				{
+					var novoI = i - 1;
+					arrayOpc[novoI] =	"<input type='"+ tipoInput +"' name='"+ tipoInput + cont + "' value='' disabled='true'>" +
+										"<input type='text' id='respostaOpc" + novoI + "' name='respostaOpc" + novoI + "' value='"+ recebeOpcUpperCase +"'>" +
+										"<input type='button' name='removerOpc' id='removerOpc' title='Exclui uma resposta adicionada' value='EXCLUIR' onclick='pegaValor("+ novoI +")'>";
+				}			
+				else
+				{	
+					// ADICIONAMOS NO ARRAYOPC O VALOR QUE FOI DIGITADO PARA NÃO SER PERDIDO SEMPRE QUE APAGAR UMA PERGUNTA
+					arrayOpc[i] =	"<input type='"+ tipoInput +"' name='"+ tipoInput + cont + "' value='' disabled='true'>" +
+									"<input type='text' id='respostaOpc" + i + "' name='respostaOpc" + i + "' value='"+ recebeOpcUpperCase +"'>" +
+									"<input type='button' name='removerOpc' id='removerOpc' title='Exclui uma resposta adicionada' value='EXCLUIR' onclick='pegaValor("+ i +")'>";
+				}								
 			}
 
-		// PEGAMOS A POSIÇÃO CORRETA DO ARRAY E REMOVEMOS ELA	
-			arrayOpc.splice(valorObj, 1);
+			// PEGAMOS A POSIÇÃO CORRETA DO ARRAY E REMOVEMOS ELA	
+			arrayOpc.splice(arrayOpc.length - 1, 1);
 
-		// DIMINUIMOS O CONTADOR JAQ REMOVERMOS ALGO DO ARRAY	
+			// DIMINUIMOS O CONTADOR JAQ REMOVERMOS ALGO DO ARRAY	
 			contOpc--;			
-			
+				
 			// VARIAVEL PARA PULAR LINHA NO HTML	
 			var pularLinha = "<br><br>";
-		
+			
 			// LIMPAMOS A DIV DE OPÇÕES
 			$('#divOpc').text("");
-			
+				
 			// RODAMOS UM FOR PARA AS RESPOSTAS QUE FICARAM NO ARRAY	
 			for (var i = 0; i < arrayOpc.length; i++)
 			{
 				// ADICIONAMOS O CONTEUDO DE CADA INDICE
 				$("#divOpc").append(arrayOpc[i] + pularLinha);
-			}			
+			}
+		}
 		
 	});
 	
@@ -575,5 +590,5 @@ $(document).ready(function(){
 });
 
 function pegaValor(valor) {
-    valorObj = valor + 1;
+    valorObj = valor;
 }
