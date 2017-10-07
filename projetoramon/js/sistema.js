@@ -375,8 +375,11 @@ $(document).ready(function(){
 	
 	// AQUI TEMOS A FUNÇÃO QUE FUNCIONA COM OS INPUTS DO TIPO RADIO E CHECKBOX. SEMPRE QUE O USUARIO CLICAR NO BUTTON DE - ELE REMOVE A ULTIMA RESPOSTA ADICIONADA, ELA É BEM FRACA COMPARADA A OUTRA. MAS TO COM PREGUIÇA.
 	$(document).on('click', '#removerOpc', function(){
+		
+		// SE CONTOPC FOR IGUAL A 1 QUER DIZER QUE SÓ TEM 1 REPOSTA ADICIONADA E ESSA RESPOSTA NAO PODE SER APAGADA
 		if(contOpc == 1)
 		{
+			// ALERT AVISANDO QUE NAO PODE APAGAR A RESPOSTA
 			alert("Não é possivel excluir todas as respostas");
 		}
 		else
@@ -389,10 +392,14 @@ $(document).ready(function(){
 					
 				// TRANSFORMA EM UPPERCASE O VALOR RECEBIDO PARA PADRONIZAR
 				var recebeOpcUpperCase = recebeOpc.toUpperCase();	
-					
+				
+				// COMO QUEREMOS APAGAR A PERGUNTA X NOS SOBRESCREVEMOS AO INDICE ANTERIOR FAZENDO COM QUE TENHAMOS NO FINAL 2 RESPOSTAS REPETIRADAS E RETIRANDO A RESPOSTA QUE FOI PEDIDA A EXCLUSAO	
 				if(i > valorObj)
 				{
+					// VARIAVEL PARA PEGAR O INDICE ANTERIOR
 					var novoI = i - 1;
+					
+					// ARRAYOPC RECEBE ESSE VALOR SOQ NO INDICE ANTERIOR DO I
 					arrayOpc[novoI] =	"<input type='"+ tipoInput +"' name='"+ tipoInput + cont + "' value='' disabled='true'>" +
 										"<input type='text' id='respostaOpc" + novoI + "' name='respostaOpc" + novoI + "' value='"+ recebeOpcUpperCase +"'>" +
 										"<input type='button' name='removerOpc' id='removerOpc' title='Exclui uma resposta adicionada' value='EXCLUIR' onclick='pegaValor("+ novoI +")'>";
@@ -406,7 +413,7 @@ $(document).ready(function(){
 				}								
 			}
 
-			// PEGAMOS A POSIÇÃO CORRETA DO ARRAY E REMOVEMOS ELA	
+			// COMO TEMOS AS 2 ULTIMAS POSIÇÕES IGUAIS REMOVEMOS ELA
 			arrayOpc.splice(arrayOpc.length - 1, 1);
 
 			// DIMINUIMOS O CONTADOR JAQ REMOVERMOS ALGO DO ARRAY	
