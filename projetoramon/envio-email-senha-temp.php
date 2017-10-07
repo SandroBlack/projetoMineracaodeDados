@@ -9,7 +9,7 @@ require 'PHPMailer/src/PHPMailer.php';
 require 'PHPMailer/src/SMTP.php';
 require 'PHPMailer/src/OAuth.php';
 
-function enviarEmail($email, $senhaTemporaria)	{
+function enviarEmail($email, $informacao)	{
 
 
 		$mail = new PHPMailer(true);                              // Passing `true` enables exceptions
@@ -43,7 +43,7 @@ function enviarEmail($email, $senhaTemporaria)	{
 			$mail->CharSet = 'utf-8'; 							  // Charset da mensagem
 			$mail->Subject = 'Senha Temporaria';
 			$mail->Body    = '' .$senhaTemporaria.'';
-			$mail->AltBody = 'Sua senha temporaria: ' .$senhaTemporaria.'';
+			$mail->AltBody = 'Sua senha temporaria: ' .$informacao.'';
 
 			$mail->send();
 
