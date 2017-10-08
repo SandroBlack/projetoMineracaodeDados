@@ -25,13 +25,17 @@
 				<a href=""><button class="botao btnEnviarEmail" onclick="document.formRec.acao.value='enviarEmail'">Enviar</button></a>
 			</form>
 		</div>
-	<?php 		
+	<?php 	
+	
 		@$acao = $_POST["acao"];
 		if($acao == "enviarEmail"){
 			emailRecSenha();;
 		}
 		
 		function emailRecSenha(){
+			require("gerar-senha.php");
+			require("envio-email-senha-temp.php");
+			
 			$email = $_POST["email"];			
 			if($email == ""){
 				echo "<script>alert('Favor Informar seu E-mail.')</script>";
@@ -47,14 +51,34 @@
 					if($linha == 0){
 						echo "<script>alert('E-mail não Cadastrado!')</script>";
 					} else{
+						
 						// FUNÇÃO PARA ENVIAR O E-MAIL DE RECUPERAÇÇÃO DE SENHA
-
-						echo "<script>alert('Um link para Reuperação de Senha foi Enviado para seu E-mail')</script>";
+						$senhaTemporaria = geraSenha(10, true, true, true);
+						
+						try{
+							$pdo = conectar();	
+							
+							$sql = "UPDATE users SET user_password_temp = :senhaTemporaria WHERE user_email = :email";
+							
+							$inserir = $pdo->prepare($sql);
+							
+							$inserir->bindValue(":senhaTemporaria", $senhaTemporaria);
+							
+							$inserir->bindValue(":email", $email);
+							
+							$inserir->execute();
+							
+						} catch(PDOException $e){
+							
+							echo "Erro: " . $e->getMessage() . "<br>";
+						}
+					$enviarEmail = enviarEmail($email, $informacao);	
 					}
 				} catch(PDOException $e){
 					echo "Erro: " . $e->getMessage() . "<br>";
 				}
-			}		
+			}
+		header("Location:cadastro.php");		
 		}		
 	?>
 	</body>
