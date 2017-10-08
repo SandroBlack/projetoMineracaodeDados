@@ -272,8 +272,6 @@ $(document).ready(function(){
 						// REMOVEMOS O CONTEUDO DO ARRAY NA POSIÇÃO QUE FOI ENCONTADO
 						arrayConteudo[0].splice(i + 3,1);
 						arrayConteudo[1].splice(i,1);
-						alert(arrayConteudo[0][i+3]);
-						alert(arrayConteudo[1][i]);
 						
 						// PARAMOS O FOR POIS NÃO HA NECESSIDADE DE CONTINUAR UMA VEZ QUE ENCONTRAMOS A PERGUNTA
 						break;
