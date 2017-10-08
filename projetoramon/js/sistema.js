@@ -10,14 +10,10 @@ $(document).ready(function(){
 	// ARRAY QUE RECEBE TODO O CONTEUDO DESSA PAGINA SEJA DIV + LABEL + INPUT, PERGUNTA OU RESPOSTAS
 	arrayConteudo = [[],[],[]];
 	
-	// INICANDO ARRAY COM VALORES PARA PRESERVAR O TAMANHO. NA DIMENSÃO 0 TEMOS O CONTEUDO E NA DIMENSÃO 1 TEMOS AS PERGUNTAS
+	// INICANDO ARRAY COM VALORES PARA PRESERVAR O TAMANHO
 	arrayConteudo[0][0] = "";
 	arrayConteudo[0][1] = "";
 	arrayConteudo[0][2] = "<div><form>";
-	
-	arrayConteudo[1][0] = "";
-	arrayConteudo[1][1] = "";
-	arrayConteudo[1][2] = "";
 	
 	// INICIANDO VARIAVEL VAZIA PARA RECEBER O TIPO DE INPUT
 	tipoInput = "";
@@ -242,7 +238,7 @@ $(document).ready(function(){
 			var mensagemInicial = "Deseja excluir qual das perguntas?\n";
 			
 			// FAZEMOS UM FOR INICIANDO EM 3 POIS É AQUI QUE COMEÇA AS PERGUNTAS
-			for (var i = 3; i < arrayConteudo[0].length; i++)
+			for (var i = 0; i < arrayConteudo[1].length; i++)
 			{
 				// A CADA LOOP ADICIONA NA VARIAVEL modificandoEstrutura O ANTIGO VALOR DELA MAIS O NOVO VALOR QUE É O NOME DA PERGUNTA E COMO IREMOS MOSTRAR EM UM PROMPT UTILIZAMOS O \N PARA QUEBRA DE LINHA
 				modificandoEstrutura += arrayConteudo[1][i] + "\n";
@@ -268,21 +264,23 @@ $(document).ready(function(){
 			else
 			{			
 				// FOR PARA PERCORREMOS O ARRAYPERGUNTA E TENTAR ENCONTRAR A PERGUNTA CASO EXISTA, INICIANDO EM 3 POIS É NA CONTAGEM 3 QUE TEMOS AS PERGUNTAS
-				for (var i = 3; i < arrayConteudo[0].length; i++)
+				for (var i = 0; i < arrayConteudo[1].length; i++)
 				{
 					// SE OQ O USUARIO DIGITOU BATE COM O INDICE DO ARRAY ELE ENTRA NESSE IF
 					if (inicioExclusaoUpperCase == arrayConteudo[1][i])
 					{
 						// REMOVEMOS O CONTEUDO DO ARRAY NA POSIÇÃO QUE FOI ENCONTADO
-						arrayConteudo[0].splice(i,1);
+						arrayConteudo[0].splice(i + 3,1);
 						arrayConteudo[1].splice(i,1);
+						alert(arrayConteudo[0][i+3]);
+						alert(arrayConteudo[1][i]);
 						
 						// PARAMOS O FOR POIS NÃO HA NECESSIDADE DE CONTINUAR UMA VEZ QUE ENCONTRAMOS A PERGUNTA
 						break;
 					}
 					
 					// SE O I FOR IGUAL AO TAMANHO DO ARRAY E O IF DE CIMA NÃO ATIVOU QUER DIZER QUE A PERGUNTA NÃO EXISTE
-					else if (i == arrayConteudo[0].length)
+					else if (i == arrayConteudo[1].length)
 					{
 						// DAMOS UM ALERT AVISANDO QUE A PERGUNTA DIGITADA NÃO FOI ENCONTRADA
 						alert("Pergunta não encontrada");
