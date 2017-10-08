@@ -150,7 +150,7 @@ $(document).ready(function(){
 					tipoInput = "radio";
 					
 					// ADICIONAMOS CONTEUDO NO ARRAY OPCAO, POIS ESSE ARRAY É RESPONSAVEL PELAS OPÇÕES DOS INPUT DE TIPO RADIO,CHECKBOX	
-					arrayOpc[contOpc] = "<input type='"+ tipoInput +"' name='"+ tipoInput + cont + "' value='' disabled='true'>" + 
+					arrayOpc[contOpc] = "<input type='"+ tipoInput +"' name='"+ tipoInput + perguntaUpperCase + "' value='' disabled='true'>" + 
 										"<input type='text' id='respostaOpc" + contOpc + "' name='respostaOpc' placeholder='Digite o valor'>";
 					
 					// VARIAVEL PARA PULAR UMAS LINHAS NO HTML		
@@ -189,7 +189,7 @@ $(document).ready(function(){
 					tipoInput = "checkbox";
 					
 					// ADICIONAMOS CONTEUDO NO ARRAY OPCAO, POIS ESSE ARRAY É RESPONSAVEL PELAS OPÇÕES DOS INPUT DE TIPO RADIO,CHECKBOX	
-					arrayOpc[contOpc] = "<input type='"+ tipoInput +"' name='"+ tipoInput + cont + "' value='' disabled='true'>" +
+					arrayOpc[contOpc] = "<input type='"+ tipoInput +"' name='"+ tipoInput + perguntaUpperCase + "' value='' disabled='true'>" +
 										"<input type='text' id='respostaOpc" + contOpc + "' name='respostaOpc' placeholder='Digite o valor'>";
 					
 					// VARIAVEL PARA PULAR UMAS LINHAS NO HTML					
@@ -329,7 +329,7 @@ $(document).ready(function(){
 					// SE O I FOR IGUAL AO TAMANHO DO ARRAY E O IF DE CIMA NÃO ATIVOU QUER DIZER QUE A PERGUNTA NÃO EXISTE
 					if (i == arrayPergunta.length)
 					{
-						// DAMOS UM ALERT AVISANDO QUE A PERGUNTA DIGITADO NÃO FOI ENCONTRADA
+						// DAMOS UM ALERT AVISANDO QUE A PERGUNTA DIGITADA NÃO FOI ENCONTRADA
 						alert("Pergunta não encontrada");
 						
 						// PARAMOS O SCRIPT POIS NÃO QUEREMOS QUE ELE CONTINUE
@@ -345,6 +345,7 @@ $(document).ready(function(){
 				{
 					// ADICIONAMOS O CONTEUDO DE CADA INDICE
 					$("#base").append(arrayConteudo[i]);
+					alert(arrayConteudo[i]);
 				}
 				
 				// DIMINUIMOS O CONTADOR JAQ REMOVERMOS ALGO DOS ARRAYS
@@ -357,8 +358,14 @@ $(document).ready(function(){
 	// AQUI TEMOS A FUNÇÃO QUE FUNCIONA COM OS INPUTS DO TIPO RADIO E CHECKBOX. SEMPRE QUE O USUARIO CLICAR NO BUTTON DE + ELE ADICIONA 1 TIPO DE RESPOSTA
 	$(document).on('click', '#adicionarOpc', function(){
 		
+		// INICIAMOS ESSA VARIAVEL PARA PEGAR O VALOR DA PERGUNTA DIGITADA PELO USUARIO
+		var perguntaLowerCase = $('#pergunta').val();
+			
+		// TRANSFORMA O VALOR DA VARIAVEL PERGUNTA EM UPPERCASE
+		var perguntaUpperCase = perguntaLowerCase.toUpperCase();
+		
 		// ADICIONA A NOVA RESPOSTA NO ARRAYOPC E UTILIZAMOS O CONTOPC PARA NAO SOBRESCREVER OS VALORES, ACHO QUE AQUI PODEMOS UTILIZAR O LENGTH + 1, MAS TO COM PREGUIÇA DE MEXER
-		arrayOpc[contOpc] = "<input type='"+ tipoInput +"' name='"+ tipoInput + cont + "' value='' disabled='true'>" +
+		arrayOpc[contOpc] = "<input type='"+ tipoInput +"' name='"+ tipoInput + perguntaUpperCase + "' value='' disabled='true'>" +
 							"<input type='text' id='respostaOpc" + contOpc + "' name='respostaOpc" + contOpc + "' placeholder='Digite o valor'>  " +
 							"<input type='button' name='removerOpc' id='removerOpc' title='Exclui uma resposta adicionada' value='EXCLUIR' onclick='pegaValor("+contOpc+")'>";
 		
@@ -375,6 +382,12 @@ $(document).ready(function(){
 	
 	// AQUI TEMOS A FUNÇÃO QUE FUNCIONA COM OS INPUTS DO TIPO RADIO E CHECKBOX. SEMPRE QUE O USUARIO CLICAR NO BUTTON DE - ELE REMOVE A ULTIMA RESPOSTA ADICIONADA, ELA É BEM FRACA COMPARADA A OUTRA. MAS TO COM PREGUIÇA.
 	$(document).on('click', '#removerOpc', function(){
+		
+		// INICIAMOS ESSA VARIAVEL PARA PEGAR O VALOR DA PERGUNTA DIGITADA PELO USUARIO
+		var perguntaLowerCase = $('#pergunta').val();
+			
+		// TRANSFORMA O VALOR DA VARIAVEL PERGUNTA EM UPPERCASE
+		var perguntaUpperCase = perguntaLowerCase.toUpperCase();
 		
 		// SE CONTOPC FOR IGUAL A 1 QUER DIZER QUE SÓ TEM 1 REPOSTA ADICIONADA E ESSA RESPOSTA NAO PODE SER APAGADA
 		if(contOpc == 1)
@@ -400,14 +413,14 @@ $(document).ready(function(){
 					var novoI = i - 1;
 					
 					// ARRAYOPC RECEBE ESSE VALOR SOQ NO INDICE ANTERIOR DO I
-					arrayOpc[novoI] =	"<input type='"+ tipoInput +"' name='"+ tipoInput + cont + "' value='' disabled='true'>" +
+					arrayOpc[novoI] =	"<input type='"+ tipoInput +"' name='"+ tipoInput + perguntaUpperCase + "' value='' disabled='true'>" +
 										"<input type='text' id='respostaOpc" + novoI + "' name='respostaOpc" + novoI + "' value='"+ recebeOpcUpperCase +"'>" +
 										"<input type='button' name='removerOpc' id='removerOpc' title='Exclui uma resposta adicionada' value='EXCLUIR' onclick='pegaValor("+ novoI +")'>";
 				}			
 				else
 				{	
 					// ADICIONAMOS NO ARRAYOPC O VALOR QUE FOI DIGITADO PARA NÃO SER PERDIDO SEMPRE QUE APAGAR UMA PERGUNTA
-					arrayOpc[i] =	"<input type='"+ tipoInput +"' name='"+ tipoInput + cont + "' value='' disabled='true'>" +
+					arrayOpc[i] =	"<input type='"+ tipoInput +"' name='"+ tipoInput + perguntaUpperCase + "' value='' disabled='true'>" +
 									"<input type='text' id='respostaOpc" + i + "' name='respostaOpc" + i + "' value='"+ recebeOpcUpperCase +"'>" +
 									"<input type='button' name='removerOpc' id='removerOpc' title='Exclui uma resposta adicionada' value='EXCLUIR' onclick='pegaValor("+ i +")'>";
 				}								
@@ -480,7 +493,7 @@ $(document).ready(function(){
 				else
 				{
 					// PEGAMOS A POSIÇÃO DO ARRAY E SOBRESCEVEMOS O VALOR DELE PARA UM NOVO QUE ESTA FORMADO E CORRETO
-					arrayOpc[i] = "<input type='"+ tipoInput +"' name='"+ tipoInput + cont + "' value='"+ recebeOpcUpperCase +"' >" + recebeOpcUpperCase +"<br>";
+					arrayOpc[i] = "<input type='"+ tipoInput +"' name='"+ tipoInput + perguntaUpperCase + "' value='"+ recebeOpcUpperCase +"' >" + recebeOpcUpperCase +"<br>";
 				}
 			}	
 		}
