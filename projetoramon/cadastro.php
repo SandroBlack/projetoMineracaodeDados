@@ -53,10 +53,10 @@
 				<input type="email" name="email" id="email" placeholder="Ex.: jose_gomes@hotmail.com" maxlength="50"><br><br>
 
 				<label for="senha-cadastro">Senha:</label><br>
-				<input type="password" name="senha" id="senha_cadastro" placeholder="No mínimo 6 caracteres" minlength="6"><br><br>
+				<input type="password" name="senha" id="senha_cadastro" placeholder="De 6 a 10 caracteres" minlength="6" maxlength="10"><br><br>
 
 				<label for="confirma-senha">Confirme a senha:</label><br>
-				<input type="password" name="confSenha" id="conf_senha" placeholder="Digite novamente a senha" minlength="6"><br><br><br>
+				<input type="password" name="confSenha" id="conf_senha" placeholder="Digite novamente a senha" minlength="6" maxlength="10"><br><br><br>
 
 				<div class="area-botao"><input type="submit" name="cadastrar" class="botao" value="CADASTRAR" onclick="document.formCadastro.acao.value = 'cadastro'";></div>
 			</form>
