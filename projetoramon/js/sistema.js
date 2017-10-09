@@ -57,11 +57,16 @@ $(document).ready(function(){
 	// SEMPRE QUE O "BOTÃO" DUPLICAR FOR ACIONADO IRÁ ATIVAR A FUNÇÃO
 	$("#duplicar").click(function(){
 		
+		// RETIRAMOS A DIV DE ALERT CASO ELA ESTEJA VISIVEL
+		$("#warning").css("display","none");
+		
 		// VERIFICA SE 10 PERGUNTAAS JÁ FORAM ADICIONADAS NO ARRAY, O IF É tamanhoArrayConteudo == 13 POIS ASSIM QUE INICIALIZA A PAGINA OS ESPAÇOS 0,1,2 ESTÃO RESERVADOS
 		if(arrayConteudo[1].length == 10)
 		{
 			// ALERT AVISANDO QUE O LIMITE DE PERGUNTAS FOI ATINGIDO
-			alert("Limite de perguntas atingido");
+			$("#warning").text("");
+			$("#warning").append("Limite de perguntas atingido");
+			$("#warning").css("display","block");
 		}
 		
 		// CASO O LIMITE NÃO TENHA SIDO ATINGIDO ELE VAI PARA O ELSE
@@ -77,7 +82,9 @@ $(document).ready(function(){
 			if (perguntaUpperCase == "" || tipoPergunta == 1)
 			{
 				// ALERTA AO USUARIO PARA PREENCHER AS INFORMAÇÕES
-				alert("Por favor preencha todas as informações");
+				$("#warning").text("");
+				$("#warning").append("Por favor preencha todas as informações");
+				$("#warning").css("display","block");
 			}
 			
 			// SE TUDO TIVER OK IRÁ COMEÇAR O ELSE RESPONSAVEL PELAS PERGUNTAS
@@ -90,7 +97,9 @@ $(document).ready(function(){
 					if (perguntaUpperCase == arrayConteudo[1][i])
 					{
 						// ALERT PARA O USUARIO FICAR SABENDO QUE A PERGUNTA JA FOI ADICIONADA
-						alert("Pergunta já adicionada");
+						$("#warning").text("");
+						$("#warning").append("Pergunta já adicionada");
+						$("#warning").css("display","block");
 						
 						// RETURN 0 PARA CANCELAR TODAS AS OPERAÇÕES DO SCRIPT
 						return 0;
@@ -214,11 +223,16 @@ $(document).ready(function(){
 	// FUNÇÃO RESPONSAVEL PELA EXCLUSÃO DAS PERGUNTAS JA ADICIONADAS PELOS USUARIOS
 	$("#exclusao").click(function(){
 		
+		// RETIRAMOS A DIV DE ALERT CASO ELA ESTEJA VISIVEL
+		$("#warning").css("display","none");
+		
 		// IF PARA SABER SE EXISTE PERGUNTAS NO ARRAY, COMO TEMOS OS VALORES PADROES E RESERVADOS 0,1,2 ELE COMPARA COM 3 POIS ESSE É O TAMANHO PADRAO DO ARRAY	
 		if (arrayConteudo[0].length == 3)
 		{
 			// CASO TENHA TAMANHO 3 APRESENTA UM ALERT AVISANDO QUE NÃO EXISTE PERGUNTAS PARA REMOVER
-			alert("Não existe pergunta para remover");
+			$("#warning").text("");
+			$("#warning").append("Não existe pergunta para remover");
+			$("#warning").css("display","block");
 		}
 		
 		// CASO TENHA PERGUNTAS ENTRAMOS NO ELSE
@@ -247,7 +261,9 @@ $(document).ready(function(){
 			if (inicioExclusaoUpperCase == "")
 			{
 				// CASO ISSO ACONTEÇA DA UM ALERT AVISANDO QUE PRECISA DIGITAR ALGO
-				alert("Necessário digitar a pergunta");
+				$("#warning").text("");
+				$("#warning").append("Necessário digitar a pergunta");
+				$("#warning").css("display","block");
 				
 				// RETORNA 0 PARA NÃO CONTINUAR O SCRIPT
 				return 0;
@@ -274,7 +290,9 @@ $(document).ready(function(){
 					else if (i == arrayConteudo[1].length)
 					{
 						// DAMOS UM ALERT AVISANDO QUE A PERGUNTA DIGITADA NÃO FOI ENCONTRADA
-						alert("Pergunta não encontrada");
+						$("#warning").text("");
+						$("#warning").append("Pergunta não encontrada");
+						$("#warning").css("display","block");
 						
 						// PARAMOS O SCRIPT POIS NÃO QUEREMOS QUE ELE CONTINUE
 						return 0;
@@ -359,11 +377,16 @@ $(document).ready(function(){
 	// FUNÇÃO QUE É ATIVADA QUANDO O USUARIO QUER FINALIZAR AS PERGUNTAS DO TIPO CHECKBOX E RADIO
 	$("#finalizarOpc").click(function(){
 		
+		// RETIRAMOS A DIV DE ALERT CASO ELA ESTEJA VISIVEL
+		$("#warning").css("display","none");
+		
 		// CASO ARRAYOPC TENHA TAMANHO 1 QUER DIZER QUE SO TEMOS 1 OPÇÃO E ESSE TIPO DE PERGUNTA PRECISA DE NO MINIMO 2
 		if(arrayConteudo[2].length <= 1)
 		{
 			// DAMOS UM ALERT PARA AVISAR AO USUARIO
-			alert("É necessário ter pelo menos 2 respostas");
+			$("#warning").text("");
+			$("#warning").append("É necessário ter pelo menos 2 respostas");
+			$("#warning").css("display","block");
 			
 			// RETORNAMOS 0 PARA FINALIZAR O SCRIPT
 			return 0;
@@ -386,7 +409,9 @@ $(document).ready(function(){
 				if (recebeOpcUpperCase == "")
 				{
 					// DAMOS UM ALERT PARA O USUARIO, POIS NAO PODEMOS ADICIONAR PERGUNTAS EM BRANCO
-					alert("Por favor, preencha os campos corretamente");
+					$("#warning").text("");
+					$("#warning").append("Por favor, preencha os campos corretamente");
+					$("#warning").css("display","block");
 					
 					// RETORNAMOS 0 POIS NÃO QUEREMOS CONTINUAR O SCRIPT
 					return 0;
@@ -446,6 +471,9 @@ $(document).ready(function(){
 	// FUNÇÃO PARA DESCARTAR A PERGUNTA DO TIPO RADIO OU CHECKBOX
 	$("#descartarOpc").click(function(){
 		
+		// RETIRAMOS A DIV DE ALERT CASO ELA ESTEJA VISIVEL
+		$("#warning").css("display","none");
+		
 		// COLOCAMOS O INPUT DE PERGUNTA PARA VAZIO
 		$('#pergunta').val("");	
 
@@ -468,6 +496,9 @@ $(document).ready(function(){
 	// FUNÇÃO PARA ENVIAR TODO O FORMULARIO PRO BANCO DE DADOS
 	$("#enviar").click(function(){
 		
+		// RETIRAMOS A DIV DE ALERT CASO ELA ESTEJA VISIVEL
+		$("#warning").css("display","none");
+		
 		// PEGAMOS O VALOR DO TITULO
 		var verificaTitulo = $("#titulo").val();
 		
@@ -478,7 +509,9 @@ $(document).ready(function(){
 		if (arrayConteudo[0].length == 3 || verificaTitulo == "" || verificaDescricao == "")
 		{
 			// AVISAMOS QUE O FORMULARIO ESTA INCOMPLETO
-			alert("Formulário incompleto");
+			$("#warning").text("");
+			$("#warning").append("Formulário incompleto");
+			$("#warning").css("display","block");
 		}
 		
 		// SE TIVER TUDO OK VAMOS PARA O ELSE

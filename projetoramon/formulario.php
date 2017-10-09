@@ -21,6 +21,30 @@
 		
 		<script src="js/sistema.js"></script>  
 
+		<style>
+			.warning 
+			{
+				border: 1px solid;
+				
+				margin: 10px 0px;
+				
+				padding:15px 10px 15px 50px;
+				
+				background-repeat: no-repeat;
+				
+				background-position: 10px center;
+				
+				color: #9F6000;
+				
+				background-color: #FEEFB3;
+				
+				background-image: url('img/warning.png');
+				
+				display: none;
+				
+			}
+		</style>
+		
 	</head>
 
 
@@ -96,6 +120,10 @@
 				
 			</div>
 				
+			<div id="warning" class="warning">
+			
+			</div>
+			
 			<div class="barra-inferior" id="menu">
 			
 				<div class="area-botoes">
@@ -119,11 +147,6 @@
 				</div>
 				
 			</div>
-			
-
-
-
-
 
 		</div><!-- Fim do container -->
 
