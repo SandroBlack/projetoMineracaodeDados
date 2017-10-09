@@ -1,38 +1,50 @@
 <?php 
 include_once("db/conexao.php");
-	// RECEBER OS DADOS E ESCREVER NO ARQUIVO TXT	
-	/*$recebe = $_POST["FormularioCompleto"];
-	$recebeX = str_replace('|', ' ', $recebe);
 
-	$arq = fopen("teste.txt", "a+");
-	fwrite($arq, $recebeX);
-	fclose($arq);
-	header("location:menu-usuario.php");*/
+	$FormularioCompletoQuestoes = $_POST["FormularioCompletoQuestoes"];
+	
+	$FormularioCompleto = $_POST["FormularioCompleto"];
+	
+	$FormularioCompletoX = str_replace('|', ' ', $FormularioCompleto);
+	
+	$FormularioCompletoTitulo = $_POST["FormularioCompletoTitulo"];
+	
 
-	// MONTAR A PÁGINA COM O CONTEÚDO DO ARQUIVO TXT
-	/*$arq = fopen("teste.txt", "r");
-	$cont = fread($arq, 10000);
-	echo $cont;	*/
-
-	$recebe = $_POST["FormularioCompleto"];
-	$recebeX = str_replace('|', ' ', $recebe);
-	$cod = rand();
-	$codP = base64_encode($cod); 
-
-	if($recebeX == ""){
+	if($FormularioCompletoX == "")
+	{
+		
 		return false;
+		
 		header("location:menu-usuario.php");	
-	} else{
-		try{
+		
+	}
+	
+	else
+	{
+		try
+		{
 			$pdo = conectar();
-			$sql = "INSERT INTO questions(question_text, question_cod) VALUES(:perguntas, :codPerguntas)";
-			$insert = $pdo->prepare($sql);					
-			$insert->bindValue(":perguntas", $recebeX);
-			$insert->bindValue(":codPerguntas", $codP);
+			
+			$sql = "INSERT INTO forms(form_id, form_titulo, form_conteudo, form_questoes) VALUES(:form_id, :form_titulo, :form_conteudo, :form_questoes)";
+			
+			$insert = $pdo->prepare($sql);	
+			
+			$insert->bindValue(":form_id", 0);
+				
+			$insert->bindValue(":form_titulo", $FormularioCompletoTitulo);	
+			
+			$insert->bindValue(":form_conteudo", $FormularioCompletoX);
+			
+			$insert->bindValue(":form_questoes", $FormularioCompletoQuestoes);
+			
 			$insert->execute();
-		} catch(PDOException $e){
-				echo "Erro: " . $e->getMessage();
-		  }
-	  }
-	  header("location:menu-usuario.php");	
+			
+		} 
+		catch(PDOException $e)
+		{
+			echo "Erro: " . $e->getMessage();
+		}
+	}
+	
+	header("location:menu-usuario.php");	
 ?>

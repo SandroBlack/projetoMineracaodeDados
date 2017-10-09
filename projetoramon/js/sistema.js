@@ -65,7 +65,7 @@ $(document).ready(function(){
 	$("#duplicar").click(function(){
 		
 		// VERIFICA SE 10 PERGUNTAAS JÁ FORAM ADICIONADAS NO ARRAY, O IF É tamanhoArrayConteudo == 13 POIS ASSIM QUE INICIALIZA A PAGINA OS ESPAÇOS 0,1,2 ESTÃO RESERVADOS
-		if(arrayConteudo[0].length == 13)
+		if(arrayConteudo[1].length == 10)
 		{
 			// ALERT AVISANDO QUE O LIMITE DE PERGUNTAS FOI ATINGIDO
 			alert("Limite de perguntas atingido");
@@ -110,7 +110,7 @@ $(document).ready(function(){
 					// ADICIONA A DIV + LABEL + INPUT NO ARRAY CONTEUDO NA POSIÇÃO DO VALOR DO CONTADOR	
 					arrayConteudo[0][arrayConteudo[0].length] =	"<div style='margin-left:15px;'>" +
 																"<label>" + perguntaUpperCase +": </label>" +
-																"<input type='text' style='height:30px;width:260px;font-size:16px;' id='resposta"+perguntaUpperCase+"' name='resposta"+perguntaUpperCase+"'>" +
+																"<input type='text' style='height:30px;width:260px;font-size:16px;' id='respostas_"+arrayConteudo[1].length+"' name='respostas_"+arrayConteudo[1].length+"'>" +
 																"</div><br>";												
 				}
 				
@@ -188,7 +188,7 @@ $(document).ready(function(){
 					// ADICIONA A DIV + LABEL + INPUT NO ARRAY CONTEUDO NA POSIÇÃO DO VALOR DO CONTADOR	
 					arrayConteudo[0][arrayConteudo[0].length] =	"<div style='margin-left:15px;'>" +
 																"<label>" + perguntaUpperCase +": </label>" +
-																"<input type='date' id='resposta"+perguntaUpperCase+"' name='resposta"+perguntaUpperCase+"'>" +
+																"<input type='date' id='respostas_"+arrayConteudo[1].length+"' name='respostas_"+arrayConteudo[1].length+"'>" +
 																"</div><br>";								
 				}
 				
@@ -198,7 +198,7 @@ $(document).ready(function(){
 					// ADICIONA A DIV + LABEL + INPUT NO ARRAY CONTEUDO NA POSIÇÃO DO VALOR DO CONTADOR
 					arrayConteudo[0][arrayConteudo[0].length] =	"<div style='margin-left:15px;'>" +
 																"<label>" + perguntaUpperCase +": </label>" +
-																"<input type='email' id='resposta"+perguntaUpperCase+"' name='resposta"+perguntaUpperCase+"'>" +
+																"<input type='email' id='respostas_"+arrayConteudo[1].length+"' name='respostas_"+arrayConteudo[1].length+"'>" +
 																"</div><br>";
 				}
 				
@@ -403,7 +403,7 @@ $(document).ready(function(){
 				else
 				{
 					// PEGAMOS A POSIÇÃO DO ARRAY E SOBRESCEVEMOS O VALOR DELE PARA UM NOVO QUE ESTA FORMADO E CORRETO
-					arrayConteudo[2][i] = "<input type='"+ tipoInput +"' name='"+ tipoInput + perguntaUpperCase + "' value='"+ recebeOpcUpperCase +"' >" + recebeOpcUpperCase +"<br>";
+					arrayConteudo[2][i] = "<input type='"+ tipoInput +"' id='respostas_"+arrayConteudo[1].length+"' name='respostas_"+arrayConteudo[1].length+"' value='"+ recebeOpcUpperCase +"' >" + recebeOpcUpperCase +"<br>";
 				}
 			}	
 		}
@@ -420,7 +420,7 @@ $(document).ready(function(){
 		}
 		
 		// ADICIONAMOS O VALOR DA PERGUNTA NO ARRAYPERGUNTA
-		arrayConteudo[1][arrayConteudo[0].length] = perguntaUpperCase;
+		arrayConteudo[1][arrayConteudo[1].length] = perguntaUpperCase;
 		
 		// FECHAMOS A DIV DA PERGUNTA E DAMOS UMA QUEBRA DE LINHA
 		arrayConteudo[0][arrayConteudo[0].length - 1] += "</div><br>";
@@ -500,6 +500,12 @@ $(document).ready(function(){
 			// COLOCAMOS O VALOR DO STRINGCOMPLETO NO FORMULARIO INVISIVEL
 			$('#FormularioCompleto').val(stringCompleto);
 			
+			// COLOCAMOS A QUANTIDADE DE QUESTOES NO FORMULARIO INVISIVEL
+			$('#FormularioCompletoQuestoes').val(arrayConteudo[1].length);
+			
+			// COLOCAMOS O TITULO NO FORMULARIO INVISIVEL
+			$('#FormularioCompletoTitulo').val(verificaTitulo);
+
 			// ENVIAMOS O FORMULARIO PARA A PAGINA PHP
 			$('#EnviarFormulario').submit();
 			
