@@ -14,6 +14,9 @@ $(document).ready(function(){
 	// INICIANDO VARIAVEL VAZIA PARA RECEBER O TIPO DE INPUT
 	tipoInput = "";
 	
+	// INICIANDO VARIAVE VAZIA PARA RECEBER A QUANTIDADE DE CHECKBOX ADICIONADA
+	quantCheckbox = 0;
+	
 	// VARIAVEL PARA PULAR UMAS LINHAS NO HTML					
 	pularLinha = "<br>";
 	
@@ -423,8 +426,20 @@ $(document).ready(function(){
 				// SE TIVER TUDO OK ENTRAMOS NO ELSE
 				else
 				{
-					// PEGAMOS A POSIÇÃO DO ARRAY E SOBRESCEVEMOS O VALOR DELE PARA UM NOVO QUE ESTA FORMADO E CORRETO
-					arrayConteudo[2][i] = "<input type='"+ tipoInput +"' id='respostas_"+arrayConteudo[1].length+"' name='respostas_"+arrayConteudo[1].length+"' value='"+ recebeOpcUpperCase +"' >" + recebeOpcUpperCase +"<br>";
+					if (tipoInput == "radio")
+					{
+						// PEGAMOS A POSIÇÃO DO ARRAY E SOBRESCEVEMOS O VALOR DELE PARA UM NOVO QUE ESTA FORMADO E CORRETO
+						arrayConteudo[2][i] =	"<input type='"+ tipoInput +"' id='respostas_"+arrayConteudo[1].length+"'" +
+												"name='respostas_"+arrayConteudo[1].length+"' value='"+ recebeOpcUpperCase +"' >" + recebeOpcUpperCase +"<br>";
+					}
+					
+					else if (tipoInput == "checkbox")
+					{
+						arrayConteudo[2][i] =	"<input type='"+ tipoInput +"' id='respostas_Checkbox"+quantCheckbox+"'" +
+												"name='respostas_Checkbox"+quantCheckbox+"' value='"+ recebeOpcUpperCase +"' >" + 	recebeOpcUpperCase + "<br>";
+												
+						quantCheckbox++;
+					}		
 				}
 			}	
 		}
@@ -519,7 +534,8 @@ $(document).ready(function(){
 		
 		// SE TIVER TUDO OK VAMOS PARA O ELSE
 		else
-		{				
+		{	
+
 			// JUNTAMOS TODO O ARRAYCONTEUDO NA VARIAVEL ARRAYTOSTRING
 			var arrayToString = arrayConteudo[0].join("|");
 			
@@ -534,12 +550,16 @@ $(document).ready(function(){
 			
 			// COLOCAMOS O TITULO NO FORMULARIO INVISIVEL
 			$('#FormularioCompletoTitulo').val(verificaTitulo);
+			
+			// COLOCAMOS A QUANTIDADE DE CHECKBOX NO FORMULARIO
+			$('#FormularioQuantidadeCheckbox').val(quantCheckbox);
 
 			// ENVIAMOS O FORMULARIO PARA A PAGINA PHP
 			$('#EnviarFormulario').submit();
 			
 			// DAMOS UM ALERT QUE FOI CADASTRADO COM SUCESSO
 			alert("Formulário Cadastrado com Sucesso");
+			
 		}
 	});	
 });
