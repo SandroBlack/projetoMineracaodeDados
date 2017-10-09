@@ -19,8 +19,8 @@
 		<!-- ========== Scripts ============ -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		
-		<script src="js/sistema.js"></script>    
-		
+		<script src="js/sistema.js"></script>  
+
 	</head>
 
 
@@ -95,7 +95,7 @@
 				<br>
 				
 			</div>
-
+				
 			<div class="barra-inferior" id="menu">
 			
 				<div class="area-botoes">

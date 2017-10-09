@@ -433,8 +433,14 @@ $(document).ready(function(){
 		// LIMPAMOS A DIV DE OPÇÕES POIS A PERGUNTA FOI FINALIZADA
 		$("#divOpc").text("");
 		
+		// ESCONDEMOS A DIV DE OPÇÕES
+		$("#divAdicionarOpc").css("display","none");
+		
 		// VOLTAMOS COM O ANTIGO MENU	
 		$("#menu").css("display","block");
+		
+		// ESCONDEMOS O MENU DE OPÇÃO POIS A PERGUNTA JA ESTA FINALIZADA	
+		$("#menuOpc").css("display","none");	
 	});
 	
 	// FUNÇÃO PARA DESCARTAR A PERGUNTA DO TIPO RADIO OU CHECKBOX
@@ -449,8 +455,15 @@ $(document).ready(function(){
 		// LIMPAMOS A DIV DE OPÇÕES POIS A PERGUNTA FOI FINALIZADA
 		$("#divOpc").text("");
 		
+		// ESCONDEMOS A DIV DE OPÇÕES
+		$("#divAdicionarOpc").css("display","none");
+		
 		// VOLTAMOS COM O ANTIGO MENU	
 		$("#menu").css("display","block");
+		
+		// ESCONDEMOS O MENU DE OPÇÃO POIS A PERGUNTA JA ESTA FINALIZADA	
+		$("#menuOpc").css("display","none");
+	});
 	
 	// FUNÇÃO PARA ENVIAR TODO O FORMULARIO PRO BANCO DE DADOS
 	$("#enviar").click(function(){
