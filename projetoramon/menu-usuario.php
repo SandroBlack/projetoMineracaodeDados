@@ -1,4 +1,6 @@
-<?php include_once("conf/restricao.php");?>
+<?php include_once("conf/restricao.php");
+      include_once("db/conexao.php"); 
+?>
 
 <!DOCTYPE html lang="pt-br">
 <html>
@@ -11,14 +13,32 @@
 </head>
 
 <body>
-
+	<?php
+	@$opcao = $_POST["acao"]; 
+		if($opcao == "sair"){
+			session_start();
+			unset($_SESSION["logado"]);
+			header("location:cadastro.php");
+		}
+		
+		try{
+			$pdo = conectar();								
+			$sql = "SELECT * FROM forms WHERE form_user=?";
+			$listar = $pdo->prepare($sql);								
+			$listar->execute(array($_SESSION["userId"]));
+			$res = $listar->fetch(PDO::FETCH_ASSOC);
+			$linha = $listar->rowCount();					
+		} catch(PDOException $e){
+					echo "Erro: " . $e->getMessage() . "<br>";
+		}		
+	?>
 
 	<!-- ======== Cabeçalho ========== -->
 	<div id="cabecalho">
 
 
 		<div id="bemVindo">
-			<p>Bem Vindo(a): "Usuário"</p>
+			<p>Bem Vindo(a): <?php echo $_SESSION["nomeUser"]?></p>
 		</div>
 
 
@@ -31,23 +51,14 @@
 
 
 	</div><!-- ======== Fim do cabeçalho ==========-->
-	<?php
-	@$opcao = $_POST["acao"]; 
-		if($opcao == "sair"){
-			session_start();
-			unset($_SESSION["logado"]);
-			header("location:cadastro.php");
-		}
-	?>
-
-
+	
 	<div class="area-principal">
 		<div class="area-formulario">
 			<table id="tbUsuario" cellspacing="30">
 				<tr>
 					<td class="transparente">
 						<p>Total de Pesquisas</p><br>
-						<span>0</span>
+						<span><?php echo $linha?></span>
 					</td>
 					<td class="transparente">
 						<p>Pesquisas Respondidas</p><br>
@@ -59,10 +70,10 @@
 				</tr>
 				<tr>
 					<td class="transparente">
-						<a href="">Editar Pesquisas</a>						
+						-						
 					</td>
 					<td class="transparente">
-						<a href="">Excluir Pesquisas</a>
+						-
 					</td>
 					<td class="transparente">
 					<a href="">Estatísticas</a>

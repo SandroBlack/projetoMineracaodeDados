@@ -83,6 +83,7 @@
 								return false;
 							} else{
 								session_start();
+								$_SESSION["userId"] = $res["user_id"];
 								$_SESSION["nomeUser"] = $res["user_name"];
 								$_SESSION["logado"] = true;
 								header("location:menu-usuario.php");
