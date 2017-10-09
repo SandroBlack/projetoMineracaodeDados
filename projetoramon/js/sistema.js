@@ -5,7 +5,7 @@ $(document).ready(function(){
 	
 	// INICANDO ARRAY COM VALORES PARA PRESERVAR O TAMANHO
 	arrayConteudo[0][0] =	"<div><form style='padding: 20px 0px 0px 20px;' name='formResposta' id='formResposta' class='forms' method='POST' action=''>" +
-							"<div class='container'><input type='hidden' id='responderForm' name='responderForm' value=''>";
+							"<div class='container'><input type='hidden' id='responderForm' name='responderForm' value='teste'>";
 							
 	arrayConteudo[0][1] =	"";
 	
@@ -524,10 +524,7 @@ $(document).ready(function(){
 			var arrayToString = arrayConteudo[0].join("|");
 			
 			// PEGAMOS O ARRAYTOSTRING E ADICIONAMOS O FECHAMENTO DO FORM E DIV NA VARIAVEL STRINGCOMPLETO
-			var stringCompleto = arrayToString + "</div>" +
-												 "<div class='area-botao'>" + 
-												 "<input type='submit' name='Enviar' class='botao' value='Enviar' onclick='document.formResposta.responderForm.value = 'enviarResposta'';>" +
-												 "</div></form></div>";
+			var stringCompleto = arrayToString + "</div></form></div>";
 			
 			// COLOCAMOS O VALOR DO STRINGCOMPLETO NO FORMULARIO INVISIVEL
 			$('#FormularioCompleto').val(stringCompleto);

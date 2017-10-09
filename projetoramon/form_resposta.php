@@ -1,8 +1,7 @@
 <?php
 	include_once("db/conexao.php");
-	@$idP = $_GET["idP"]; // ID DAS PERGUNTAS ARMAZENADAS NO BANCO, DEPOIS A VARIÁVEL RECEBERÁ ID VIA GET
 	
-	@$responderForm = $_POST["responderForm"];
+	@$idP = $_GET["idP"]; // ID DAS PERGUNTAS ARMAZENADAS NO BANCO, DEPOIS A VARIÁVEL RECEBERÁ ID VIA GET
 	
 	// BUSCAR OS DADOS NO BANCO
 	$pdo = conectar();
@@ -21,7 +20,7 @@
 	
 		<title>Responder</title>
 		
-		<meta charset="utf-8">
+		<meta charset="utf-8" />
 		
 		<link rel="stylesheet" href="css/form_resposta.css">
 		
@@ -88,17 +87,125 @@
 
 		
 		<?php 
-			function responder(){
-				echo "EAE";
-			}
+		
+			@$responderForm = $_POST["responderForm"];
+			
+			$quantidadeQuestoes = $res["form_questoes"];
+			
+			function responder($questoes){
+			
+			$respostas_0 = null;	
+			$respostas_1 = null;	
+			$respostas_2 = null;	
+			$respostas_3 = null;	
+			$respostas_4 = null;	
+			$respostas_5 = null;	
+			$respostas_6 = null;	
+			$respostas_7 = null;	
+			$respostas_8 = null;	
+			$respostas_9 = null;
+				
+				for ($i = 0; $i < $questoes; $i++) 
+				{
+					if ($i < $questoes)
+					{
+						if ($i == 0)
+						{
+							$respostas_0 = $_POST["respostas_0"];
+						}
+						
+						if ($i == 1)
+						{
+							$respostas_1 = $_POST["respostas_1"];
+						}
+						
+						if ($i == 2)
+						{
+							$respostas_2 = $_POST["respostas_2"];
+						}
+						
+						if ($i == 3)
+						{
+							$respostas_3 = $_POST["respostas_3"];
+						}
+						
+						if ($i == 4)
+						{
+							$respostas_4 = $_POST["respostas_4"];
+						}
+						
+						if ($i == 5)
+						{
+							$respostas_5 = $_POST["respostas_5"];
+						}
+						
+						if ($i == 6)
+						{
+							$respostas_6 = $_POST["respostas_6"];
+						}
+						
+						if ($i == 7)
+						{
+							$respostas_7 = $_POST["respostas_7"];
+						}
+						
+						if ($i == 8)
+						{
+							$respostas_8 = $_POST["respostas_8"];
+						}	
+
+						if ($i == 9)
+						{
+							$respostas_9 = $_POST["respostas_9"];
+						}						
+					}	
+				}
+			try
+			{
+				$pdo = conectar();								
+				$sql = "INSERT INTO respostas(respostas_id, respostas_0, respostas_1, respostas_2, respostas_3, respostas_4, respostas_5, respostas_6, respostas_7, respostas_8, respostas_9) VALUES(:respostas_id, :respostas_0, 	:respostas_1, :respostas_2, :respostas_3, :respostas_4, :respostas_5, :respostas_6, :respostas_7, :respostas_8, :respostas_9)";
+				$inserir = $pdo->prepare($sql);
+				$inserir->bindValue(":respostas_id", 0);
+				$inserir->bindValue(":respostas_0", $respostas_0);
+				$inserir->bindValue(":respostas_1", $respostas_1);
+				$inserir->bindValue(":respostas_2", $respostas_2);
+				$inserir->bindValue(":respostas_3", $respostas_3);
+				$inserir->bindValue(":respostas_4", $respostas_4);
+				$inserir->bindValue(":respostas_5", $respostas_5);
+				$inserir->bindValue(":respostas_6", $respostas_6);
+				$inserir->bindValue(":respostas_7", $respostas_7);
+				$inserir->bindValue(":respostas_8", $respostas_8);
+				$inserir->bindValue(":respostas_9", $respostas_9);
+				$inserir->execute();
+			} 
+			catch(PDOException $e)
+			{
+				echo "Erro: " . $e->getMessage() . "<br>";
+			}		
+		}
 			
 				if($responderForm == "enviarResposta")
 			{
-				responder();
+				responder($quantidadeQuestoes);
 			}
-			
-			echo $responderForm;
 		?>
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		
+		<script>
+		
+		$(document).ready(function(){
 			
+				
+			$('#responder').click(function(){
+				
+				$('#responderForm').val("enviarResposta");	
+				
+				$('#formResposta').submit();				
+			});				
+		});
+		
+		</script>
+		
 	</body>
 </html>
