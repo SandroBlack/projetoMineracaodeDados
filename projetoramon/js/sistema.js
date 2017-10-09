@@ -12,7 +12,7 @@ $(document).ready(function(){
 	tipoInput = "";
 	
 	// VARIAVEL PARA PULAR UMAS LINHAS NO HTML					
-	pularLinha = "<br><br>";
+	pularLinha = "<br>";
 	
 	// SEMPRE QUE PRESSIONAREM ALGO DO TECLADO DENTRO DO CAMPO TITULO A FUNÇÃO É ACIONADA
 	$("#titulo").keyup(function(){
@@ -287,7 +287,7 @@ $(document).ready(function(){
 					}
 					
 					// SE O I FOR IGUAL AO TAMANHO DO ARRAY E O IF DE CIMA NÃO ATIVOU QUER DIZER QUE A PERGUNTA NÃO EXISTE
-					else if (i == arrayConteudo[1].length)
+					else if (i == (arrayConteudo[1].length - 1))
 					{
 						// DAMOS UM ALERT AVISANDO QUE A PERGUNTA DIGITADA NÃO FOI ENCONTRADA
 						$("#warning").text("");
