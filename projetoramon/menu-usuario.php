@@ -54,7 +54,7 @@
 						<span>0</span>
 					</td>
 					<td class="transparente">
-						<a href="">Consultar Pesquisas</a><br>								
+						<a href="consulta.php">Consultar Pesquisas</a><br>								
 					</td>
 				</tr>
 				<tr>
