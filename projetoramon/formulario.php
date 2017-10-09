@@ -86,7 +86,7 @@
 				
 			</div>
 			
-			<div class="questoes" id="divAdicionarOpc">
+			<div class="questoes invisivel" id="divAdicionarOpc">
 				
 				<input type="button" name="adicionarOpc" id="adicionarOpc" title="Adicionar mais uma resposta" value="   +   ">
 				
@@ -108,7 +108,7 @@
 				
 			</div><!-- Fim da barra inferior -->
 			
-			<div class="barra-inferior" id="menuOpc">
+			<div class="barra-inferior invisivel" id="menuOpc">
 			
 				<div class="area-botoes">
 				
@@ -131,7 +131,7 @@
 		
 		</div>		
 		
-			<div id="escondido">	
+			<div id="escondido" class="invisivel">	
 			
 				<form name="EnviarFormulario" id="EnviarFormulario" method="post" action="recebeForm.php">
 				

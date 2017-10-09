@@ -1,12 +1,5 @@
 $(document).ready(function(){
 	
-	// ESCONDE DIVS QUE NÃO SÃO NECESSARIAS NO MOMENTO (PODERIA SER FEITO NO CSS, MAS ...............) (EU NAO SEI FAZER)
-	$("#escondido").css("display","none");
-	
-	$("#divAdicionarOpc").css("display","none");
-	
-	$("#menuOpc").css("display","none");
-	
 	// ARRAY QUE RECEBE TODO O CONTEUDO DESSA PAGINA SEJA DIV + LABEL + INPUT, PERGUNTA OU RESPOSTAS
 	arrayConteudo = [[],[],[]];
 	
@@ -440,14 +433,8 @@ $(document).ready(function(){
 		// LIMPAMOS A DIV DE OPÇÕES POIS A PERGUNTA FOI FINALIZADA
 		$("#divOpc").text("");
 		
-		// ESCONDEMOS A DIV DE OPÇÕES
-		$("#divAdicionarOpc").css("display","none");
-		
 		// VOLTAMOS COM O ANTIGO MENU	
 		$("#menu").css("display","block");
-		
-		// ESCONDEMOS O MENU DE OPÇÃO POIS A PERGUNTA JA ESTA FINALIZADA	
-		$("#menuOpc").css("display","none");	
 	});
 	
 	// FUNÇÃO PARA DESCARTAR A PERGUNTA DO TIPO RADIO OU CHECKBOX
@@ -462,15 +449,8 @@ $(document).ready(function(){
 		// LIMPAMOS A DIV DE OPÇÕES POIS A PERGUNTA FOI FINALIZADA
 		$("#divOpc").text("");
 		
-		// ESCONDEMOS A DIV DE OPÇÕES
-		$("#divAdicionarOpc").css("display","none");
-		
 		// VOLTAMOS COM O ANTIGO MENU	
 		$("#menu").css("display","block");
-		
-		// ESCONDEMOS O MENU DE OPÇÃO POIS A PERGUNTA JA ESTA FINALIZADA	
-		$("#menuOpc").css("display","none");
-	});
 	
 	// FUNÇÃO PARA ENVIAR TODO O FORMULARIO PRO BANCO DE DADOS
 	$("#enviar").click(function(){
