@@ -435,8 +435,8 @@ $(document).ready(function(){
 					
 					else if (tipoInput == "checkbox")
 					{
-						arrayConteudo[2][i] =	"<input type='"+ tipoInput +"' id='respostas_Checkbox"+quantCheckbox+"'" +
-												"name='check[]' value='check[]' >" + 	recebeOpcUpperCase + "<br>";
+						arrayConteudo[2][i] =	"<input type='"+ tipoInput +"' id='check[]'" +
+												"name='check[]' value='"+ recebeOpcUpperCase +"' >" + 	recebeOpcUpperCase + "<br>";
 												
 						quantCheckbox++;
 					}		
