@@ -73,7 +73,7 @@
 			
 				<input type="text" name="titulo" id="titulo" placeholder="Título do formulário" maxlength="30"><br><br>
 				
-				<input type="text" name="descricao" id="descricao" placeholder="Descrição do formulário" maxlength="30"><br><br> 
+				<input type="text" name="descricao" id="descricao" placeholder="Descrição do formulário" maxlength="150"><br><br> 
 				
 			</form>
 			
@@ -90,15 +90,15 @@
 					
 					<option id="1" name="1" value="1">Tipo de resposta</option>
 					
-					<option id="2" name="2" value="2">Campo de texto</option>
+					<option id="2" name="2" value="2">Campo para resposta curta</option>
 					
 					<option id="3" name="3" value="3">Multipla escolha</option>
 					
-					<option id="4" name="4" value="4">Caixas de Seleção</option>
+					<option id="4" name="4" value="4">Caixas de seleção</option>
 					
-					<option id="5" name="5" value="5">Campo para Data</option>
+					<option id="5" name="5" value="5">Campo para data</option>
 					
-					<option id="6" name="6" value="6">Campo para E-mail</option>
+					<option id="6" name="6" value="6">Campo para e-mail</option>
 				
 				</select>
 					

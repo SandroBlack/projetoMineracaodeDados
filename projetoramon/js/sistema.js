@@ -4,9 +4,12 @@ $(document).ready(function(){
 	arrayConteudo = [[],[],[]];
 	
 	// INICANDO ARRAY COM VALORES PARA PRESERVAR O TAMANHO
-	arrayConteudo[0][0] = "";
-	arrayConteudo[0][1] = "";
-	arrayConteudo[0][2] = "<div><form>";
+	arrayConteudo[0][0] =	"<div><form style='padding: 20px 0px 0px 20px;' name='formResposta' id='formResposta' class='forms' method='POST' action=''>" +
+							"<div class='container'><input type='hidden' id='responderForm' name='responderForm' value=''>";
+							
+	arrayConteudo[0][1] =	"";
+	
+	arrayConteudo[0][2] =	"";
 	
 	// INICIANDO VARIAVEL VAZIA PARA RECEBER O TIPO DE INPUT
 	tipoInput = "";
@@ -21,13 +24,13 @@ $(document).ready(function(){
 		var titulo = $("#titulo").val().toUpperCase();
 		
 		// ADICIONA NO ARRAY DE CONTEUDO SEMPRE QUE FOR ATUALIZADO
-		arrayConteudo[0][0] = "<h1 style='text-align:center;'>" + titulo + "</h1><br>";
+		arrayConteudo[0][1] = "<br><h1 style='text-align:center;'>" + titulo + "</h1><br>";
 	
 		// LIMPA A DIV BASE PARA PODER ADICIONAR AS NOVAS INFORMAÇÕES
 		$('#base').text("");
 		
 		// UM FOR PARA PODER ADICIONAR TODAS AS INFORMAÇÕES QUE EXISTEM NO ARRAY
-		for (var i = 0; i < arrayConteudo[0].length; i++)
+		for (var i = 1; i < arrayConteudo[0].length; i++)
 		{
 			// ESTÁ ADICIONANDO NA DIV BASE TODOS OS INDICES DO ARRAY
 			$("#base").append(arrayConteudo[0][i]);
@@ -41,13 +44,13 @@ $(document).ready(function(){
 		var descricao = $("#descricao").val().toUpperCase();
 		
 		// ADICIONA NO ARRAY DE CONTEUDO SEMPRE QUE FOR ATUALIZADO
-		arrayConteudo[0][1] = "<h4 style='text-align:center;'>" + descricao + "</h4><br>";
+		arrayConteudo[0][2] = "<h4 style='text-align:center;'>" + descricao + "</h4><br><br>";
 		
 		// LIMPA A DIV BASE PARA PODER ADICIONAR AS NOVAS INFORMAÇÕES
 		$('#base').text("");
 			
 		// UM FOR PARA PODER ADICIONAR TODAS AS INFORMAÇÕES QUE EXISTEM NO ARRAY
-		for (var i = 0; i < arrayConteudo[0].length; i++)
+		for (var i = 1; i < arrayConteudo[0].length; i++)
 		{
 			// ESTÁ ADICIONANDO NA DIV BASE TODOS OS INDICES DO ARRAY
 			$("#base").append(arrayConteudo[0][i]);
@@ -111,7 +114,7 @@ $(document).ready(function(){
 				{
 					// ADICIONA A DIV + LABEL + INPUT NO ARRAY CONTEUDO NA POSIÇÃO DO VALOR DO CONTADOR	
 					arrayConteudo[0][arrayConteudo[0].length] =	"<div style='margin-left:15px;'>" +
-																"<label>" + perguntaUpperCase +": </label>" +
+																"<label>" + perguntaUpperCase +" </label>" +
 																"<input type='text' style='height:30px;width:260px;font-size:16px;' id='respostas_"+arrayConteudo[1].length+"' name='respostas_"+arrayConteudo[1].length+"'>" +
 																"</div><br>";												
 				}
@@ -189,7 +192,7 @@ $(document).ready(function(){
 				{
 					// ADICIONA A DIV + LABEL + INPUT NO ARRAY CONTEUDO NA POSIÇÃO DO VALOR DO CONTADOR	
 					arrayConteudo[0][arrayConteudo[0].length] =	"<div style='margin-left:15px;'>" +
-																"<label>" + perguntaUpperCase +": </label>" +
+																"<label>" + perguntaUpperCase +" </label>" +
 																"<input type='date' id='respostas_"+arrayConteudo[1].length+"' name='respostas_"+arrayConteudo[1].length+"'>" +
 																"</div><br>";								
 				}
@@ -199,7 +202,7 @@ $(document).ready(function(){
 				{
 					// ADICIONA A DIV + LABEL + INPUT NO ARRAY CONTEUDO NA POSIÇÃO DO VALOR DO CONTADOR
 					arrayConteudo[0][arrayConteudo[0].length] =	"<div style='margin-left:15px;'>" +
-																"<label>" + perguntaUpperCase +": </label>" +
+																"<label>" + perguntaUpperCase +" </label>" +
 																"<input type='email' id='respostas_"+arrayConteudo[1].length+"' name='respostas_"+arrayConteudo[1].length+"'>" +
 																"</div><br>";
 				}
@@ -303,7 +306,7 @@ $(document).ready(function(){
 				$('#base').text("");
 				
 				// RODAMOS UM FOR PARA ADICIONARMOS NOVAMENTE O TITULO, DESCRIÇÃO E AS PERGUNTAS QUE FICARAM NO ARRAY
-				for (var i = 0; i < arrayConteudo[0].length; i++)
+				for (var i = 1; i < arrayConteudo[0].length; i++)
 				{
 					// ADICIONAMOS O CONTEUDO DE CADA INDICE
 					$("#base").append(arrayConteudo[0][i]);
@@ -428,7 +431,7 @@ $(document).ready(function(){
 		
 		// ADICIONAMOS A PERGUNTA DO USUARIO NO ARRAYCONTEUDO
 		arrayConteudo[0][arrayConteudo[0].length] =	"<div style='margin-left:15px;'>" +
-													"<label>" + perguntaUpperCase + ": </label><br>";
+													"<label>" + perguntaUpperCase + " </label><br>";
 
 		// INICIAMOS UM FOR PARA ADICIONARMOS TODAS AS OPÇÕES NO ARRAY COM UM += PEGANDO O VALOR ANTIGO E ADICIONANDO O NOVO E NUNCA PERDENDO							
 		for (var i = 0; i < arrayConteudo[2].length; i++)
@@ -521,7 +524,10 @@ $(document).ready(function(){
 			var arrayToString = arrayConteudo[0].join("|");
 			
 			// PEGAMOS O ARRAYTOSTRING E ADICIONAMOS O FECHAMENTO DO FORM E DIV NA VARIAVEL STRINGCOMPLETO
-			var stringCompleto = arrayToString + "</form></div>";
+			var stringCompleto = arrayToString + "</div>" +
+												 "<div class='area-botao'>" + 
+												 "<input type='submit' name='Enviar' class='botao' value='Enviar' onclick='document.formResposta.responderForm.value = 'enviarResposta'';>" +
+												 "</div></form></div>";
 			
 			// COLOCAMOS O VALOR DO STRINGCOMPLETO NO FORMULARIO INVISIVEL
 			$('#FormularioCompleto').val(stringCompleto);
