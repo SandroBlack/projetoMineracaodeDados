@@ -1,10 +1,10 @@
 <?php
 	include_once("db/conexao.php");
-	@$idP = $_GET["idP"]; // ID DAS PERGUNTAS ARMAZENADAS NO BANCO, DEPOIS A VARIÁVEL RECEBERÁ ID VIA GET
+	$idP = $_GET["idP"]; // ID DAS PERGUNTAS ARMAZENADAS NO BANCO, DEPOIS A VARIÁVEL RECEBERÁ ID VIA GET
 
 	// BUSCAR OS DADOS NO BANCO
 	$pdo = conectar();
-	$sql = "SELECT question_text FROM questions WHERE question_id = ?";
+	$sql = "SELECT form_conteudo FROM forms WHERE form_id = ?";
 	$listar = $pdo->prepare($sql);
 	$listar->execute(array($idP));
 	$res = $listar->fetch(PDO::FETCH_ASSOC);
@@ -29,11 +29,11 @@
 		</header><!-- ======== Fim do cabeçalho ==========-->
 
 			<!-- ESCREVE NA TELA AS PERGUNTAS -->
-			<?php echo $res["question_text"];?>
+			
 			<div class="container">
+<?php echo $res["form_conteudo"];?>
 
-
-				<h1 style="text-align: center;">Título</h1>
+				<!-- <h1 style="text-align: center;">Título</h1>
 				<h4 style="text-align: center;">Descrição</h3><br><br>
 				<form style="padding: 20px 0px 0px 20px;">
 					<label>Pergunta 1</label><br><br>
@@ -68,7 +68,7 @@
 
 					<label>Pergunta 10</label><br><br>
 					<input type="text" name=""><br><br>
-				</form>
+				</form> -->
 
 		</div>
 
