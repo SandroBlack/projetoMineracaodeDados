@@ -29,7 +29,7 @@
 	<div class="container">	
 		<?php
 
-			try{
+			/*try{
 				$pdo = conectar();								
 				$sql = "SELECT * FROM forms WHERE form_user=?";
 				$listar = $pdo->prepare($sql);								
@@ -39,7 +39,7 @@
 						
 			} catch(PDOException $e){
 					echo "Erro: " . $e->getMessage() . "<br>";
-			}		
+			}*/		
 		?>
 
 		<h1 style="text-align: center;">Seus Formulários</h1><br><br>
@@ -54,12 +54,12 @@
 
 			<tr>
 				<?php
-					while($linha > 0){
+					/*while($linha > 0){
 						echo "<td>{$res['form_title']}</td>";
 						echo "<td>{$res['form_desc']}</td>";
 						echo "<td>{$res['form_time']}</td>";					
 						$linha --;	 
-					}	 
+					}*/	 
 				?>			
 			</tr>
 			

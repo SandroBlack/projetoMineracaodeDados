@@ -21,7 +21,7 @@
 			header("location:cadastro.php");
 		}
 		
-		try{
+		/*try{
 			$pdo = conectar();								
 			$sql = "SELECT * FROM forms WHERE form_user=?";
 			$listar = $pdo->prepare($sql);								
@@ -30,7 +30,7 @@
 			$linha = $listar->rowCount();					
 		} catch(PDOException $e){
 					echo "Erro: " . $e->getMessage() . "<br>";
-		}		
+		}*/		
 	?>
 
 	<!-- ======== Cabeçalho ========== -->
@@ -58,7 +58,7 @@
 				<tr>
 					<td class="transparente">
 						<p>Total de Pesquisas</p><br>
-						<span><?php echo $linha?></span>
+						<span>0</span>
 					</td>
 					<td class="transparente">
 						<p>Pesquisas Respondidas</p><br>
