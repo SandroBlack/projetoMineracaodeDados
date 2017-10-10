@@ -549,10 +549,7 @@ $(document).ready(function(){
 			$('#FormularioCompletoQuestoes').val(arrayConteudo[1].length);
 			
 			// COLOCAMOS O TITULO NO FORMULARIO INVISIVEL
-			$('#FormularioCompletoTitulo').val(verificaTitulo);
-			
-			// COLOCAMOS A QUANTIDADE DE CHECKBOX NO FORMULARIO
-			$('#FormularioQuantidadeCheckbox').val(quantCheckbox);
+			$('#FormularioCompletoTitulo').val(verificaTitulo);			
 
 			// ENVIAMOS O FORMULARIO PARA A PAGINA PHP
 			$('#EnviarFormulario').submit();

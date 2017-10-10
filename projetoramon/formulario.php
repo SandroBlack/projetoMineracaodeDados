@@ -164,8 +164,6 @@
 					
 					<input name="FormularioCompletoQuestoes" id="FormularioCompletoQuestoes" type="hidden" value="">
 					
-					<input name="FormularioQuantidadeCheckbox" id="FormularioQuantidadeCheckbox" type="hidden" value="">
-					
 				</form>
 				
 			</div>
