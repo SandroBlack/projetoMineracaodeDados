@@ -92,9 +92,9 @@
 					
 					<option id="2" name="2" value="2">Campo para resposta curta</option>
 					
-					<option id="3" name="3" value="3">Multipla escolha</option>
+					<option id="3" name="3" value="3">Caixas de Seleção</option>
 					
-					<option id="4" name="4" value="4">Caixas de seleção</option>
+					<option id="4" name="4" value="4">Multipla escolha</option>
 					
 					<option id="5" name="5" value="5">Campo para data</option>
 					
