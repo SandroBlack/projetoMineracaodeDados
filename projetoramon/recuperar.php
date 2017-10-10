@@ -72,7 +72,7 @@
 							
 							echo "Erro: " . $e->getMessage() . "<br>";
 						}
-					$enviarEmail = enviarEmail($email, $informacao);	
+					$enviarEmail = enviarEmail($email, $senhaTemporaria);	
 					}
 				} catch(PDOException $e){
 					echo "Erro: " . $e->getMessage() . "<br>";

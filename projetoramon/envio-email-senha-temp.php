@@ -19,13 +19,13 @@ function enviarEmail($email, $informacao)	{
 			$mail->isSMTP();                                      // Set mailer to use SMTP
 			$mail->Host = 'mx1.hostinger.com.br';  // Specify main and backup SMTP servers
 			$mail->SMTPAuth = true;                               // Enable SMTP authentication
-			$mail->Username = '';                 // SMTP username
-			$mail->Password = '';                           // SMTP password
+			$mail->Username = 'contato@condominioslaranjeiras.com.br';                 // SMTP username
+			$mail->Password = '123456';                           // SMTP password
 			$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
 			$mail->Port = 587;                                    // TCP port to connect to
 
 			//Recipients
-			$mail->setFrom('', ' Senha Temporaria');
+			$mail->setFrom('contato@condominioslaranjeiras.com.br', ' Senha Temporaria');
 			$mail->addAddress($email, $email);     // Add a recipient
 			//$mail->addAddress('condominiosanta@hotmail.com', 'Condominios Laranjeiras');     // Add a recipient
 			//$mail->addAddress('ellen@example.com');               // Name is optional
@@ -42,12 +42,12 @@ function enviarEmail($email, $informacao)	{
 			$mail->isHTML(true);                                  // Set email format to HTML
 			$mail->CharSet = 'utf-8'; 							  // Charset da mensagem
 			$mail->Subject = 'Senha Temporaria';
-			$mail->Body    = '' .$senhaTemporaria.'';
+			$mail->Body    = 'Senha temporaria: ' .$informacao.'';
 			$mail->AltBody = 'Sua senha temporaria: ' .$informacao.'';
 
 			$mail->send();
 
-			// Limpa os destinatários e os anexos
+			// Limpa os destinatÃ¡rios e os anexos
 			$mail->ClearAllRecipients();
 			$mail->ClearAttachments();
 
