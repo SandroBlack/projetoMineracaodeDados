@@ -26,10 +26,14 @@ DROP TABLE IF EXISTS `forms`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `forms` (
   `form_id` int(11) NOT NULL AUTO_INCREMENT,
-  `form_user` int(11) NOT NULL,
-  `form_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`form_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `form_titulo` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `form_conteudo` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `form_questoes` char(2) COLLATE utf8_unicode_ci NOT NULL,
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`form_id`),
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `forms_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,30 +46,6 @@ LOCK TABLES `forms` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `questions`
---
-
-DROP TABLE IF EXISTS `questions`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `questions` (
-  `question_id` int(11) NOT NULL AUTO_INCREMENT,
-  `question_text` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
-  `question_form` int(11) NOT NULL,
-  PRIMARY KEY (`question_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `questions`
---
-
-LOCK TABLES `questions` WRITE;
-/*!40000 ALTER TABLE `questions` DISABLE KEYS */;
-/*!40000 ALTER TABLE `questions` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `respostas`
 --
 
@@ -74,10 +54,21 @@ DROP TABLE IF EXISTS `respostas`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `respostas` (
   `respostas_id` int(11) NOT NULL AUTO_INCREMENT,
-  `respostas_text` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
-  `respostas_question` int(11) NOT NULL,
-  PRIMARY KEY (`respostas_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `respostas_0` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `respostas_1` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `respostas_2` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `respostas_3` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `respostas_4` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `respostas_5` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `respostas_6` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `respostas_7` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `respostas_8` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `respostas_9` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `form_id` int(11) NOT NULL,
+  PRIMARY KEY (`respostas_id`),
+  KEY `form_id` (`form_id`),
+  CONSTRAINT `respostas_ibfk_1` FOREIGN KEY (`form_id`) REFERENCES `forms` (`form_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -101,9 +92,10 @@ CREATE TABLE `users` (
   `user_name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `user_email` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
   `user_password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`user_id`),
-  UNIQUE KEY `user_email` (`user_email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `user_password_temp` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `user_ativado` char(1) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -124,4 +116,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-09-24  1:58:20
+-- Dump completed on 2017-10-09 22:05:26
