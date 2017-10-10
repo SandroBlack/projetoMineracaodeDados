@@ -21,7 +21,7 @@
 			<p>Nos Informe o seu E-mail de Cadastro para que Seja Enviado os Dados para Recuperação</p><br>
 			<form name="formRec" method="POST" action="">
 				<input type="hidden" name="acao" value="">
-				<input type="text" name="email" id="email" class="texto" placeholder="                Informe o E-mail Cadastrado" maxlength="30" size="40"/><br><br>
+				<input type="text" name="email" id="email" class="texto" placeholder="                Informe o E-mail Cadastrado" maxlength="34" size="40"/><br><br>
 				<a href=""><button class="botao btnEnviarEmail" onclick="document.formRec.acao.value='enviarEmail'">Enviar</button></a>
 			</form>
 		</div>
