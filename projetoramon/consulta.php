@@ -25,9 +25,9 @@
 	<div class="container">	
 		<?php
 
-			/*try{
+			try{
 				$pdo = conectar();								
-				$sql = "SELECT * FROM forms WHERE form_user=?";
+				$sql = "SELECT * FROM forms WHERE user_id=?";
 				$listar = $pdo->prepare($sql);								
 				$listar->execute(array($_SESSION["userId"]));
 				$res = $listar->fetch(PDO::FETCH_ASSOC);
@@ -35,7 +35,7 @@
 						
 			} catch(PDOException $e){
 					echo "Erro: " . $e->getMessage() . "<br>";
-			}*/		
+			}	
 		?>
 
 		<h1 style="text-align: center;">Seus Formulários</h1><br><br>
@@ -47,17 +47,16 @@
 				<th style="width: 270px;text-align: center;">Descrição</th>
 				<th style="width: 270px;text-align: center;">Data</th>
 			</tr>
-
-			<tr>
+			
 				<?php
-					/*while($linha > 0){
+					while($res = $listar->fetch(PDO::FETCH_ASSOC)){
+						echo "</tr>";
 						echo "<td>{$res['form_title']}</td>";
 						echo "<td>{$res['form_desc']}</td>";
 						echo "<td>{$res['form_time']}</td>";					
-						$linha --;	 
-					}*/	 
+						echo "</tr>";	 
+					}	 
 				?>			
-			</tr>
 			
 		</table>
 

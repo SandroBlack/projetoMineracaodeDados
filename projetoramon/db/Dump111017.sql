@@ -2,10 +2,10 @@
 -- version 4.6.4
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: 11-Out-2017 às 04:07
--- Versão do servidor: 5.7.16
--- PHP Version: 5.6.26
+-- Host: 127.0.0.1
+-- Generation Time: 11-Out-2017 às 12:27
+-- Versão do servidor: 5.7.14
+-- PHP Version: 5.6.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -31,8 +31,10 @@ USE `mineracao`;
 CREATE TABLE `forms` (
   `form_id` int(11) NOT NULL,
   `form_titulo` varchar(255) NOT NULL,
+  `form_desc` varchar(255) NOT NULL,
   `form_conteudo` longtext NOT NULL,
   `form_questoes` char(2) NOT NULL,
+  `form_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -136,7 +138,7 @@ ALTER TABLE `respostas`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- Constraints for dumped tables
 --
