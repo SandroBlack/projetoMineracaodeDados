@@ -30,8 +30,8 @@
 				$sql = "SELECT * FROM forms WHERE user_id=?";
 				$listar = $pdo->prepare($sql);								
 				$listar->execute(array($_SESSION["userId"]));
-				$res = $listar->fetch(PDO::FETCH_ASSOC);
-				$linha = $listar->rowCount();
+				//$res = $listar->fetch(PDO::FETCH_ASSOC);
+				//$linha = $listar->rowCount();
 						
 			} catch(PDOException $e){
 					echo "Erro: " . $e->getMessage() . "<br>";
@@ -51,7 +51,7 @@
 				<?php
 					while($res = $listar->fetch(PDO::FETCH_ASSOC)){
 						echo "</tr>";
-						echo "<td>{$res['form_title']}</td>";
+						echo "<td>{$res['form_titulo']}</td>";
 						echo "<td>{$res['form_desc']}</td>";
 						echo "<td>{$res['form_time']}</td>";					
 						echo "</tr>";	 

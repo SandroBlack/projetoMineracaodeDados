@@ -1,6 +1,7 @@
 <?php 
 include_once("db/conexao.php");
-
+include_once("conf/restricao.php");		
+	
 	$FormularioCompletoQuestoes = $_POST["FormularioCompletoQuestoes"];
 	
 	$FormularioCompleto = $_POST["FormularioCompleto"];
@@ -9,6 +10,8 @@ include_once("db/conexao.php");
 	
 	$FormularioCompletoTitulo = $_POST["FormularioCompletoTitulo"];
 
+	$FormularioCompletoDescricao = $_POST["FormularioCompletoDescricao"];
+	
 	if($FormularioCompletoX == "")
 	{
 		
@@ -24,17 +27,19 @@ include_once("db/conexao.php");
 		{
 			$pdo = conectar();
 			
-			$sql = "INSERT INTO forms(form_id, form_titulo, form_conteudo, form_questoes) VALUES(:form_id, :form_titulo, :form_conteudo, :form_questoes)";
+			$sql = "INSERT INTO forms(form_titulo, form_desc, form_conteudo, form_questoes, user_id) VALUES(:form_titulo, :form_desc, :form_conteudo, :form_questoes, :user_id)";
 			
-			$insert = $pdo->prepare($sql);	
-			
-			$insert->bindValue(":form_id", 0);
+			$insert = $pdo->prepare($sql);			
 				
-			$insert->bindValue(":form_titulo", $FormularioCompletoTitulo);	
+			$insert->bindValue(":form_titulo", $FormularioCompletoTitulo);
+			
+			$insert->bindValue(":form_desc", $FormularioCompletoDescricao);
 			
 			$insert->bindValue(":form_conteudo", $FormularioCompletoX);
 			
 			$insert->bindValue(":form_questoes", $FormularioCompletoQuestoes);
+
+			$insert->bindValue(":user_id", $_SESSION["userId"]);
 			
 			$insert->execute();
 			
@@ -45,5 +50,5 @@ include_once("db/conexao.php");
 		}
 	}
 	
-	header("location:menu-usuario.php");	
+	header("location:menu-usuario.php");
 ?>

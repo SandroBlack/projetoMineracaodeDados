@@ -549,7 +549,9 @@ $(document).ready(function(){
 			$('#FormularioCompletoQuestoes').val(arrayConteudo[1].length);
 			
 			// COLOCAMOS O TITULO NO FORMULARIO INVISIVEL
-			$('#FormularioCompletoTitulo').val(verificaTitulo);			
+			$('#FormularioCompletoTitulo').val(verificaTitulo);
+			
+			$('#FormularioCompletoDescricao').val(verificaDescricao);
 
 			// ENVIAMOS O FORMULARIO PARA A PAGINA PHP
 			$('#EnviarFormulario').submit();
