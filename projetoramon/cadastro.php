@@ -17,7 +17,7 @@
 <body>
 	<!-- ======== Cabeçalho ========== -->
 	<header id="cabecalho">
-		<a href="index.html"><img src="img/fddsdsadsa.png" style="width: 40px;height: 40px;margin: 14px 0px 0px 20px;" title="Volte a página inicial"></a>
+		<a href="index.html">&larr; Voltar</a>
 	</header>
 	<!-- ======== Fim do cabeçalho ==========-->
 

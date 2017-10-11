@@ -17,6 +17,10 @@ body{
 	background: #ff8000;
 }
 
+#cabecalho a{
+	font-size: 20pt;	
+}
+
 .botao{
 	background: #ffffff;
 	color:#ff8000;

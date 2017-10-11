@@ -17,11 +17,7 @@
 	<!-- ======== Cabeçalho ========== -->
 	<header id="cabecalho">
 
-		<a href="menu-usuario.php">
-
-			<img src="img/fddsdsadsa.png" style="width: 40px;height: 40px;margin: 14px 0px 0px 20px;" title="Volte ao menu do usuário">
-
-		</a>
+		<a href="menu-usuario.php">&larr; Voltar</a>
 
 	</header><!-- ======== Fim do cabeçalho ==========-->
 

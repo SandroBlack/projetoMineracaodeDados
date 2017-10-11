@@ -36,6 +36,11 @@ body {
 	top:0;
 	background: #ff8000;
 }
+
+#cabecalho a{
+	font-size: 20pt;	
+}
+
 .area {
 	display: table;
 	width: 80%;
