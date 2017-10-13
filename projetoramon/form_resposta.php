@@ -3,6 +3,7 @@
 	
 	$link_conteudo = $_GET["link_conteudo"]; // ID DAS PERGUNTAS ARMAZENADAS NO BANCO, DEPOIS A VARIÁVEL RECEBERÁ ID VIA GET
 	
+	echo $link_conteudo;
 	// BUSCAR OS DADOS NO BANCO
 	$pdo = conectar();
 	

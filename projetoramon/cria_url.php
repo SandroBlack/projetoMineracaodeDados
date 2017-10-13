@@ -15,7 +15,7 @@
 			
 			$numeros = true;
 			
-			$simbolos = true;
+			$simbolos = false;
 			
 			$lmin = 'abcdefghijklmnopqrstuvwxyz';
 			
