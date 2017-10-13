@@ -174,4 +174,6 @@ include_once("conf/restricao.php");
 		{
 			echo "Erro: " . $e->getMessage();
 		}
+		
+		header("location:menu-usuario.php");
 ?>
