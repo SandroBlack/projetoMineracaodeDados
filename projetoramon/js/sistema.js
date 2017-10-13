@@ -11,6 +11,8 @@ $(document).ready(function(){
 	
 	arrayConteudo[0][2] =	"";
 	
+	arrayRadio = [[],[]];
+	
 	// INICIANDO VARIAVEL VAZIA PARA RECEBER O TIPO DE INPUT
 	tipoInput = "";
 	
@@ -124,7 +126,7 @@ $(document).ready(function(){
 				
 				// SE TIPO DE PERGUNTA FOR DE NÚMERO 3(TIPO RADIO) ELE ENTRA NESSE IF
 				else if (tipoPergunta == 3)
-				{
+				{					
 					// DECLARAMOS TIPOINPUT COMO RADIO PARA PODERMOS UTILIZAR DE FORMA GLOBAL
 					tipoInput = "radio";
 					
