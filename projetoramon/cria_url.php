@@ -1,5 +1,6 @@
 <?php 
-
+	include_once("db/conexao.php");
+	
 	function gerarUrl(){
 		
 		$disponivel = true;
@@ -24,7 +25,6 @@
 			
 			$simb = '!@#$%-';
 			
-		
 			$retorno = '';
 			
 			$caracteres = '';
@@ -66,7 +66,7 @@
 				
 				if ($linha == 0)
 				{
-					$disponivel == false;
+					break;
 				}
 			} 
 		
