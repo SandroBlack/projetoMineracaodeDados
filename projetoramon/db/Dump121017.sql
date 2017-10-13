@@ -143,6 +143,11 @@ ALTER TABLE `users`
 ALTER TABLE `forms`
   MODIFY `form_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
+-- AUTO_INCREMENT for table `perguntas`
+--
+ALTER TABLE `perguntas`
+  MODIFY `pergunta_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;  
+--
 -- AUTO_INCREMENT for table `respostas`
 --
 ALTER TABLE `respostas`
