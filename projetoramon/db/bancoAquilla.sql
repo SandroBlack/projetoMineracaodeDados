@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: 13-Out-2017 às 06:10
+-- Generation Time: 13-Out-2017 às 07:19
 -- Versão do servidor: 5.7.19
 -- PHP Version: 7.1.9
 
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `forms` (
   `user_id` int(11) NOT NULL,
   PRIMARY KEY (`form_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `link` (
   `form_id` int(11) NOT NULL,
   PRIMARY KEY (`link_id`),
   KEY `link_ibfk_2` (`form_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS `perguntas` (
   `form_id` int(11) NOT NULL,
   PRIMARY KEY (`pergunta_id`),
   KEY `form_id` (`form_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -101,7 +101,7 @@ CREATE TABLE IF NOT EXISTS `respostas` (
   `pergunta_id` int(11) NOT NULL,
   PRIMARY KEY (`respostas_id`),
   KEY `pergunta_id` (`pergunta_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -118,7 +118,14 @@ CREATE TABLE IF NOT EXISTS `users` (
   `user_password_temp` varchar(255) NOT NULL,
   `user_ativado` char(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `users`
+--
+
+INSERT INTO `users` (`user_id`, `user_name`, `user_email`, `user_password`, `user_password_temp`, `user_ativado`) VALUES
+(9, 'Aquilla Silva Leite', 'aquilla11@hotmail.com', '123456', '', '0');
 
 --
 -- Constraints for dumped tables
