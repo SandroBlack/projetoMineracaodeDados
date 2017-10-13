@@ -51,7 +51,7 @@
 					while($res = $listar->fetch(PDO::FETCH_ASSOC)){
 						echo "</tr>";
 						echo "<td><a href='#'>{$res['form_titulo']}</a></td>";
-						echo "<td>{$res['form_time']}</td>";					
+						echo "<td>{$res['form_datatime']}</td>";					
 						echo "</tr>";	 
 					}	 
 				?>			
