@@ -57,15 +57,26 @@
 			<table id="tbUsuario" cellspacing="30">
 				<tr>
 					<td class="transparente">
-						<p>Formulários Criados</p><br>
+						<p>Total de Pesquisas</p><br>
 						<span><?php echo $linha?></span>
 					</td>
 					<td class="transparente">
-						<p>Respostas Obtidas</p><br>
+						<p>Pesquisas Respondidas</p><br>
 						<span>0</span>
 					</td>
 					<td class="transparente">
 						<a href="consulta.php">Consultar Pesquisas</a><br>								
+					</td>
+				</tr>
+				<tr>
+					<td class="transparente">
+						-						
+					</td>
+					<td class="transparente">
+						-
+					</td>
+					<td class="transparente">
+					<a href="">Estatísticas</a>
 					</td>
 				</tr>			
 			</table>
