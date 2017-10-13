@@ -44,15 +44,13 @@
 
 			<tr>
 				<th style="width: 270px;text-align: center;">Título</th>
-				<th style="width: 270px;text-align: center;">Descrição</th>
-				<th style="width: 270px;text-align: center;">Data</th>
+				<th style="width: 270px;text-align: center;">Criado em:</th>
 			</tr>
 			
 				<?php
 					while($res = $listar->fetch(PDO::FETCH_ASSOC)){
 						echo "</tr>";
-						echo "<td>{$res['form_titulo']}</td>";
-						echo "<td>{$res['form_desc']}</td>";
+						echo "<td><a href='#'>{$res['form_titulo']}</a></td>";
 						echo "<td>{$res['form_time']}</td>";					
 						echo "</tr>";	 
 					}	 

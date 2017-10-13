@@ -153,23 +153,7 @@
 		<div id="base" class="container">
 		
 		</div>		
-		
-			<div id="escondido" class="invisivel">	
-			
-				<form name="EnviarFormulario" id="EnviarFormulario" method="post" action="recebeForm.php">
-				
-					<input name="FormularioCompletoTitulo" id="FormularioCompletoTitulo" type="hidden" value="">
-
-					<input name="FormularioCompletoDescricao" id="FormularioCompletoDescricao" type="hidden" value="">	
-				
-					<input name="FormularioCompleto" id="FormularioCompleto" type="hidden" value="">
-					
-					<input name="FormularioCompletoQuestoes" id="FormularioCompletoQuestoes" type="hidden" value="">
-					
-				</form>
-				
-			</div>
-			
+	
 		<br>
 		
 		<br>

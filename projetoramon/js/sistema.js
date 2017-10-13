@@ -11,6 +11,8 @@ $(document).ready(function(){
 	
 	arrayConteudo[0][2] =	"";
 	
+	arrayRadio = [[],[]];
+	
 	// INICIANDO VARIAVEL VAZIA PARA RECEBER O TIPO DE INPUT
 	tipoInput = "";
 	
@@ -124,7 +126,7 @@ $(document).ready(function(){
 				
 				// SE TIPO DE PERGUNTA FOR DE NÚMERO 3(TIPO RADIO) ELE ENTRA NESSE IF
 				else if (tipoPergunta == 3)
-				{
+				{					
 					// DECLARAMOS TIPOINPUT COMO RADIO PARA PODERMOS UTILIZAR DE FORMA GLOBAL
 					tipoInput = "radio";
 					
@@ -518,13 +520,13 @@ $(document).ready(function(){
 		$("#warning").css("display","none");
 		
 		// PEGAMOS O VALOR DO TITULO
-		var verificaTitulo = $("#titulo").val();
+		var form_titulo = $("#titulo").val();
 		
 		// PEGAMOS O VALOR DA DESCRIÇÃO
 		var verificaDescricao = $("#descricao").val();
 		
 		// SE ARRAYCONTEUDO FOR 3 OU TITULO OU DESCRICAO OU ESTIVER VAZIO NÃO PODEMOS ENVIAR O FORMULARIO POIS ESTA VAZIO
-		if (arrayConteudo[0].length == 3 || verificaTitulo == "" || verificaDescricao == "")
+		if (arrayConteudo[0].length == 3 || form_titulo == "" || verificaDescricao == "")
 		{
 			// AVISAMOS QUE O FORMULARIO ESTA INCOMPLETO
 			$("#warning").text("");
@@ -535,30 +537,53 @@ $(document).ready(function(){
 		// SE TIVER TUDO OK VAMOS PARA O ELSE
 		else
 		{	
-
-			// JUNTAMOS TODO O ARRAYCONTEUDO NA VARIAVEL ARRAYTOSTRING
+			data = new Date();
+			
+            dia = data.getDate();
+			
+			ano = data.getFullYear();
+			
+			hora = data.getHours();
+			
+			min = data.getMinutes();
+			
+			mes = data.getMonth() + 1;
+			
+			var form_time = "Formulario criado em: " + dia + "/" +  mes + "/" + ano + ", às: " + hora + " Horas " + min + " Minuto(s)";
+			
 			var arrayToString = arrayConteudo[0].join("|");
 			
-			// PEGAMOS O ARRAYTOSTRING E ADICIONAMOS O FECHAMENTO DO FORM E DIV NA VARIAVEL STRINGCOMPLETO
-			var stringCompleto = arrayToString + "</div></form></div>";
+			var form_conteudo = arrayToString + "</div></form></div>";
 			
-			// COLOCAMOS O VALOR DO STRINGCOMPLETO NO FORMULARIO INVISIVEL
-			$('#FormularioCompleto').val(stringCompleto);
+			var form_questoes = JSON.stringify(arrayConteudo[1]);
 			
-			// COLOCAMOS A QUANTIDADE DE QUESTOES NO FORMULARIO INVISIVEL
-			$('#FormularioCompletoQuestoes').val(arrayConteudo[1].length);
+			var form_Qquestoes = arrayConteudo[1].length;
 			
-			// COLOCAMOS O TITULO NO FORMULARIO INVISIVEL
-			$('#FormularioCompletoTitulo').val(verificaTitulo);
 			
-			$('#FormularioCompletoDescricao').val(verificaDescricao);
-
-			// ENVIAMOS O FORMULARIO PARA A PAGINA PHP
-			$('#EnviarFormulario').submit();
+			var dadosajax = {
+				form_id : 0,
+				form_titulo : form_titulo,
+				form_conteudo : form_conteudo,
+				form_questoes : form_questoes,
+				form_Qquestoes : form_Qquestoes,
+				form_time : form_time
+			}
 			
-			// DAMOS UM ALERT QUE FOI CADASTRADO COM SUCESSO
-			alert("Formulário Cadastrado com Sucesso");
-			
+			$.ajax({
+				type: 'POST',
+				url: 'recebeForm.php',
+				data: dadosajax,				
+				success: function(data)
+				{
+					alert("Formulário Cadastrado Com Sucesso");
+				},
+				error: function(XMLHttpRequest, textStatus, errorThrown) 
+				{ 					
+					alert("Status: " + textStatus); 
+					
+					alert("Error: " + errorThrown); 
+				}  		
+			});
 		}
 	});	
 });
