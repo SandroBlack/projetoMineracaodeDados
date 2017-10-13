@@ -1,13 +1,21 @@
 <?php
 	include_once("db/conexao.php");
 	
-	@$idP = $_GET["idP"]; // ID DAS PERGUNTAS ARMAZENADAS NO BANCO, DEPOIS A VARIÁVEL RECEBERÁ ID VIA GET
+	$link_conteudo = $_GET["link_conteudo"]; // ID DAS PERGUNTAS ARMAZENADAS NO BANCO, DEPOIS A VARIÁVEL RECEBERÁ ID VIA GET
 	
 	// BUSCAR OS DADOS NO BANCO
 	$pdo = conectar();
-	$sql = "SELECT * FROM forms WHERE form_id = ?";
+	
+	$sql = "SELECT * 
+			FROM link 
+			INNER JOIN forms ON link.form_id = forms.form_id 
+			INNER JOIN perguntas ON forms.form_id = perguntas.form_id 
+			WHERE link_conteudo = ?";
+			
 	$listar = $pdo->prepare($sql);
-	$listar->execute(array($idP));
+	
+	$listar->execute(array($link_conteudo));
+	
 	$res = $listar->fetch(PDO::FETCH_ASSOC);
 	
 ?>
@@ -40,15 +48,18 @@
 			<?php 
 			
 				echo $res["form_conteudo"];
+				var_dump($res);
 			?>
 			
 		<?php 
 		
 			@$responderForm = $_POST["responderForm"];
 			
-			$quantidadeQuestoes = $res["form_questoes"];
+			$quantQuestoes = $res["form_Qquestoes"];
 			
-			function responder($questoes){
+			$pergunta_id = $res["pergunta_id"];
+			
+			function responder($questoes, $perguntaId){
 			
 			$respostas_0 = null;	
 			$respostas_1 = null;	
@@ -119,7 +130,8 @@
 			try
 			{
 				$pdo = conectar();								
-				$sql = "INSERT INTO respostas(respostas_id, respostas_0, respostas_1, respostas_2, respostas_3, respostas_4, respostas_5, respostas_6, respostas_7, respostas_8, respostas_9) VALUES(:respostas_id, :respostas_0, 	:respostas_1, :respostas_2, :respostas_3, :respostas_4, :respostas_5, :respostas_6, :respostas_7, :respostas_8, :respostas_9)";
+				$sql = "INSERT INTO respostas(respostas_id, respostas_0, respostas_1, respostas_2, respostas_3, respostas_4, respostas_5, respostas_6, respostas_7, respostas_8, respostas_9,pergunta_id)
+						VALUES(:respostas_id, :respostas_0, 	:respostas_1, :respostas_2, :respostas_3, :respostas_4, :respostas_5, :respostas_6, :respostas_7, :respostas_8, :respostas_9, :pergunta_id)";
 				$inserir = $pdo->prepare($sql);
 				$inserir->bindValue(":respostas_id", 0);
 				$inserir->bindValue(":respostas_0", $respostas_0);
@@ -132,6 +144,7 @@
 				$inserir->bindValue(":respostas_7", $respostas_7);
 				$inserir->bindValue(":respostas_8", $respostas_8);
 				$inserir->bindValue(":respostas_9", $respostas_9);
+				$inserir->bindValue(":pergunta_id", $perguntaId);
 				$inserir->execute();
 			} 
 			catch(PDOException $e)
@@ -142,7 +155,7 @@
 			
 				if($responderForm == "enviarResposta")
 			{
-				responder($quantidadeQuestoes);
+				responder($quantQuestoes,$pergunta_id);
 			}
 		?>
 		

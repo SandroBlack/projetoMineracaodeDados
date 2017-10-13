@@ -576,6 +576,7 @@ $(document).ready(function(){
 				success: function(data)
 				{
 					alert("Formulário Cadastrado Com Sucesso");
+					window.location="menu-usuario.php"; 
 				},
 				error: function(XMLHttpRequest, textStatus, errorThrown) 
 				{ 					

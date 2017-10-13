@@ -27,7 +27,10 @@
 
 			try{
 				$pdo = conectar();								
-				$sql = "SELECT * FROM forms WHERE user_id=?";
+				$sql = "SELECT forms.form_titulo, forms.form_time, link.link_conteudo 
+						FROM forms 
+						INNER JOIN link ON forms.form_id = link.form_id
+						WHERE user_id=?";
 				$listar = $pdo->prepare($sql);								
 				$listar->execute(array($_SESSION["userId"]));
 				//$res = $listar->fetch(PDO::FETCH_ASSOC);
@@ -50,8 +53,8 @@
 				<?php
 					while($res = $listar->fetch(PDO::FETCH_ASSOC)){
 						echo "</tr>";
-						echo "<td><a href='#'>{$res['form_titulo']}</a></td>";
-						echo "<td>{$res['form_datatime']}</td>";					
+						echo "<td align='center'><a href='http://localhost/projetoMineracaodeDados/projetoramon/form_resposta.php?link_conteudo={$res['link_conteudo']}' target='_blank'> {$res['form_titulo']}</a></td>";
+						echo "<td>{$res['form_time']}</td>";						
 						echo "</tr>";	 
 					}	 
 				?>			

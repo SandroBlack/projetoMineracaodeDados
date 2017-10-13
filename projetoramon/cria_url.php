@@ -48,8 +48,6 @@
 				$retorno .= $caracteres[$rand-1];
 			}
 			
-			$urlFinal = "http://localhost/projetoMineracaodeDados/projetoramon/form_resposta.php?form_conteudo=" .$retorno;
-			
 			try
 			{
 				$pdo = conectar();
@@ -58,7 +56,7 @@
 				
 				$select = $pdo->prepare($sql);			
 				
-				$select->bindValue(":link_conteudo", $urlFinal);
+				$select->bindValue(":link_conteudo", $retorno);
 				
 				$select->execute();
 				
@@ -76,7 +74,7 @@
 			}
 		};
 		
-		return $urlFinal;			
+		return $retorno;			
 	}
 
 ?>

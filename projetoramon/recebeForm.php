@@ -117,7 +117,7 @@ require ("cria_url.php");
 			
 			$insertZero->bindValue(":form_time", $form_time);
 
-			$insertZero->bindValue(":user_id", 9);
+			$insertZero->bindValue(":user_id", $_SESSION["userId"]);
 			
 			$insertZero->execute();
 			
@@ -173,6 +173,4 @@ require ("cria_url.php");
 			$pdo->rollBack();
 			echo "Erro: " . $e->getMessage();
 		}
-		
-		header("location:menu-usuario.php");
 ?>
