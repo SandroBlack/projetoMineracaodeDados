@@ -54,8 +54,7 @@
 					while($res = $listar->fetch(PDO::FETCH_ASSOC)){
 						echo "</tr>";
 						echo "<td align='center'><a href='http://localhost/projetoMineracaodeDados/projetoramon/form_resposta.php?link_conteudo={$res['link_conteudo']}' target='_blank'> {$res['form_titulo']}</a></td>";
-						echo "<td>{$res['form_time']}</td>";						
-						echo "<td>{$res['link_conteudo']}</td>";
+						echo "<td>{$res['form_time']}</td>";
 						echo "</tr>";	 
 					}	 
 				?>			
