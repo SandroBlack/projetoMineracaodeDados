@@ -72,21 +72,39 @@
 					} else{
 						try{
 							$pdo = conectar();								
-							$sql = "SELECT * FROM users WHERE user_email=? AND user_password=?";
+							$sql = "SELECT * FROM users WHERE user_email=?";
 							$listar = $pdo->prepare($sql);								
-							$listar->execute(array($email, $senha));
+							$listar->execute(array($email));
 							$res = $listar->fetch(PDO::FETCH_ASSOC);
 							$linha = $listar->rowCount();
 
-							if($linha == 0){
+							if($linha == 0)
+							{
 								echo "<script>alert('Usuário ou Senha Inválido!')</script>";
 								return false;
-							} else{
-								session_start();
-								$_SESSION["userId"] = $res["user_id"];
-								$_SESSION["nomeUser"] = $res["user_name"];
-								$_SESSION["logado"] = true;
-								header("location:menu-usuario.php");
+							} 
+							else
+							{
+								if($senha == $res["user_password"])
+								{	
+									session_start();
+									$_SESSION["userId"] = $res["user_id"];
+									$_SESSION["nomeUser"] = $res["user_name"];
+									$_SESSION["logado"] = true;
+									header("location:menu-usuario.php");
+								}
+								else if ($senha == $res["user_password_temp"])
+								{
+									$_SESSION["userId"] = $res["user_id"];
+									$_SESSION["nomeUser"] = $res["user_name"];
+									$_SESSION["logado"] = true;
+									header("location:redefinir.php");
+								}
+								else 
+								{
+									echo "<script>alert('Usuário ou Senha Inválido!')</script>";
+									return false;
+								}									
 							}						
 							
 						} catch(PDOException $e){
