@@ -3,7 +3,7 @@ include_once("db/conexao.php");
 
 include_once("conf/restricao.php");	
 
-require ("cria_url.php");	
+require ("gerar_url.php");	
 
 	$form_id = $_POST["form_id"];
 	

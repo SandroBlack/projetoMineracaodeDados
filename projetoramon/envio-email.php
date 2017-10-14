@@ -9,7 +9,7 @@ require 'PHPMailer/src/PHPMailer.php';
 require 'PHPMailer/src/SMTP.php';
 require 'PHPMailer/src/OAuth.php';
 
-function enviarEmail($email, $informacao)	{
+function enviarEmail($emailDestino, $corpoEmail, $assuntoEmail)	{
 
 
 		$mail = new PHPMailer(true);                              // Passing `true` enables exceptions
@@ -25,8 +25,8 @@ function enviarEmail($email, $informacao)	{
 			$mail->Port = 587;                                    // TCP port to connect to
 
 			//Recipients
-			$mail->setFrom('contato@condominioslaranjeiras.com.br', ' Senha Temporaria');
-			$mail->addAddress($email, $email);     // Add a recipient
+			$mail->setFrom('contato@condominioslaranjeiras.com.br', $assuntoEmail);
+			$mail->addAddress($emailDestino, $emailDestino);     // Add a recipient
 			//$mail->addAddress('condominiosanta@hotmail.com', 'Condominios Laranjeiras');     // Add a recipient
 			//$mail->addAddress('ellen@example.com');               // Name is optional
 			//$mail->addReplyTo('info@example.com', 'Information');
@@ -41,9 +41,9 @@ function enviarEmail($email, $informacao)	{
 			//Content
 			$mail->isHTML(true);                                  // Set email format to HTML
 			$mail->CharSet = 'utf-8'; 							  // Charset da mensagem
-			$mail->Subject = 'Senha Temporaria';
-			$mail->Body    = 'Senha temporaria: ' .$informacao.'';
-			$mail->AltBody = 'Sua senha temporaria: ' .$informacao.'';
+			$mail->Subject = $assuntoEmail;
+			$mail->Body    = $corpoEmail;
+			$mail->AltBody = $corpoEmail;
 
 			$mail->send();
 

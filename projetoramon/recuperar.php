@@ -34,7 +34,7 @@
 		
 		function emailRecSenha(){
 			require("gerar-senha.php");
-			require("envio-email-senha-temp.php");
+			require("envio-email.php");
 			
 			$email = $_POST["email"];			
 			if($email == ""){
