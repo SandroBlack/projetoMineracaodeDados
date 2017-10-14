@@ -11,8 +11,6 @@ $(document).ready(function(){
 	
 	arrayConteudo[0][2] =	"";
 	
-	arrayRadio = [[],[]];
-	
 	// INICIANDO VARIAVEL VAZIA PARA RECEBER O TIPO DE INPUT
 	tipoInput = "";
 	
