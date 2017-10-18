@@ -547,7 +547,7 @@ $(document).ready(function(){
 			
 			mes = data.getMonth() + 1;
 			
-			var form_time = "Formulario criado em: " + dia + "/" +  mes + "/" + ano + ", às: " + hora + " Horas " + min + " Minuto(s)";
+			var form_time = dia + "/" +  mes + "/" + ano + ", às: " + hora + " Horas " + min + " Minuto(s)";
 			
 			var arrayToString = arrayConteudo[0].join("|");
 			
