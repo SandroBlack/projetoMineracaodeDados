@@ -117,6 +117,7 @@
 				function cadastrar(){						
 					$nome = $_POST["nome"];
 					$email = $_POST["email"];
+					$email = preg_replace('/[^[:alnum:]_.-@]/','',$email);
 					$senha = $_POST["senha"];
 					$confSenha = $_POST["confSenha"];
 

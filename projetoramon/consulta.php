@@ -45,35 +45,28 @@
 		
 		<table style="width: 810px;margin: 10px auto 0px auto;" cellspacing="10" >
 
-			<tr>
-			<th style="width: 270px;text-align: center;">ID</th>
-				<th style="width: 270px;text-align: center;">Título</th>
-				<th style="width: 270px;text-align: center;">Criado em:</th>
-				<th style="width: 270px;text-align: center;">Convite</th>
+			<tr>			
+				<th style="width: 270px;text-align: left;">Título</th>
+				<th style="width: 270px;text-align: left;">Criado em:</th>
+				<th style="width: 270px;text-align: left;">Convite</th>
 			</tr>
 			
 				<?php $i=1; while($res = $listar->fetch(PDO::FETCH_ASSOC)){ ?>
 					
-					<form name="formConvite" method="POST" action="">				
+					<form name="formConvite<?=$i?>" method="POST" action="htmlEmail.php">
+
 						<tr>
-							<td style="display:none"><input type="hidden" name="idForm" id="idForm" value="<?=$res['form_id']?>"></td>
-							<td style="display:none"><input type="hidden" name="email" id="email<?php echo $i;?>" value=""></td>
-							<td><?=$res["form_id"]?></td>
-							<td align="center"><a href="http://localhost/projetoMineracaodeDados/projetoramon/form_resposta.php?link_conteudo=<?=$res['link_conteudo']?>" target="_blank"><?=$res["form_titulo"]?></a></td>
+							<td style="display:none"><input type="hidden" name="linkForm" id="linkForm" value="<?=$res["link_conteudo"]?>"></td>							
+							<td align="left"><a href="http://localhost/projetoMineracaodeDados/projetoramon/form_resposta.php?link_conteudo=<?=$res['link_conteudo']?>" target="_blank"><?=$res["form_titulo"]?></a></td>
 							<td><?=$res["form_time"]?></td>	
-							<td><input type="submit" value="Convidar" onclick="fu()"></td>					
+							<td><input type="submit" value="Convidar" onclick=""></td>					
 						</tr>
-												
+													
 					</form>	
+					
 				<?php $i++;}?>				
 			
-		</table>
-
-		<script>
-			function fu(){				
-				document.getElementById("email1").value = prompt("Digite o Email do Convidado");
-			}
-		</script>
+		</table>		
 
 	</div>
 
