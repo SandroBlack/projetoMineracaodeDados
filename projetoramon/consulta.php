@@ -27,7 +27,7 @@
 
 			try{
 				$pdo = conectar();								
-				$sql = "SELECT forms.form_titulo, forms.form_time, link.link_conteudo 
+				$sql = "SELECT forms.form_id, forms.form_titulo, forms.form_time, link.link_conteudo 
 						FROM forms 
 						INNER JOIN link ON forms.form_id = link.form_id
 						WHERE user_id=?";
@@ -46,20 +46,34 @@
 		<table style="width: 810px;margin: 10px auto 0px auto;" cellspacing="10" >
 
 			<tr>
+			<th style="width: 270px;text-align: center;">ID</th>
 				<th style="width: 270px;text-align: center;">Título</th>
 				<th style="width: 270px;text-align: center;">Criado em:</th>
+				<th style="width: 270px;text-align: center;">Convite</th>
 			</tr>
 			
-				<?php
-					while($res = $listar->fetch(PDO::FETCH_ASSOC)){
-						echo "</tr>";
-						echo "<td align='center'><a href='http://localhost/projetoMineracaodeDados/projetoramon/form_resposta.php?link_conteudo={$res['link_conteudo']}' target='_blank'> {$res['form_titulo']}</a></td>";
-						echo "<td>{$res['form_time']}</td>";
-						echo "</tr>";	 
-					}	 
-				?>			
+				<?php $i=1; while($res = $listar->fetch(PDO::FETCH_ASSOC)){ ?>
+					
+					<form name="formConvite" method="POST" action="">				
+						<tr>
+							<td style="display:none"><input type="hidden" name="idForm" id="idForm" value="<?=$res['form_id']?>"></td>
+							<td style="display:none"><input type="hidden" name="email" id="email<?php echo $i;?>" value=""></td>
+							<td><?=$res["form_id"]?></td>
+							<td align="center"><a href="http://localhost/projetoMineracaodeDados/projetoramon/form_resposta.php?link_conteudo=<?=$res['link_conteudo']?>" target="_blank"><?=$res["form_titulo"]?></a></td>
+							<td><?=$res["form_time"]?></td>	
+							<td><input type="submit" value="Convidar" onclick="fu()"></td>					
+						</tr>
+												
+					</form>	
+				<?php $i++;}?>				
 			
 		</table>
+
+		<script>
+			function fu(){				
+				document.getElementById("email1").value = prompt("Digite o Email do Convidado");
+			}
+		</script>
 
 	</div>
 
