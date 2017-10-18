@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.4
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: 13-Out-2017 às 03:56
--- Versão do servidor: 5.7.16
--- PHP Version: 5.6.26
+-- Host: 127.0.0.1:3306
+-- Generation Time: 18-Out-2017 às 01:09
+-- Versão do servidor: 5.7.19
+-- PHP Version: 7.1.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -38,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `forms` (
   `user_id` int(11) NOT NULL,
   PRIMARY KEY (`form_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -53,7 +55,7 @@ CREATE TABLE IF NOT EXISTS `link` (
   `form_id` int(11) NOT NULL,
   PRIMARY KEY (`link_id`),
   KEY `link_ibfk_2` (`form_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -77,7 +79,7 @@ CREATE TABLE IF NOT EXISTS `perguntas` (
   `form_id` int(11) NOT NULL,
   PRIMARY KEY (`pergunta_id`),
   KEY `form_id` (`form_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -101,7 +103,7 @@ CREATE TABLE IF NOT EXISTS `respostas` (
   `pergunta_id` int(11) NOT NULL,
   PRIMARY KEY (`respostas_id`),
   KEY `pergunta_id` (`pergunta_id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -118,7 +120,14 @@ CREATE TABLE IF NOT EXISTS `users` (
   `user_password_temp` varchar(255) NOT NULL,
   `user_ativado` char(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `users`
+--
+
+INSERT INTO `users` (`user_id`, `user_name`, `user_email`, `user_password`, `user_password_temp`, `user_ativado`) VALUES
+(10, 'Aquilla Silva Leite', 'aquilla11@hotmail.com', '123456', '', '0');
 
 --
 -- Constraints for dumped tables
@@ -141,13 +150,14 @@ ALTER TABLE `link`
 --
 ALTER TABLE `perguntas`
   ADD CONSTRAINT `perguntas_ibfk_1` FOREIGN KEY (`form_id`) REFERENCES `forms` (`form_id`);
-  
+
 --
 -- Limitadores para a tabela `respostas`
 --
 ALTER TABLE `respostas`
   ADD CONSTRAINT `respostas_ibfk_2` FOREIGN KEY (`pergunta_id`) REFERENCES `perguntas` (`pergunta_id`);
-  
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
