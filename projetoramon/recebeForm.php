@@ -103,6 +103,8 @@ require ("gerar_url.php");
 		{
 			$pdo = conectar();
 			
+			$pdo->beginTransaction();
+			
 			$sql = "INSERT INTO forms(form_id, form_titulo, form_conteudo, form_Qquestoes, form_time, user_id) VALUES(:form_id, :form_titulo, :form_conteudo, :form_Qquestoes, :form_time, :user_id)";
 			
 			$insertZero = $pdo->prepare($sql);			
@@ -166,8 +168,9 @@ require ("gerar_url.php");
 			
 			$insertDois->execute();
 			
+			$sucess = "Formulário Cadastrado Com Sucesso";
+			echo $sucess;
 		} 
-		
 		catch(PDOException $e)
 		{
 			$pdo->rollBack();

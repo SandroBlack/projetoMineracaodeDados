@@ -547,7 +547,7 @@ $(document).ready(function(){
 			
 			mes = data.getMonth() + 1;
 			
-			var form_time = "Formulario criado em: " + dia + "/" +  mes + "/" + ano + ", às: " + hora + " Horas " + min + " Minuto(s)";
+			var form_time = dia + "/" +  mes + "/" + ano + ", às: " + hora + " Horas " + min + " Minuto(s)";
 			
 			var arrayToString = arrayConteudo[0].join("|");
 			
@@ -570,17 +570,16 @@ $(document).ready(function(){
 			$.ajax({
 				type: 'POST',
 				url: 'recebeForm.php',
-				data: dadosajax,				
-				success: function(data)
+				data: dadosajax,
+				dataType : 'html', 
+				success: function(sucess)
 				{
-					alert("Formulário Cadastrado Com Sucesso");
+					alert(sucess);
 					window.location="menu-usuario.php"; 
 				},
-				error: function(XMLHttpRequest, textStatus, errorThrown) 
+				error: function(erro) 
 				{ 					
-					alert("Status: " + textStatus); 
-					
-					alert("Error: " + errorThrown); 
+					alert(erro);   
 				}  		
 			});
 		}
