@@ -99,81 +99,117 @@ require ("gerar_url.php");
 	
 	$formUrl = gerarUrl();
 
-		try
-		{
-			$pdo = conectar();
-			
-			$pdo->beginTransaction();
-			
-			$sql = "INSERT INTO forms(form_id, form_titulo, form_conteudo, form_Qquestoes, form_time, user_id) VALUES(:form_id, :form_titulo, :form_conteudo, :form_Qquestoes, :form_time, :user_id)";
-			
-			$insertZero = $pdo->prepare($sql);			
-			
-			$insertZero->bindValue(":form_id", $form_id);
-			
-			$insertZero->bindValue(":form_titulo", $form_titulo);
-			
-			$insertZero->bindValue(":form_conteudo", $form_conteudo);
-			
-			$insertZero->bindValue(":form_Qquestoes", $form_Qquestoes);
-			
-			$insertZero->bindValue(":form_time", $form_time);
+	$sucess = true;
+	
+	try
+	{
+		$pdo = conectar();
+		
+		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-			$insertZero->bindValue(":user_id", $_SESSION["userId"]);
+		$pdo->beginTransaction();	
 			
-			$insertZero->execute();
+		$sql = "INSERT INTO forms(form_id, form_titulo, form_conteudo, form_Qquestoes, form_time, user_id) VALUES(:form_id, :form_titulo, :form_conteudo, :form_Qquestoes, :form_time, :user_id)";
 			
-			$lastId = $pdo->lastInsertId();
+		$insertZero = $pdo->prepare($sql);			
 			
-			$sql = "INSERT INTO perguntas(pergunta_id, perguntas_0, perguntas_1, perguntas_2, perguntas_3, perguntas_4, perguntas_5, perguntas_6, perguntas_7, perguntas_8, perguntas_9, form_id) 
-					VALUES (:pergunta_id, :perguntas_0, :perguntas_1, :perguntas_2, :perguntas_3, :perguntas_4, :perguntas_5, :perguntas_6, :perguntas_7, :perguntas_8, :perguntas_9, :form_id)";
+		$insertZero->bindValue(":form_id", $form_id);
 			
-			$insertUm = $pdo->prepare($sql);			
+		$insertZero->bindValue(":form_titulo", $form_titulo);
 			
-			$insertUm->bindValue(":pergunta_id", 0);
+		$insertZero->bindValue(":form_conteudo", $form_conteudo);
 			
-			$insertUm->bindValue(":perguntas_0", $perguntas_0);
+		$insertZero->bindValue(":form_Qquestoes", $form_Qquestoes);
 			
-			$insertUm->bindValue(":perguntas_1", $perguntas_1);
+		$insertZero->bindValue(":form_time", $form_time);
+
+		$insertZero->bindValue(":user_id", $_SESSION["userId"]);
 			
-			$insertUm->bindValue(":perguntas_2", $perguntas_2);
+		$insertZero->execute();
+		
+		$lastId = $pdo->lastInsertId();
+	} 		
+	catch(PDOException $e)
+	{
+	    $sucess = "0";
+		
+		$pdo->rollBack();
+		
+		echo $sucess;
+		
+		return 0;
+	}
+		
+	try
+	{
+		$sql = "INSERT INTO perguntas(pergunta_id, perguntas_0, perguntas_1, perguntas_2, perguntas_3, perguntas_4, perguntas_5, perguntas_6, perguntas_7, perguntas_8, perguntas_9, form_id) 
+				VALUES (:pergunta_id, :perguntas_0, :perguntas_1, :perguntas_2, :perguntas_3, :perguntas_4, :perguntas_5, :perguntas_6, :perguntas_7, :perguntas_8, :perguntas_9, :form_id)";
 			
-			$insertUm->bindValue(":perguntas_3", $perguntas_3);
+		$insertUm = $pdo->prepare($sql);			
 			
-			$insertUm->bindValue(":perguntas_4", $perguntas_4);
+		$insertUm->bindValue(":pergunta_id", 0);
 			
-			$insertUm->bindValue(":perguntas_5", $perguntas_5);
+		$insertUm->bindValue(":perguntas_0", $perguntas_0);
 			
-			$insertUm->bindValue(":perguntas_6", $perguntas_6);
+		$insertUm->bindValue(":perguntas_1", $perguntas_1);
 			
-			$insertUm->bindValue(":perguntas_7", $perguntas_7);
+		$insertUm->bindValue(":perguntas_2", $perguntas_2);
 			
-			$insertUm->bindValue(":perguntas_8", $perguntas_8);
+		$insertUm->bindValue(":perguntas_3", $perguntas_3);
 			
-			$insertUm->bindValue(":perguntas_9", $perguntas_9);
+		$insertUm->bindValue(":perguntas_4", $perguntas_4);
 			
-			$insertUm->bindValue(":form_id", $lastId);
+		$insertUm->bindValue(":perguntas_5", $perguntas_5);
 			
-			$insertUm->execute();
+		$insertUm->bindValue(":perguntas_6", $perguntas_6);
 			
-			$sql = "INSERT INTO link(link_id, link_conteudo, form_id) VALUES (:link_id, :link_conteudo, :form_id)";
+		$insertUm->bindValue(":perguntas_7", $perguntas_7);
 			
-			$insertDois = $pdo->prepare($sql);			
+		$insertUm->bindValue(":perguntas_8", $perguntas_8);
 			
-			$insertDois->bindValue(":link_id", 0);
+		$insertUm->bindValue(":perguntas_9", $perguntas_9);
 			
-			$insertDois->bindValue(":link_conteudo", $formUrl);
+		$insertUm->bindValue(":form_id", $lastId);
 			
-			$insertDois->bindValue(":form_id", $lastId);
+		$insertUm->execute();
+	} 
+	catch(PDOException $e)
+	{
+	    $sucess = "0";
+		
+		$pdo->rollBack();
+		
+		echo $sucess;
+		
+		return 0;
+	}
+	
+	try
+	{
+		$sql = "INSERT INTO link(link_id, link_conteudo, form_id) VALUES (:link_id, :link_conteudo, :form_id)";
 			
-			$insertDois->execute();
+		$insertDois = $pdo->prepare($sql);			
 			
-			$sucess = "Formulário Cadastrado Com Sucesso";
-			echo $sucess;
-		} 
-		catch(PDOException $e)
-		{
-			$pdo->rollBack();
-			echo "Erro: " . $e->getMessage();
-		}
+		$insertDois->bindValue(":link_id", 0);
+			
+		$insertDois->bindValue(":link_conteudo", $formUrl);
+			
+		$insertDois->bindValue(":form_id", $lastId);
+			
+		$insertDois->execute();
+			
+		$pdo->commit();
+		
+		echo $sucess;
+	} 
+	catch(PDOException $e)
+	{
+	    $sucess = "0";
+		
+		$pdo->rollBack();
+		
+		echo $sucess;
+		
+		return 0;
+	}
 ?>
