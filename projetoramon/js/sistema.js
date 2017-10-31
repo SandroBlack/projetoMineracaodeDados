@@ -559,28 +559,50 @@ $(document).ready(function(){
 			
 			
 			var dadosajax = {
+				
 				form_id : 0,
+				
 				form_titulo : form_titulo,
+				
 				form_conteudo : form_conteudo,
+				
 				form_questoes : form_questoes,
+				
 				form_Qquestoes : form_Qquestoes,
+				
 				form_time : form_time
 			}
 			
 			$.ajax({
+				
 				type: 'POST',
+				
 				url: 'recebeForm.php',
+				
 				data: dadosajax,
+				
 				dataType : 'html', 
+				
 				success: function(sucess)
 				{
-					alert(sucess);
-					window.location="menu-usuario.php"; 
+					if(sucess == "1")
+					{
+						alert("Cadastrado Com Sucesso");
+						
+						window.location="menu-usuario.php"; 
+					}
+					else	
+					{
+						alert("Ocorreu um erro, por favor entre em contato com o administrador");
+						
+						window.location="menu-usuario.php"; 
+					}
 				},
-				error: function(erro) 
-				{ 					
-					alert(erro);   
-				}  		
+				
+				error: function(XMLHttpRequest, textStatus, errorThrown) 
+				{ 
+					alert("Status: " + textStatus + " " + "Error: " + errorThrown); 
+                }  		
 			});
 		}
 	});	
