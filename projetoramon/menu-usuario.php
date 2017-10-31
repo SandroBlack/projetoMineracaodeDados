@@ -30,7 +30,17 @@
 			$linha = $listar->rowCount();					
 		} catch(PDOException $e){
 					echo "Erro: " . $e->getMessage() . "<br>";
-		}	
+		}
+
+		try{
+			$pdo = conectar();								
+			$sql = "SELECT * FROM respostas";
+			$listar = $pdo->prepare($sql);								
+			$listar->execute();			
+			$linhaR = $listar->rowCount();					
+		} catch(PDOException $e){
+					echo "Erro: " . $e->getMessage() . "<br>";
+		}		
 	?>
 
 	<!-- ======== Cabeçalho ========== -->
@@ -58,16 +68,24 @@
 				<tr>
 					<td class="transparente">
 						<p>Formulários Criados</p><br>
-						<span><?php echo $linha?></span>
+						<span><?=$linha?></span>
 					</td>
 					<td class="transparente">
 						<p>Respostas Obtidas</p><br>
-						<span>0</span>
+						<span><?=$linhaR?></span>
 					</td>
 					<td class="transparente">
 						<a href="consulta.php">Consultar Pesquisas</a><br>								
 					</td>
-				</tr>			
+				</tr>
+
+				<tr>
+					<td></td>
+					<td class="transparente">
+						<a href="estatistica.php">Estatísticas</a><br>
+					</td>
+					<td></td>
+				</tr>				
 			</table>
 			<div class="area-btTabela"><a href="formulario.php"><button class="btTabela" title="Crie uma nova pesquisa">Criar Nova Pesquisa</button></a></div>
 		</div>

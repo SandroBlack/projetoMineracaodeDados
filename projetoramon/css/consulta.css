@@ -25,3 +25,63 @@ body {
 	background: #ffffff;
 	margin: 90px auto 0px auto;
 }
+
+/* JANELA MODAL */
+.modal{
+	display: none;
+	position: fixed;
+	top: 15%;
+	left: 35%;
+	width: 30%;
+	background: #fff;
+	box-sizing: border-box;
+	box-shadow: 1px 1px 10px #333;
+}
+
+.modal h2{
+	font-family: Arial, Helvetica, sans-serif;
+	text-align: center;
+	padding: 6px 0; 
+	border-bottom: 1px solid #ccc;
+	margin-bottom: 20px;
+}
+
+.modal label{
+	font-family: Arial, Helvetica, sans-serif;
+	margin-left: 20px;	
+}
+
+.modal input{
+	width: 90%;
+	height: 25px;
+	margin: 0 0 20px 20px;
+	padding-left: 5px;
+}
+
+#close{
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 10px;
+	background: #ccc;
+	color: #fff; 
+}
+
+#close:hover{
+	background: #e68a00;
+}
+
+#btnModal{
+	background: #ff8000;
+	color:#ffffff;
+	border: none;
+	border-radius: 3px;
+	cursor: pointer;
+	margin: 20px 20px 10px 0;
+	padding: 12px 20px;
+	float: right;
+}
+
+#btnModal:hover{
+	background: #e68a00;
+}

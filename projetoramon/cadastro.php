@@ -114,15 +114,29 @@
 					}
 				}
 
-				function cadastrar(){						
+				function cadastrar(){
+					try{
+						$pdo = conectar();								
+						$sql = "SELECT * FROM users";
+						$listar = $pdo->prepare($sql);								
+						$listar->execute();
+						$res = $listar->fetch(PDO::FETCH_ASSOC);
+						//$linha = $listar->rowCount();
+					} catch(PDOException $e){
+						echo "Erro: " . $e->getMessage() . "<br>";
+					}		 
+											
 					$nome = $_POST["nome"];
 					$email = $_POST["email"];
-					$email = preg_replace('/[^[:alnum:]_.-@]/','',$email);
+					//$email = preg_replace('/[^[:alnum:]_.-@]/','',$email);
 					$senha = $_POST["senha"];
 					$confSenha = $_POST["confSenha"];
 
 					if($nome == "" || $email == "" || $senha == "" || $confSenha == ""){
 						echo "<script>alert('Favor Preencher Todos os Campos!')</script>";
+						return false;
+					} else if($email == $res["user_email"]){ 
+						echo "<script>alert('Já existe um cadastro com esse e-mail')</script>";
 						return false;
 					} else{
 						try{
@@ -135,7 +149,7 @@
 							$inserir->bindValue(":temp", "");
 							$inserir->bindValue(":ativado", 0);
 							$inserir->execute();
-							echo "<script>alert('Cadastro Realizado com Sucesso!')</script>";
+							echo "<script>alert('Cadastro Realizado com Sucesso!')</script>";							
 							echo "<script>location.href'index.php'</script>";
 						} catch(PDOException $e){
 							echo "Erro: " . $e->getMessage() . "<br>";

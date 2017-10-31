@@ -17,7 +17,7 @@ require ("gerar_url.php");
 	
 	$form_Qquestoes = $_POST["form_Qquestoes"];
 	
-	$form_time = $_POST["form_time"];
+	$form_time = $_POST["form_time"];	
 	
 	$perguntas_0 = null;	
 	
@@ -103,7 +103,7 @@ require ("gerar_url.php");
 		{
 			$pdo = conectar();
 			
-			$pdo->beginTransaction();
+			//$pdo->beginTransaction();
 			
 			$sql = "INSERT INTO forms(form_id, form_titulo, form_conteudo, form_Qquestoes, form_time, user_id) VALUES(:form_id, :form_titulo, :form_conteudo, :form_Qquestoes, :form_time, :user_id)";
 			
