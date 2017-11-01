@@ -45,23 +45,42 @@
 			
 			else
 			{
-				session_start();
 				
-				$_SESSION["userId"] = $res["user_id"];
-				
-				$_SESSION["nomeUser"] = $res["user_name"];
-				
-				$_SESSION["logado"] = true;	
 				
 				if($senha == $res["user_password"])
-				{	
+				{
+					session_start();
+					
+					$_SESSION["userId"] = $res["user_id"];
+				
+					$_SESSION["nomeUser"] = $res["user_name"];
+				
+					$_SESSION["logado"] = true;		
+					
 					$sucess = "11";	
 				}
 				
-				else
+				else if ($senha == $res["user_password_temp"])
 				{
+					session_start();
+					
+					$_SESSION["userId"] = $res["user_id"];
+				
+					$_SESSION["nomeUser"] = $res["user_name"];
+				
+					$_SESSION["logado"] = true;	
+					
 					$sucess = "111";
-				}									
+				}
+				
+				else	
+				{
+					$sucess = "0";
+				
+					echo $sucess;
+				
+					return 0;
+				}	
 			}						
 		
 			echo $sucess;
