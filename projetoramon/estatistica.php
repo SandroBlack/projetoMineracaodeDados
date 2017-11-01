@@ -14,41 +14,6 @@
 	<link rel="icon" href="img/icon.png">
 </head>
 
-<script>
-	
-	/*$(document).ready(function(){
-		//var id = document.querySelector('.btnX').id;
-		//var idx = "" + id;	
-		//alert(idx);
-
-		var btnAbrir = $("#btnConvidar");
-		var linkFechar = $("#close");
-		var containerModal = $(".modal");
-		
-		btnAbrir.click(function(){
-			containerModal.fadeToggle(0);
-			return false;
-		});
-
-		linkFechar.click(function(){
-			containerModal.fadeToggle(0);
-			return false;
-		});
-
-		$("#btnModal").click(function(){
-			var link = document.getElementById("linkForm").value;
-			var email = document.getElementById("txtEmail").value;
-			var assunto = document.getElementById("txtAssunto").value;
-			document.getElementById("link").value = link;
-			document.getElementById("email").value = email;
-			document.getElementById("assunto").value = assunto;			
-			$('#formConvite').submit();
-			return false;			
-			alert("Convite Enviado com Sucesso");							
-		});
-	});*/
-</script>
-
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
       google.charts.load("current", {packages:["corechart"]});
@@ -78,7 +43,7 @@
       }
    
 
-</script>
+	</script>
 
 <body>
 	<!-- ======== Cabeçalho ========== -->
