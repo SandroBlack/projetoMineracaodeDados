@@ -99,7 +99,7 @@ require ("gerar_url.php");
 	
 	$formUrl = gerarUrl();
 
-	$sucess = true;
+	$sucess = "1";
 	
 	try
 	{

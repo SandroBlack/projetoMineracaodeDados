@@ -13,7 +13,7 @@
 	<body>
 		<!-- ======== Cabeçalho ========== -->
 		<header id="cabecalho">
-			<a href="cadastro.php"><img src="img/fddsdsadsa.png" style="width: 40px;height: 40px;margin: 14px 0px 0px 20px;" title="Volte a página de cadastro"></a>			
+			<a href="cadastro.html"><img src="img/fddsdsadsa.png" style="width: 40px;height: 40px;margin: 14px 0px 0px 20px;" title="Volte a página de cadastro"></a>			
 		</header><!-- ======== Fim do cabeçalho ==========-->
 
 		<div class="frase fraseRec">
@@ -78,7 +78,7 @@
 					echo "Erro: " . $e->getMessage() . "<br>";
 				}
 			}
-		header("Location:cadastro.php");		
+		header("Location:cadastro.html");		
 		}		
 	?>
 	</body>

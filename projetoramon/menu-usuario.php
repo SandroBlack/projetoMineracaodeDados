@@ -18,7 +18,7 @@
 		if($opcao == "sair"){
 			session_start();
 			unset($_SESSION["logado"]);
-			header("location:cadastro.php");
+			header("location:cadastro.html");
 		}
 		
 		try{
