@@ -16,13 +16,22 @@
 
 <script>
 	
-	/*$(document).ready(function(){
-		//var id = document.querySelector('.btnX').id;
-		//var idx = "" + id;	
-		//alert(idx);
+	$(document).ready(function(){
+		
+		$(".btnConvidar").click(function(){
+			var id = this.id;
+			var email = $("#emailForm"+id).val(prompt("Digite o E-mail do Convidado"));
+			
+			if(email.val() != ""){
+				$("#formConvite"+id).submit();
+			} else{				
+				return false;
+			}
+		});
 
-		var btnAbrir = $("#btnConvidar");
-		var linkFechar = $("#close");
+		/* JANELA MODAL */
+		/*var btnAbrir = $("#"+id);		
+		var linkFechar = $("#close");		
 		var containerModal = $(".modal");
 		
 		btnAbrir.click(function(){
@@ -45,8 +54,9 @@
 			$('#formConvite').submit();
 			return false;			
 			alert("Convite Enviado com Sucesso");							
-		});
-	});*/
+		});*/
+		
+	});
 	
 	</script>
 <body>
@@ -89,31 +99,25 @@
 			
 			<?php $i=1; while($res = $listar->fetch(PDO::FETCH_ASSOC)){ ?>
 				
-				<form name="formConvite" id="formConvite<?=$res["form_id"]?>" method="POST" action="htmlEmail.php">
+				<form id="formConvite<?=$res["form_id"]?>" method="POST" action="htmlEmail.php">
 
-					<tr>
-						<td style="display:none"><input type="hidden" name="linkForm" id="linkForm" value="<?=$res["link_conteudo"]?>"></td>
-						<!--<td style="display:none"><input type="hidden" name="emailForm" id="emailForm" value=""></td>-->
-						<!--<td style="display:none"><input type="hidden" name="assuntoForm" id="assuntoForm" value=""></td>-->							
+					<tr>						
+						<td style="display:none"><input type="hidden" name="emailForm" id="emailForm<?=$res["form_id"]?>" value=""></td>
+						<td style="display:none"><input type="hidden" name="linkForm" id="linkForm<?=$res["form_id"]?>" value="<?=$res["link_conteudo"]?>"></td>
+						<td style="display:none"><input type="hidden" name="assuntoForm" id="assuntoForm<?=$res["form_id"]?>" value=""></td>							
 						<td align="left"><a href="http://localhost/projetoMineracaodeDados/projetoramon/form_resposta.php?link_conteudo=<?=$res['link_conteudo']?>" target="_blank"><?=$res["form_titulo"]?></a></td>
 						<td><?=$res["form_time"]?></td>	
-						<td><input type="submit" id="btnConvidar<?=$res["form_id"]?>" value="Convidar" onclick=""></td>
-						<!--<td><button type="button" class="btnX" id="btnConvidar">Convite</button></td>-->					
+						<!--<td><input type="submit" id="<?=$res["form_id"]?>" value="Convidar"></td>-->
+						<td><button type="button" class="btnConvidar" id="<?=$res["form_id"]?>">Convite</button></td>					
 					</tr>
 												
 				</form>	
 				
 			<?php }?>				
 			
-		</table>
+		</table>		
 
-		<!--<form name="formConvite" id="formConvite" method="POST" action="htmlEmail.php">
-			<input type="hidden" name="link" id="link" value="">
-			<input type="hidden" name="email" id="email" value="">
-			<input type="hidden" name="assunto" id="assunto" value="">
-		</form>
-
-	<!-- JANELA MODAL -->	
+	 <!--JANELA MODAL -->	
 	<!--<div class="modal" id="sendModal">
 		<h2>Enviar Convite</h2>
 		<a href="" id="close" title="Fechar">X</a>
@@ -122,7 +126,8 @@
 		<label for="assunto">Assunto:</label>
 		<input type="text" id="txtAssunto" value=""/><br>
 		<button type="button" id="btnModal">Enviar</button>
-	</div>	-->
+	</div>-->
+	
 	</div>
 
 </body>
