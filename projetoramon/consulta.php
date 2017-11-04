@@ -19,46 +19,39 @@
 	$(document).ready(function(){
 		
 		$(".btnConvidar").click(function(){
-			var id = this.id;
-			var email = $("#emailForm"+id).val(prompt("Digite o E-mail do Convidado"));
+			/* JANELA MODAL */
+			var id = this.id;		
+			var btnAbrir = $("#"+id);		
+			var linkFechar = $("#close");		
+			var containerModal = $(".modal");
+					
+			containerModal.fadeToggle(0);
 			
-			if(email.val() != ""){
-				$("#formConvite"+id).submit();
-			} else{				
-				return false;
-			}
-		});
+			linkFechar.click(function(){
+				containerModal.fadeToggle(0);
+				//return false;
+			});
 
-		/* JANELA MODAL */
-		/*var btnAbrir = $("#"+id);		
-		var linkFechar = $("#close");		
-		var containerModal = $(".modal");
-		
-		btnAbrir.click(function(){
-			containerModal.fadeToggle(0);
-			return false;
+			$("#btnModal").click(function(){
+				
+				$("#email").val($("#txtEmail").val());
+				$("#assunto").val($("#txtAssunto").val());
+				$("#link").val($("#linkForm"+id).val());
+				if($("#email").val() == "" || $("#assunto").val() == ""){
+					alert("Favor Preencher Todos os Campos");
+					return false;
+				} else{					
+					$('#formConvite').submit();				
+					$("#txtEmail").val("");
+					$("#txtAssunto").val("");
+					return false;
+				}
+			});
 		});
-
-		linkFechar.click(function(){
-			containerModal.fadeToggle(0);
-			return false;
-		});
-
-		$("#btnModal").click(function(){
-			var link = document.getElementById("linkForm").value;
-			var email = document.getElementById("txtEmail").value;
-			var assunto = document.getElementById("txtAssunto").value;
-			document.getElementById("link").value = link;
-			document.getElementById("email").value = email;
-			document.getElementById("assunto").value = assunto;			
-			$('#formConvite').submit();
-			return false;			
-			alert("Convite Enviado com Sucesso");							
-		});*/
-		
 	});
-	
-	</script>
+
+</script>
+
 <body>
 	<!-- ======== Cabeçalho ========== -->
 	<header id="cabecalho">
@@ -97,36 +90,37 @@
 				<th style="width: 270px;text-align: left;">Convite</th>
 			</tr>
 			
-			<?php $i=1; while($res = $listar->fetch(PDO::FETCH_ASSOC)){ ?>
-				
-				<form id="formConvite<?=$res["form_id"]?>" method="POST" action="htmlEmail.php">
+			<?php while($res = $listar->fetch(PDO::FETCH_ASSOC)){ ?>				
 
 					<tr>						
-						<td style="display:none"><input type="hidden" name="emailForm" id="emailForm<?=$res["form_id"]?>" value=""></td>
+						<td style="display:none"><input type="hidden" name="emailForm" id="emailForm" value=""></td>
+						<td style="display:none"><input type="hidden" name="assuntoForm" id="assuntoForm" value=""></td>
 						<td style="display:none"><input type="hidden" name="linkForm" id="linkForm<?=$res["form_id"]?>" value="<?=$res["link_conteudo"]?>"></td>
-						<td style="display:none"><input type="hidden" name="assuntoForm" id="assuntoForm<?=$res["form_id"]?>" value=""></td>							
 						<td align="left"><a href="http://localhost/projetoMineracaodeDados/projetoramon/form_resposta.php?link_conteudo=<?=$res['link_conteudo']?>" target="_blank"><?=$res["form_titulo"]?></a></td>
-						<td><?=$res["form_time"]?></td>	
-						<!--<td><input type="submit" id="<?=$res["form_id"]?>" value="Convidar"></td>-->
+						<td><?=$res["form_time"]?></td>							
 						<td><button type="button" class="btnConvidar" id="<?=$res["form_id"]?>">Convite</button></td>					
-					</tr>
-												
-				</form>	
+					</tr>			
 				
 			<?php }?>				
 			
-		</table>		
+		</table>
 
-	 <!--JANELA MODAL -->	
-	<!--<div class="modal" id="sendModal">
-		<h2>Enviar Convite</h2>
-		<a href="" id="close" title="Fechar">X</a>
-		<label for="email">Para:</label>
-		<input type="text" id="txtEmail" value=""/><br>
-		<label for="assunto">Assunto:</label>
-		<input type="text" id="txtAssunto" value=""/><br>
-		<button type="button" id="btnModal">Enviar</button>
-	</div>-->
+		<form id="formConvite" method="POST" action="htmlEmail.php">
+				<input type="hidden" name="email" id="email" value="">
+				<input type="hidden" name="assunto" id="assunto" value="">
+				<input type="hidden" name="link" id="link" value="">				
+		</form>		
+
+		<!--JANELA MODAL -->	
+		<div class="modal" id="sendModal">
+			<h2>Enviar Convite</h2>
+			<a href="" id="close" title="Fechar">X</a>
+			<label for="email">Para:</label>
+			<input type="text" id="txtEmail" value=""/><br>
+			<label for="assunto">Assunto:</label>
+			<input type="text" id="txtAssunto" value=""/><br>
+			<button type="button" id="btnModal">Enviar</button>
+		</div>
 	
 	</div>
 
