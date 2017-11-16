@@ -6,14 +6,17 @@
 	$lmai = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 	$num = '1234567890';
 	$simb = '!@#$%-';
+
 	// Variáveis internas
 	$retorno = '';
 	$caracteres = '';
+
 	// Agrupamos todos os caracteres que poderão ser utilizados
 	$caracteres .= $lmin;
 	if ($maiusculas) $caracteres .= $lmai;
 	if ($numeros) $caracteres .= $num;
 	if ($simbolos) $caracteres .= $simb;
+	
 	// Calculamos o total de caracteres possíveis
 	$len = strlen($caracteres);
 	for ($n = 1; $n <= $tamanho; $n++) {

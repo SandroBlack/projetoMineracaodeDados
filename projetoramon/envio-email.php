@@ -11,7 +11,6 @@ require 'PHPMailer/src/OAuth.php';
 
 function enviarEmail($emailDestino, $corpoEmail, $assuntoEmail)	{
 
-
 		$mail = new PHPMailer(true);                              // Passing `true` enables exceptions
 		try {
 			//Server settings
@@ -37,7 +36,6 @@ function enviarEmail($emailDestino, $corpoEmail, $assuntoEmail)	{
 			//$mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
 			//$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
 
-
 			//Content
 			$mail->isHTML(true);                                  // Set email format to HTML
 			$mail->CharSet = 'utf-8'; 							  // Charset da mensagem
@@ -51,7 +49,6 @@ function enviarEmail($emailDestino, $corpoEmail, $assuntoEmail)	{
 			$mail->ClearAllRecipients();
 			$mail->ClearAttachments();
 
-
 			}
 			catch (Exception $e) {
 			echo 'Message could not be sent.';
@@ -59,4 +56,4 @@ function enviarEmail($emailDestino, $corpoEmail, $assuntoEmail)	{
 			}
 
 	}
-			?>
+?>

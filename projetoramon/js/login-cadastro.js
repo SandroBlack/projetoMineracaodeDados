@@ -1,16 +1,18 @@
 $(document).ready(function(){
 
-	$("#login").click(function(){
+	$("#login").click(function(){	
+	
+		var funcao = "login";
+		var email = $("#email_login").val();
+		var senha = $("#senha_login").val();
 		
-		
-		var dadosajax = 
-		{		
-			funcao : "login",
-			
-			email : $("#email_login").val(),
-				
-			senha : $("#senha_login").val()
-		}
+		/* VALIDAÇÃO FORM LOGIN */
+		if(email == "" || senha == ""){
+			alert("Favor Preencher Todos os Campos!");
+			return false;		
+		} else{
+
+		var dadosajax = {funcao, email,	senha}
 		
 		$.ajax({
 				
@@ -45,22 +47,33 @@ $(document).ready(function(){
 				alert("Status: " + textStatus + " " + "Error: " + errorThrown); 
 			}  		
 		});
+		}
 	});
 	
 	$("#cadastrar").click(function(){
 		
-		
-		var dadosajax = 
-		{				
-			funcao : "cadastro",
-			
-			nome : $("#nome_cadastro").val(),
-			
-			email : $("#email_cadastro").val(),
-			
-			senha : $("#senha_cadastro").val()
-		}
-		
+		var funcao = "cadastro";
+		var nome = $("#nome_cadastro").val();
+		var email = $("#email_cadastro").val();
+		var senha = $("#senha_cadastro").val();
+		var conf_senha = $("#conf_senha").val();
+
+		/* VALIDAÇÕES FORM CADASTRO */
+		if(nome == "" || email == "" || senha == "" || conf_senha == ""){
+			alert("Favor Preencher Todos os Campos!");
+			return false;	
+		} else if(email.indexOf("@") == -1 || email.indexOf(".") == -1){
+			alert("Favor Informar um E-mail Válido!");
+			return false;
+		} else if(senha.length <= 5){
+			alert("A Senha Deve Conter no Mínimo 6 Digitos!");
+			return false;
+		} else if(senha != conf_senha){
+			alert("Senhas Divergentes!");
+			return false;
+		} else{
+		var dadosajax =	{funcao, nome, email, senha}
+				
 		$.ajax({
 				
 			type: 'POST',
@@ -102,5 +115,6 @@ $(document).ready(function(){
 				alert("Status: " + textStatus + " " + "Error: " + errorThrown); 
 			}  		
 		});
-	});
+		}
+	});	
 });

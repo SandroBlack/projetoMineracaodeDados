@@ -18,16 +18,13 @@
 
 			<div style="width: 300px;height: auto;margin: 0 auto;padding-top:100px;">
 
-
-				<form >
+				<form id="formRedefinir" method="" action="">
 
 				<h3 style="text-align: center;">Nome do Usuário</h3><br><br>
-
 
 				<input type="password" name="senha" style="width:300px;height: 30px;border-radius: 4px;" placeholder="Digite uma nova senha" minlength="8"><br><br>
 				<input type="password" name="confirmar senha" style="width:300px;height: 30px;border-radius: 4px;"  placeholder="Confirme a senha" minlength="8"><br><br><br>
 				
-
 				<div style="width: 150px;height: 50px;margin: 0px auto;">
 				<input type="submit" name="redefinir" class="botao" value="Redefinir">
 				</div>
