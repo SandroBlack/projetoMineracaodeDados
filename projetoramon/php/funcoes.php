@@ -110,12 +110,12 @@
 		
 		$email = $_POST["email"];
 		
-		$senha = $_POST["senha"];
-		
+		$senha = $_POST["senha"];		
+				
 		if($nome == "" || $email == "" || $senha == ""){
 			echo "<script>alert('Favor Preencher Todos os Campos!')<scrippt>";
 			return false;	
-		}else{
+		} else{
 		try
 		{
 			$pdo = conectar();								

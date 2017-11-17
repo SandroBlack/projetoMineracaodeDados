@@ -39,6 +39,8 @@ $(document).ready(function(){
 				else if(sucess == "1")
 				{
 					alert('Conta não Ativada, Favor Verificar o E-mail Informado no Cadastro para Ativar Sua Conta!');
+					$("#email_login").val("");
+					$("#senha_login").val("");
 				}	
 
 				else	
