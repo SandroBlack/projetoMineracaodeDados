@@ -43,6 +43,13 @@
 				return 0;
 			}
 			
+			elseif($res["user_ativado"] != 1)
+			{
+				$sucess = "1";
+				echo $sucess;
+				return 0;
+			}
+
 			else
 			{
 				

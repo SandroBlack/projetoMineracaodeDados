@@ -36,6 +36,11 @@ $(document).ready(function(){
 					window.location="redefinir.php"; 
 				}
 				
+				else if(sucess == "1")
+				{
+					alert('Conta não Ativada, Favor Verificar o E-mail Informado no Cadastro para Ativar Sua Conta!');
+				}	
+
 				else	
 				{
 					alert("E-mail ou Senha incorretos");
