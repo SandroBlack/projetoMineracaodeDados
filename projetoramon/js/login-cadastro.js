@@ -94,8 +94,7 @@ $(document).ready(function(){
 				dataType : 'html', 
 
 				success: function(sucess)
-				{
-					alert(sucess);					
+				{					
 					if(sucess == "01")
 					{
 						alert("E-mail ja cadastrado");

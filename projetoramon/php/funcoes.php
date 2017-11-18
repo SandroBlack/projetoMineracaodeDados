@@ -120,14 +120,21 @@
 		{	
 			$sucess = "invalido";
 			
+			echo $sucess;
+			
 			return 0;	
 			
-		} else if($captcha != $_SESSION["captcha"])
+		} 
+		
+		else if($captcha != $_SESSION["captcha"])
 		{ 
 			$sucess = "codCaptcha";
 			
+			echo $sucess;
+			
 			return 0;
-		} 
+		}
+		
 		else
 		{
 
