@@ -116,13 +116,20 @@
 		
 		$captcha = $_POST["captcha"];
 				
-		if($nome == "" || $email == "" || $senha == "" || $captcha == ""){
-			echo "<script>alert('Favor Preencher Todos os Campos!')<scrippt>";
-			return false;	
-		} else if($captcha != $_SESSION["captcha"]){ 
-			echo "<script>alert('O Código Informado não Confere!')<scrippt>";
-			return false;
-		} else{
+		if($nome == "" || $email == "" || $senha == "" || $captcha == "")
+		{	
+			$sucess = "invalido";
+			
+			return 0;	
+			
+		} else if($captcha != $_SESSION["captcha"])
+		{ 
+			$sucess = "codCaptcha";
+			
+			return 0;
+		} 
+		else
+		{
 
 			try
 			{

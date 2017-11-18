@@ -116,6 +116,15 @@ $(document).ready(function(){
 						$("#captcha_cadastro").val("");
 					}
 					
+					else if (sucess == "codCaptcha")
+					{
+						alert("Captcha Incorreto");
+					}
+					
+					else if(sucess == "invalido")
+					{
+						alert("Necessário preencher todas as informações");
+					}		
 					else	
 					{
 						alert("Ocorreu um erro, tente novamente mais tarde");
