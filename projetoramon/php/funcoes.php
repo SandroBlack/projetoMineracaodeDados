@@ -1,4 +1,5 @@
 <?php 
+	session_start();
 
 	include_once("../db/conexao.php");	
 	
@@ -110,29 +111,35 @@
 		
 		$email = $_POST["email"];
 		
-		$senha = $_POST["senha"];		
+		$senha = $_POST["senha"];
+		
+		$captcha = $_POST["captcha"];
 				
-		if($nome == "" || $email == "" || $senha == ""){
+		if($nome == "" || $email == "" || $senha == "" || $captcha == ""){
 			echo "<script>alert('Favor Preencher Todos os Campos!')<scrippt>";
 			return false;	
+		} else if($captcha != $_SESSION["captcha"]){ 
+			echo "<script>alert('O Código Informado não Confere!')<scrippt>";
+			return false;
 		} else{
-		try
-		{
-			$pdo = conectar();								
-			$sql = "SELECT user_email FROM users";
-			$listar = $pdo->prepare($sql);								
-			$listar->execute();
-			$res = $listar->fetchAll(PDO::FETCH_ASSOC);
-		}
-		
-		catch(PDOException $e)
-		{
-			$sucess = "0";
-		
-			echo $sucess;
-		
-			return 0;
-		}
+
+			try
+			{
+				$pdo = conectar();								
+				$sql = "SELECT user_email FROM users";
+				$listar = $pdo->prepare($sql);								
+				$listar->execute();
+				$res = $listar->fetchAll(PDO::FETCH_ASSOC);
+			}
+			
+			catch(PDOException $e)
+			{
+				$sucess = "0";
+			
+				echo $sucess;
+			
+				return 0;
+			}
 		}
 		foreach ($res as &$value) 
 		{

@@ -64,9 +64,10 @@ $(document).ready(function(){
 		var email = $("#email_cadastro").val();
 		var senha = $("#senha_cadastro").val();
 		var conf_senha = $("#conf_senha").val();
+		var captcha = $("#captcha_cadastro").val();
 
 		/* VALIDAÇÕES FORM CADASTRO */
-		if(nome == "" || email == "" || senha == "" || conf_senha == ""){
+		if(nome == "" || email == "" || senha == "" || conf_senha == "" || captcha == ""){
 			alert("Favor Preencher Todos os Campos!");
 			return false;	
 		} else if(email.indexOf("@") == -1 || email.indexOf(".") == -1){
@@ -79,49 +80,52 @@ $(document).ready(function(){
 			alert("Senhas Divergentes!");
 			return false;
 		} else{
-		var dadosajax =	{funcao, nome, email, senha}
-				
-		$.ajax({
-				
-			type: 'POST',
 
-			url: 'php/funcoes.php',
+			var dadosajax =	{funcao, nome, email, senha, captcha}
+					
+			$.ajax({
+					
+				type: 'POST',
 
-			data: dadosajax,
-			
-			dataType : 'html', 
+				url: 'php/funcoes.php',
 
-			success: function(sucess)
-			{				
-				if(sucess == "01")
-				{
-					alert("E-mail ja cadastrado");
-				}
+				data: dadosajax,
 				
-				else if(sucess == "1")
-				{
-					alert("Cadastro realizado com sucesso");
-					
-					$("#nome_cadastro").val("");
-					
-					$("#email_cadastro").val("");
-					
-					$("#senha_cadastro").val("");
-					
-					$("#conf_senha").val("");
-				}
-				
-				else	
-				{
-					alert("Ocorreu um erro, tente novamente mais tarde");
-				}
-			},
+				dataType : 'html', 
 
-			error: function(XMLHttpRequest, textStatus, errorThrown) 
-			{ 
-				alert("Status: " + textStatus + " " + "Error: " + errorThrown); 
-			}  		
-		});
+				success: function(sucess)
+				{				
+					if(sucess == "01")
+					{
+						alert("E-mail ja cadastrado");
+					}
+					
+					else if(sucess == "1")
+					{
+						alert("Cadastro realizado com sucesso");
+						
+						$("#nome_cadastro").val("");
+						
+						$("#email_cadastro").val("");
+						
+						$("#senha_cadastro").val("");
+						
+						$("#conf_senha").val("");
+
+						$("#captcha_cadastro").val("");
+					}
+					
+					else	
+					{
+						alert("Ocorreu um erro, tente novamente mais tarde");
+					}
+				},
+
+				error: function(XMLHttpRequest, textStatus, errorThrown) 
+				{ 
+					alert("Status: " + textStatus + " " + "Error: " + errorThrown); 
+				}  		
+			});
 		}
 	});	
 });

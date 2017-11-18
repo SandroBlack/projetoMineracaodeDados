@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 <html  lang="pt-br">
@@ -54,8 +53,11 @@
 				<input type="password" name="senha_cadastro" id="senha_cadastro" placeholder="De 6 a 10 caracteres" minlength="6" maxlength="10"><br><br>
 
 				<label for="confirma-senha">Confirme a senha:</label><br>
-				<input type="password" name="conf_senha" id="conf_senha" placeholder="Digite novamente a senha" minlength="6" maxlength="10"><br><br><br>
+				<input type="password" name="conf_senha" id="conf_senha" placeholder="Digite novamente a senha" minlength="6" maxlength="10"><br><br>
 				<!--<div class="g-recaptcha" data-sitekey="6LevIjkUAAAAACnPjVHQ2nZCComslvWo5ucRNmMV" align="center"></div><br><br>-->
+				<label for="codigo-cadastro">Código:</label><br>
+				<input type="text" name="captcha_cadastro" id="captcha_cadastro" placeholder="Digite o Código da Imagem Abaixo" maxlength="10"><br><br>
+				<div align="center"><img src="captcha.php" alt="código captcha"></div><br>				
 				<div class="area-botao"><input type="submit" name="cadastrar" id="cadastrar" class="botao" value="CADASTRAR" ></div>
 		
 		
