@@ -106,6 +106,8 @@
 
 	function cadastro(){
 		
+		session_start();
+		
 		$nome = $_POST["nome"];
 		
 		$email = $_POST["email"];
@@ -184,7 +186,10 @@
 			echo $sucess;
 		
 			return 0;
-		}						
+		}
+		
+	session_destroy();		
+	
 	}
 
 
