@@ -103,7 +103,7 @@ tr:nth-child(even) {
 		<div id="estatisticas" name="estatisticas">
 		</div>
 		<div align="center">
-		<input type="number" name="respostaAtual" id="respostaAtual" /><label id="respostasTotais" name="respostasTotais" ></label>		
+		<input type="number" name="respostaAtual" id="respostaAtual" value="0"/><label id="respostasTotais" name="respostasTotais" ></label>		
 		</div>
 		<div id="listarRespostas" name="listarRespostas" align="center">
 		

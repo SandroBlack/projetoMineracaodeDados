@@ -20,9 +20,9 @@ $(document).ready(function(){
 				
 			success: function(dados)
 			{
-			$("#respostaAtual").val(0);	
+			$("#respostaAtual").val(1);	
 			$("#respostasTotais").text(" de " + dados.length);
-			alert(dados[0].form_titulo);
+			arrayDados = dados;
 			},
 				
 			error: function(XMLHttpRequest, textStatus, errorThrown) 
@@ -33,9 +33,84 @@ $(document).ready(function(){
 	});
 	
 	$('#respostaAtual').change(function(){
-		alert(dados[0].form_titulo);
+		
+		$('#listarRespostas').text("");
+		
 		respostaAtual = $('#respostaAtual').val();
 		
-		$('#listarRespostas').append();
+		if (respostaAtual > arrayDados.length) 
+		{
+			$("#respostaAtual").val(respostaAtual);	
+		}
+		$('#listarRespostas').append(
+		
+			'<div>' +
+			'<br>' +
+			'<h1 style="text-align:center;">' + arrayDados[respostaAtual].form_titulo + '</h1>' +
+			'<br>' +
+			'<br>' +
+			'<br>' +
+			'<div style="margin-left:15px;">' +
+			'<label>' + arrayDados[respostaAtual].perguntas_0 + '</label>' +
+			'<br>' +
+			'<label>'+ arrayDados[respostaAtual].respostas_0 + '</label>' +
+			'</div>' +
+			'<br>' +
+			'<div style="margin-left:15px;">' +
+			'<label>' + arrayDados[respostaAtual].perguntas_1 + '</label>' +
+			'<br>' +
+			'<label>'+ arrayDados[respostaAtual].respostas_1 + '</label>' +
+			'</div>' +
+			'<br>' +
+			'<div style="margin-left:15px;">' +
+			'<label>' + arrayDados[respostaAtual].perguntas_2 + '</label>' +
+			'<br>' +
+			'<label>'+ arrayDados[respostaAtual].respostas_2 + '</label>' +
+			'</div>' +
+			'<br>' +
+			'<div style="margin-left:15px;">' +
+			'<label>' + arrayDados[respostaAtual].perguntas_3 + '</label>' +
+			'<br>' +
+			'<label>'+ arrayDados[respostaAtual].respostas_3 + '</label>' +
+			'</div>' +
+			'<br>' +
+			'<div style="margin-left:15px;">' +
+			'<label>' + arrayDados[respostaAtual].perguntas_4 + '</label>' +
+			'<br>' +
+			'<label>'+ arrayDados[respostaAtual].respostas_4 + '</label>' +
+			'</div>' +
+			'<br>' +
+			'<div style="margin-left:15px;">' +
+			'<label>' + arrayDados[respostaAtual].perguntas_5 + '</label>' +
+			'<br>' +
+			'<label>'+ arrayDados[respostaAtual].respostas_5 + '</label>' +
+			'</div>' +
+			'<br>' +
+			'<div style="margin-left:15px;">' +
+			'<label>' + arrayDados[respostaAtual].perguntas_6 + '</label>' +
+			'<br>' +
+			'<label>'+ arrayDados[respostaAtual].respostas_6 + '</label>' +
+			'</div>' +
+			'<br>' +
+			'<div style="margin-left:15px;">' +
+			'<label>' + arrayDados[respostaAtual].perguntas_7 + '</label>' +
+			'<br>' +
+			'<label>'+ arrayDados[respostaAtual].respostas_7 + '</label>' +
+			'</div>' +
+			'<br>' +
+			'<div style="margin-left:15px;">' +
+			'<label>' + arrayDados[respostaAtual].perguntas_8 + '</label>' +
+			'<br>' +
+			'<label>'+ arrayDados[respostaAtual].respostas_8 + '</label>' +
+			'</div>' +
+			'<br>' +
+			'<div style="margin-left:15px;">' +
+			'<label>' + arrayDados[respostaAtual].perguntas_9 + '</label>' +
+			'<br>' +
+			'<label>'+ arrayDados[respostaAtual].respostas_9 + '</label>' +
+			'</div>' +
+			'<br>' +
+			'</div>	'				
+		);
 	});
 });
