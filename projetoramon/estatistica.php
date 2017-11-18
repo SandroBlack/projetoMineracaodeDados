@@ -12,9 +12,29 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="css/estatistica.css">
 	<link rel="icon" href="img/icon.png">
+	
+	<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+
 </head>
 
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script type="text/javascript" src="js/estatistica.js" /></script>
     <script type="text/javascript">
       google.charts.load("current", {packages:["corechart"]});
       google.charts.setOnLoadCallback(drawChart);
@@ -71,16 +91,24 @@
 
 		<h1 style="text-align: center;">Estatísticas</h1><br><br>
 		<h3>Escolha o Formulário</h3>
-        <select>
+        <select id="formularios" name="formularios">
             <option>......................................</option>
             <?php while($res = $listar->fetch(PDO::FETCH_ASSOC)){?>
-            <option value=""><?=$res['form_titulo']?></option>
+            <option value="<?=$res['form_titulo']?>"><?=$res['form_titulo']?></option>
             <?php }?>
         </select>		
 		
-		<div id="piechart_3d" style="width: 900px; height: 500px;"></div>
+		<!-- <div id="piechart_3d" style="width: 900px; height: 500px;"></div> -->
         
-	</div>
+		<div id="estatisticas" name="estatisticas">
+		</div>
+		<div align="center">
+		<input type="number" name="respostaAtual" id="respostaAtual" /><label id="respostasTotais" name="respostasTotais" ></label>		
+		</div>
+		<div id="listarRespostas" name="listarRespostas" align="center">
+		
+		</div>
+		
 
 </body>
 
