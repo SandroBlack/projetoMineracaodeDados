@@ -29,7 +29,6 @@ $(document).ready(function(){
 					
 				success: function(dados)
 				{
-					alert(dados);
 					if(dados == "sucesso")
 					{	
 						alert("Senha alterada com sucesso");

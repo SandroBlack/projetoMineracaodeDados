@@ -261,6 +261,8 @@
 
 	function redefinir(){
 		
+		session_start();
+		
 		$senha = $_POST["senha"];
 		
 		$email = $_SESSION['emailUser'];
@@ -270,14 +272,14 @@
 			$pdo = conectar();
 			
 			$sql = "UPDATE users
-					SET user_password = ?
+					SET user_password = ?, user_password_temp = NULL
 					WHERE user_email = ?";
 					
 			$atualizar = $pdo->prepare($sql);
 			
 			$atualizar->execute(array($senha,$email));
 			
-			echo $email;
+			echo "sucesso";
 		}
 		catch(PDOException $e)
 		{
