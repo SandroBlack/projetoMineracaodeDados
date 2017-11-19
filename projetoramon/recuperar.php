@@ -29,7 +29,7 @@
 	
 		@$acao = $_POST["acao"];
 		if($acao == "enviarEmail"){
-			emailRecSenha();;
+			emailRecSenha();
 		}
 		
 		function emailRecSenha(){
