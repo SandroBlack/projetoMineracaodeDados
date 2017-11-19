@@ -20,7 +20,6 @@ $(document).ready(function(){
 				
 			success: function(dados)
 			{
-			$("#respostaAtual").val(1);	
 			$("#respostasTotais").text(" de " + dados.length);
 			arrayDados = dados;
 			},
@@ -36,17 +35,15 @@ $(document).ready(function(){
 		
 		$('#listarRespostas').text("");
 		
-		respostaAtual = $('#respostaAtual').val();
-		
-		if (respostaAtual > arrayDados.length) 
-		{
-			$("#respostaAtual").val(respostaAtual);	
-		}
+		respostaAtual = $('#respostaAtual').val() - 1;
+
 		$('#listarRespostas').append(
 		
 			'<div>' +
 			'<br>' +
 			'<h1 style="text-align:center;">' + arrayDados[respostaAtual].form_titulo + '</h1>' +
+			'<br>' +
+			'<h3 style="text-align:center;">Respondido em: ' + arrayDados[respostaAtual].respostas_data + '</h1>' +
 			'<br>' +
 			'<br>' +
 			'<br>' +

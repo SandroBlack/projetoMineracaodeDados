@@ -58,7 +58,11 @@
 			
 			$pergunta_id = $res["pergunta_id"];
 			
+			
+			
 			function responder($questoes, $perguntaId){
+			
+			$date = date('d/m/y');
 			
 			$respostas_0 = null;	
 			$respostas_1 = null;	
@@ -129,10 +133,11 @@
 			try
 			{
 				$pdo = conectar();								
-				$sql = "INSERT INTO respostas(respostas_id, respostas_0, respostas_1, respostas_2, respostas_3, respostas_4, respostas_5, respostas_6, respostas_7, respostas_8, respostas_9,pergunta_id)
-						VALUES(:respostas_id, :respostas_0, :respostas_1, :respostas_2, :respostas_3, :respostas_4, :respostas_5, :respostas_6, :respostas_7, :respostas_8, :respostas_9, :pergunta_id)";
+				$sql = "INSERT INTO respostas(respostas_id, respostas_data, respostas_0, respostas_1, respostas_2, respostas_3, respostas_4, respostas_5, respostas_6, respostas_7, respostas_8, respostas_9,pergunta_id)
+						VALUES(:respostas_id, :respostas_data, :respostas_0, :respostas_1, :respostas_2, :respostas_3, :respostas_4, :respostas_5, :respostas_6, :respostas_7, :respostas_8, :respostas_9, :pergunta_id)";
 				$inserir = $pdo->prepare($sql);
 				$inserir->bindValue(":respostas_id", 0);
+				$inserir->bindValue(":respostas_data", $date);
 				$inserir->bindValue(":respostas_0", $respostas_0);
 				$inserir->bindValue(":respostas_1", $respostas_1);
 				$inserir->bindValue(":respostas_2", $respostas_2);

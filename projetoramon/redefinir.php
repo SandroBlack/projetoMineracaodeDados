@@ -1,3 +1,7 @@
+<?php include_once("conf/restricao.php");
+      include_once("db/conexao.php"); 
+?>
+
 <!DOCTYPE html lang="pt-br">
 
 <html>
@@ -6,6 +10,8 @@
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="css/redefinir.css">
 		<link rel="icon" href="img/icon.png">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script type="text/javascript" src="js/redefinir.js" /></script>
 	</head>
 
 	<body>
@@ -18,22 +24,15 @@
 
 			<div style="width: 300px;height: auto;margin: 0 auto;padding-top:100px;">
 
-				<form id="formRedefinir" method="" action="">
-
 				<h3 style="text-align: center;">Nome do Usuário</h3><br><br>
 
-				<input type="password" name="senha" style="width:300px;height: 30px;border-radius: 4px;" placeholder="Digite uma nova senha" minlength="8"><br><br>
-				<input type="password" name="confirmar senha" style="width:300px;height: 30px;border-radius: 4px;"  placeholder="Confirme a senha" minlength="8"><br><br><br>
+				<input type="password" id="senha" name="senha" style="width:300px;height: 30px;border-radius: 4px;" placeholder="Digite uma nova senha" minlength="8"><br><br>
+				<input type="password" id="confSenha" name="confsenha" style="width:300px;height: 30px;border-radius: 4px;"  placeholder="Confirme a senha" minlength="8"><br><br><br>
 				
 				<div style="width: 150px;height: 50px;margin: 0px auto;">
-				<input type="submit" name="redefinir" class="botao" value="Redefinir">
+				<input type="button" id="redefinirSenha" name="redefinirSenha" class="botao" value="Redefinir">
 				</div>
-
-				</form>
 			</div>
 		</div>
-	
-		
-	
 	</body>
 </html>

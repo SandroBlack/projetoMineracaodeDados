@@ -19,6 +19,11 @@
 		listaFormulario();
 	}
 	
+	else if($funcao == "redefinir")
+	{	
+		redefinir();
+	}
+	
 	function login(){
 		
 		$email = $_POST["email"];	
@@ -66,6 +71,8 @@
 					$_SESSION["userId"] = $res["user_id"];
 				
 					$_SESSION["nomeUser"] = $res["user_name"];
+					
+					$_SESSION["emailUser"] = $res["user_email"];
 				
 					$_SESSION["logado"] = true;		
 					
@@ -79,6 +86,8 @@
 					$_SESSION["userId"] = $res["user_id"];
 				
 					$_SESSION["nomeUser"] = $res["user_name"];
+					
+					$_SESSION["emailUser"] = $res["user_email"];
 				
 					$_SESSION["logado"] = true;	
 					
@@ -223,8 +232,8 @@
 			$sql = "SELECT
 					forms.form_titulo,
 					a.perguntas_0,a.perguntas_1,a.perguntas_2,a.perguntas_3,a.perguntas_4,a.perguntas_5,a.perguntas_6,a.perguntas_7,a.perguntas_8,a.perguntas_9,
-					respostas.respostas_0,respostas.respostas_1,respostas.respostas_2,respostas.respostas_3,respostas.respostas_4,respostas.respostas_5,
-					respostas.respostas_6,respostas.respostas_7,respostas.respostas_8,respostas.respostas_9
+					respostas.respostas_data,respostas.respostas_0,respostas.respostas_1,respostas.respostas_2,respostas.respostas_3,respostas.respostas_4,
+					respostas.respostas_5,respostas.respostas_6,respostas.respostas_7,respostas.respostas_8,respostas.respostas_9
 					FROM 
 					forms INNER JOIN perguntas a ON forms.form_id = a.form_id,
 					perguntas b INNER JOIN respostas ON b.pergunta_id = respostas.pergunta_id
@@ -248,5 +257,36 @@
 			return 0;
 		}
 	
+	}
+
+	function redefinir(){
+		
+		$senha = $_POST["senha"];
+		
+		$email = $_SESSION['emailUser'];
+		
+		try
+		{		
+			$pdo = conectar();
+			
+			$sql = "UPDATE users
+					SET user_password = ?
+					WHERE user_email = ?";
+					
+			$atualizar = $pdo->prepare($sql);
+			
+			$atualizar->execute(array($senha,$email));
+			
+			echo $email;
+		}
+		catch(PDOException $e)
+		{
+			$sucess = "0";
+	
+			echo $sucess;
+		
+			return 0;
+		}
+		
 	}	
 ?>
