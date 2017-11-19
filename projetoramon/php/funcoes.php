@@ -19,6 +19,11 @@
 		listaFormulario();
 	}
 	
+	else if($funcao == "redefinir")
+	{	
+		redefinir();
+	}
+	
 	function login(){
 		
 		$email = $_POST["email"];	
@@ -252,5 +257,36 @@
 			return 0;
 		}
 	
+	}
+
+	function redefinir(){
+		
+		$senha = $_POST["senha"];
+		
+		$email = $_SESSION["emailUser"];
+		
+		try
+		{		
+			$pdo = conectar();
+			
+			$sql = "UPDATE users
+					SET user_password = ?
+					WHERE user_email = ?";
+					
+			$atualizar = $pdo->prepare($sql);
+			
+			$atualizar->execute(array($senha,$email));
+			
+			echo $email;
+		}
+		catch(PDOException $e)
+		{
+			$sucess = "0";
+	
+			echo $sucess;
+		
+			return 0;
+		}
+		
 	}	
 ?>
