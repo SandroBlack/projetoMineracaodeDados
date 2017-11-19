@@ -263,7 +263,7 @@
 		
 		$senha = $_POST["senha"];
 		
-		$email = $_SESSION["emailUser"];
+		$email = $_SESSION['emailUser'];
 		
 		try
 		{		
