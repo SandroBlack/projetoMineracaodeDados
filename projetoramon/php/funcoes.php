@@ -66,6 +66,8 @@
 					$_SESSION["userId"] = $res["user_id"];
 				
 					$_SESSION["nomeUser"] = $res["user_name"];
+					
+					$_SESSION["emailUser"] = $res["user_email"];
 				
 					$_SESSION["logado"] = true;		
 					
@@ -79,6 +81,8 @@
 					$_SESSION["userId"] = $res["user_id"];
 				
 					$_SESSION["nomeUser"] = $res["user_name"];
+					
+					$_SESSION["emailUser"] = $res["user_email"];
 				
 					$_SESSION["logado"] = true;	
 					
