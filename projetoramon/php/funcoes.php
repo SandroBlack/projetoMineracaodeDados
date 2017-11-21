@@ -118,7 +118,10 @@
 
 	}
 
-	function cadastro(){
+	function cadastro(){ 
+		
+		require("../gerar-senha.php");
+		require("../envio-email.php");
 		
 		session_start();
 		
@@ -129,6 +132,8 @@
 		$senha = $_POST["senha"];
 		
 		$captcha = $_POST["captcha"];
+		
+		$link = geraSenha(20, true, true, true);
 				
 		if($nome == "" || $email == "" || $senha == "" || $captcha == "")
 		{	
@@ -139,7 +144,7 @@
 			return 0;	
 			
 		} 
-		
+		/*
 		else if($captcha != $_SESSION["captcha"])
 		{ 
 			$sucess = "codCaptcha";
@@ -148,7 +153,7 @@
 			
 			return 0;
 		}
-		
+		*/
 		else
 		{
 
@@ -187,7 +192,7 @@
 		{
 			$pdo = conectar();	
 			
-			$sql = "INSERT INTO users(user_name, user_email, user_password, user_password_temp, user_ativado) VALUES(:nome, :email, :senha, :temp, :ativado)";
+			$sql = "INSERT INTO users(user_name, user_email, user_password, user_password_temp, user_ativado, user_link) VALUES(:nome, :email, :senha, :temp, :ativado, :link)";
 				
 			$inserir = $pdo->prepare($sql);
 				
@@ -200,11 +205,20 @@
 			$inserir->bindValue(":temp", "");
 				
 			$inserir->bindValue(":ativado", 0);
+			
+			$inserir->bindValue(":link", $link);
 				
 			$inserir->execute();
 			
+			
+			$assunto = "Ativação da Conta - Projeto Facima";
+			
+			$corpo = "http://localhost/projetomineracaodedados/projetoramon/ativa.php?ativa=".$link;
+						
+			$enviarEmail = enviarEmail($email, $corpo, $assunto);
+			
 			$sucess = "1";
-				
+
 			echo $sucess;
 		} 
 				
