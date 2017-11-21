@@ -45,7 +45,7 @@ function enviarEmail($emailDestino, $corpoEmail, $assuntoEmail)	{
 
 			$mail->send();
 
-			// Limpa os destinatÃ¡rios e os anexos
+			// Limpa os destinatários e os anexos
 			$mail->ClearAllRecipients();
 			$mail->ClearAttachments();
 
