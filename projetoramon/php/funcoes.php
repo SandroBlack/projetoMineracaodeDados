@@ -131,11 +131,11 @@
 		
 		$senha = $_POST["senha"];
 		
-		$captcha = $_POST["captcha"];
+		//$captcha = $_POST["captcha"];
 		
 		$link = geraSenha(20, true, true, true);
 				
-		if($nome == "" || $email == "" || $senha == "" || $captcha == "")
+		if($nome == "" || $email == "" || $senha == "" )
 		{	
 			$sucess = "invalido";
 			

@@ -5,7 +5,7 @@
 	$lmin = 'abcdefghijklmnopqrstuvwxyz';
 	$lmai = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 	$num = '1234567890';
-	$simb = '!@#$%-';
+	$simb = '!@$%-';
 
 	// Variáveis internas
 	$retorno = '';

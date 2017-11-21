@@ -64,10 +64,10 @@ $(document).ready(function(){
 		var email = $("#email_cadastro").val();
 		var senha = $("#senha_cadastro").val();
 		var conf_senha = $("#conf_senha").val();
-		var captcha = $("#captcha_cadastro").val();
+		//var captcha = $("#captcha_cadastro").val();
 
 		/* VALIDAÇÕES FORM CADASTRO */
-		if(nome == "" || email == "" || senha == "" || conf_senha == "" || captcha == ""){
+		if(nome == "" || email == "" || senha == "" || conf_senha == ""){
 			alert("Favor Preencher Todos os Campos!");
 			return false;	
 		} else if(email.indexOf("@") == -1 || email.indexOf(".") == -1){
@@ -81,7 +81,7 @@ $(document).ready(function(){
 			return false;
 		} else{
 
-			var dadosajax =	{funcao, nome, email, senha, captcha}
+			var dadosajax =	{funcao, nome, email, senha}
 					
 			$.ajax({
 					
@@ -111,13 +111,6 @@ $(document).ready(function(){
 						$("#senha_cadastro").val("");
 						
 						$("#conf_senha").val("");
-
-						$("#captcha_cadastro").val("");
-					}
-					
-					else if (sucess == "codCaptcha")
-					{
-						alert("Captcha Incorreto");
 					}
 					
 					else if(sucess == "invalido")
