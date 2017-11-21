@@ -34,12 +34,14 @@
 
 		try{
 			$pdo = conectar();								
-			$sql = "SELECT *
+			$sql = "SELECT *                
 					FROM 
-					users INNER JOIN forms ON users.user_id = forms.user_id,
-					forms f INNER JOIN perguntas ON f.form_id = perguntas.form_id,
-					perguntas p INNER JOIN respostas ON p.pergunta_id = respostas.pergunta_id
-					WHERE users.user_id = ?";
+					users                u 
+                    INNER JOIN forms     f ON u.user_id = f.user_id
+                    INNER JOIN perguntas p ON f.form_id = p.form_id  
+                    INNER JOIN respostas r ON p.pergunta_id = r.pergunta_id
+					WHERE 
+                    u.user_id = ?";
 			$listar = $pdo->prepare($sql);
 			$listar->execute(array($_SESSION["userId"]));			
 			$listar->execute();			

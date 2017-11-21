@@ -244,14 +244,15 @@
 			$pdo = conectar();	
 			
 			$sql = "SELECT
-					forms.form_titulo,
-					a.perguntas_0,a.perguntas_1,a.perguntas_2,a.perguntas_3,a.perguntas_4,a.perguntas_5,a.perguntas_6,a.perguntas_7,a.perguntas_8,a.perguntas_9,
-					respostas.respostas_data,respostas.respostas_0,respostas.respostas_1,respostas.respostas_2,respostas.respostas_3,respostas.respostas_4,
-					respostas.respostas_5,respostas.respostas_6,respostas.respostas_7,respostas.respostas_8,respostas.respostas_9
-					FROM 
-					forms INNER JOIN perguntas a ON forms.form_id = a.form_id,
-					perguntas b INNER JOIN respostas ON b.pergunta_id = respostas.pergunta_id
-					WHERE forms.form_titulo = ?";
+					f.form_titulo,
+					p.perguntas_0,p.perguntas_1,p.perguntas_2,p.perguntas_3,p.perguntas_4,p.perguntas_5,p.perguntas_6,p.perguntas_7,p.perguntas_8,p.perguntas_9,
+					r.respostas_data,r.respostas_0,r.respostas_1,r.respostas_2,r.respostas_3,r.respostas_4,
+					r.respostas_5,r.respostas_6,r.respostas_7,r.respostas_8,r.respostas_9
+					FROM
+					forms f                     
+                    INNER JOIN perguntas p ON f.form_id = p.form_id                    
+                    INNER JOIN respostas r ON p.pergunta_id = r.pergunta_id                    
+					WHERE f.form_titulo = ?";
 			
 			$listar = $pdo->prepare($sql);
 			

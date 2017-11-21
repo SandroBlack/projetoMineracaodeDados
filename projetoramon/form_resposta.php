@@ -64,16 +64,16 @@
 			
 			$date = date('d/m/y');
 			
-			$respostas_0 = null;	
-			$respostas_1 = null;	
-			$respostas_2 = null;	
-			$respostas_3 = null;	
-			$respostas_4 = null;	
-			$respostas_5 = null;	
-			$respostas_6 = null;	
-			$respostas_7 = null;	
-			$respostas_8 = null;	
-			$respostas_9 = null;
+			$respostas_0 = "";	
+			$respostas_1 = "";	
+			$respostas_2 = "";	
+			$respostas_3 = "";	
+			$respostas_4 = "";	
+			$respostas_5 = "";	
+			$respostas_6 = "";	
+			$respostas_7 = "";		
+			$respostas_8 = "";	
+			$respostas_9 = "";	
 				
 				for ($i = 0; $i < $questoes; $i++) 
 				{
