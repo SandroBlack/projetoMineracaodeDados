@@ -1,16 +1,18 @@
 <?php include_once("conf/restricao.php");
+session_start();
+require("gerar-senha.php");
+require("envio-email.php");
+
 
 $email = $_POST["email"];
-$link = $_POST["link"];
+$corpo = $_POST["link"];
 $assunto = $_POST["assunto"];
+$nome = $_SESSION["nomeUser"];
 
-// IMPLEMENTAR A FUNÇÃO DE ENVIAR O E-MAIL COM O LINK PARA RESPONDER A PESQUISA
+$nCorpo = $nome." lhe convida para responder seu formulario em: http://condominioslaranjeiras.com.br/projeto/form_resposta.php?link_conteudo=".$corpo;
 
+$enviarEmail = enviarEmail($email, $nCorpo, $assunto);
 
-
-echo "Email do Convidado: " . $email . "<br>";
-echo "Assunto do Formulário: " . $assunto . "<br>";
-echo "Link do Formulário: " . $link;	
-
+header('Location: http://condominioslaranjeiras.com.br/projeto/consulta.php');
 
 ?>

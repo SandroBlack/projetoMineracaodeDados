@@ -96,7 +96,7 @@
 						<td style="display:none"><input type="hidden" name="emailForm" id="emailForm" value=""></td>
 						<td style="display:none"><input type="hidden" name="assuntoForm" id="assuntoForm" value=""></td>
 						<td style="display:none"><input type="hidden" name="linkForm" id="linkForm<?=$res["form_id"]?>" value="<?=$res["link_conteudo"]?>"></td>
-						<td align="left"><a href="http://localhost/projetoMineracaodeDados/projetoramon/form_resposta.php?link_conteudo=<?=$res['link_conteudo']?>" target="_blank"><?=$res["form_titulo"]?></a></td>
+						<td align="left"><a href="http://condominioslaranjeiras.com.br/projeto/form_resposta.php?link_conteudo=<?=$res['link_conteudo']?>" target="_blank"><?=$res["form_titulo"]?></a></td>
 						<td><?=$res["form_time"]?></td>							
 						<td><button type="button" class="btnConvidar" id="<?=$res["form_id"]?>">Convite</button></td>					
 					</tr>			

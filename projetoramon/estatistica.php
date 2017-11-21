@@ -12,24 +12,6 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="css/estatistica.css">
 	<link rel="icon" href="img/icon.png">
-	
-	<style>
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-}
-
-td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-}
-
-tr:nth-child(even) {
-    background-color: #dddddd;
-}
-</style>
 
 </head>
 
@@ -76,10 +58,18 @@ tr:nth-child(even) {
 
 	<div class="container">	
 		<?php
+		
+		session_start();
 			try{
 				$pdo = conectar();								
-				$sql = "SELECT * FROM forms";												
-				$listar = $pdo->prepare($sql);								
+				$sql = "SELECT * 
+						FROM
+						users INNER JOIN forms ON users.user_id = forms.user_id
+						WHERE users.user_id =?";												
+				$listar = $pdo->prepare($sql);	
+
+				$listar->execute(array($_SESSION["userId"]));
+				
 				$listar->execute();
 				//$res = $listar->fetch(PDO::FETCH_ASSOC);
 				//$linha = $listar->rowCount();						

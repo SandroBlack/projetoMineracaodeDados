@@ -34,8 +34,14 @@
 
 		try{
 			$pdo = conectar();								
-			$sql = "SELECT * FROM respostas";
-			$listar = $pdo->prepare($sql);								
+			$sql = "SELECT *
+					FROM 
+					users INNER JOIN forms ON users.user_id = forms.user_id,
+					forms f INNER JOIN perguntas ON f.form_id = perguntas.form_id,
+					perguntas p INNER JOIN respostas ON p.pergunta_id = respostas.pergunta_id
+					WHERE users.user_id = ?";
+			$listar = $pdo->prepare($sql);
+			$listar->execute(array($_SESSION["userId"]));			
 			$listar->execute();			
 			$linhaR = $listar->rowCount();					
 		} catch(PDOException $e){
