@@ -102,7 +102,7 @@ $(document).ready(function(){
 					
 					else if(sucess == "1")
 					{
-						alert("Cadastro realizado com sucesso");
+						alert("Cadastro realizado com sucesso, acesse seu e-mail para ativar sua conta");
 						
 						$("#nome_cadastro").val("");
 						

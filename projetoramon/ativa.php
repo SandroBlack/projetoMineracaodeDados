@@ -11,6 +11,8 @@
 	
 	$listar->execute(array($ativa));
 	
+	echo '<script>alert("Conta ativada com sucesso")</script>';
+
 	header('Location: http://condominioslaranjeiras.com.br/projeto/cadastro.html');
 	
 ?>

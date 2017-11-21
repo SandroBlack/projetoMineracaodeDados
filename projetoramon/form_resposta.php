@@ -64,16 +64,16 @@
 			
 			$date = date('d/m/y');
 			
-			$respostas_0 = "";	
-			$respostas_1 = "";	
-			$respostas_2 = "";	
-			$respostas_3 = "";	
-			$respostas_4 = "";	
-			$respostas_5 = "";	
-			$respostas_6 = "";	
-			$respostas_7 = "";		
-			$respostas_8 = "";	
-			$respostas_9 = "";	
+			$respostas_0 = " ";	
+			$respostas_1 = " ";	
+			$respostas_2 = " ";	
+			$respostas_3 = " ";	
+			$respostas_4 = " ";	
+			$respostas_5 = " ";	
+			$respostas_6 = " ";	
+			$respostas_7 = " ";		
+			$respostas_8 = " ";	
+			$respostas_9 = " ";	
 				
 				for ($i = 0; $i < $questoes; $i++) 
 				{
@@ -172,6 +172,7 @@
 				
 			$('#responder').click(function(){
 				
+				alert("Formulario Respondido com Sucesso");
 				$('#responderForm').val("enviarResposta");	
 				
 				$('#formResposta').submit();				

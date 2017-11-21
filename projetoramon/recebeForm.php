@@ -19,25 +19,25 @@ require ("gerar_url.php");
 	
 	$form_time = $_POST["form_time"];
 	
-	$perguntas_0 = null;	
+	$perguntas_0 = " ";
 	
-	$perguntas_1 = null;	
+	$perguntas_1 =  " ";
 	
-	$perguntas_2 = null;	
+	$perguntas_2 =  " ";
 	
-	$perguntas_3 = null;	
+	$perguntas_3 =  " ";
 	
-	$perguntas_4 = null;	
+	$perguntas_4 =  " ";
 	
-	$perguntas_5 = null;	
+	$perguntas_5 =  " ";
 	
-	$perguntas_6 = null;	
+	$perguntas_6 =  " ";
 	
-	$perguntas_7 = null;	
+	$perguntas_7 =  " ";
 	
-	$perguntas_8 = null;	
+	$perguntas_8 =  " ";
 	
-	$perguntas_9 = null;	
+	$perguntas_9 =  " ";
 
 	$result = count($form_questoes);
 

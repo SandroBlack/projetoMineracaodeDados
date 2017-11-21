@@ -213,7 +213,7 @@
 			
 			$assunto = "Ativação da Conta - Projeto Facima";
 			
-			$corpo = "http://localhost/projetomineracaodedados/projetoramon/ativa.php?ativa=".$link;
+			$corpo = "http://condominioslaranjeiras.com.br/projeto/ativa.php?ativa=".$link;
 						
 			$enviarEmail = enviarEmail($email, $corpo, $assunto);
 			
